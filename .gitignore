@@ -5,6 +5,19 @@
 !*.vimrc
 !*.vim
 !*.bashrc
+!.bash_profile
+!.profile
 !.gitignore
+!.gitconfig
+!.tmux.conf
+!.tmux.conf.local
+
+!.config/fish
+!.config/rtv
+!.config/latte
+!.config/ranger
+
+!.mailcap
+
 !README.md
 
