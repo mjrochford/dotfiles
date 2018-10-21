@@ -18,6 +18,9 @@
 !.tmux.conf
 !.tmux.conf.local
 
+!.config/
+/.config/*
+
 # Fish
 !.config/fish/**
 
