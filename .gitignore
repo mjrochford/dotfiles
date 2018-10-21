@@ -6,4 +6,5 @@
 !*.vim
 !*.bashrc
 !.gitignore
+!README.md
 
