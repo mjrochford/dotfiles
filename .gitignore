@@ -3,7 +3,7 @@
 
 # Include Vim config
 !*.vimrc
-!*.vim/
+!.vim/*
 
 # Bash config
 !*.bashrc
@@ -19,16 +19,16 @@
 !.tmux.conf.local
 
 # Fish
-!.config/fish/
+!.config/fish/*
 
 # RTV
-!.config/rtv/
+!.config/rtv/*
 
 # Latte Dock
-!.config/latte/
+!.config/latte/*
 
 # Ranger config
-!.config/ranger/
+!.config/ranger/*
 !.mailcap
 
 !README.md
