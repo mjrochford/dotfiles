@@ -18,6 +18,9 @@
 !.tmux.conf
 !.tmux.conf.local
 
+!.zshrc
+!.zsh/**
+
 !.config/
 /.config/*
 
