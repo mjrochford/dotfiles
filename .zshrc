@@ -24,7 +24,7 @@ HISTFILE=~/.zsh/histfile
 HISTSIZE=1000
 SAVEHIST=10000
 
-alias ll="ls -l --group-directories-first --color=auto"
+alias ll="ls -lh --group-directories-first --color=auto"
 alias la="ll -a"
 
 alias yt="youtube-dl -cn --add-metadata"
