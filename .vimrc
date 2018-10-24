@@ -242,9 +242,12 @@ let g:lasttab = 1
 nmap <leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
-" Opens a new tab with the current buffer's path
+" Opens a new tab or buffer with the current buffer's path
 " Super useful when editing files in the same directory
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+map <leader>e :e <c-r>=expand("%:p:h")<cr>/
+
+map <leader>f :find
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>

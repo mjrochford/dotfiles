@@ -5,7 +5,6 @@
 # ./___|___/_| |_|_|  \___| 
 # Matt Rochford
 
-
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh//plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -107,7 +106,7 @@ colors
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git*' formats "%F{green}%s%f %F{blue}[%f%F{green}%b %m|%u|%c%f%F{blue}]%f"
+zstyle ':vcs_info:git*' formats "%F{cyan}%s%f %F{green}[%f%F{cyan}%b %m|%u|%c%f%F{green}]%f"
 
 setprompt() {
   setopt prompt_subst
@@ -115,20 +114,20 @@ setprompt() {
   if [[ -n "$SSH_CLIENT"  ||  -n "$SSH2_CLIENT" ]]; then
     p_host='%F{yellow}%M%f'
   else
-    p_host='%F{green}%M%f'
+    p_host='%F{cyan}%M%f'
   fi
 
   PS1=${(j::Q)${(Z:Cn:):-$'
-    %F{blue}[%f
-    %(!.%F{red}%n%f.%F{green}%n%f)
-    %F{blue}@%f
-    ${p_host}
-    %F{blue}]%f
+    %(!.%F{red}%n%f.%F{cyan}%n%f)
+    %F{green}@%f
+    ${p_host} 
+    " "
+    %F{yellow}#%f
     " "
   '}}
 
   PS2=$'%_>'
-  RPROMPT=$'%F{blue}[%f%F{green}%2~%f%F{blue}]%f ${vcs_info_msg_0_}'
+  RPROMPT=$'%F{green}[%f%F{cyan}%2~%f%F{green}]%f ${vcs_info_msg_0_}'
 }
 setprompt
 
