@@ -1,0 +1,48 @@
+## General options
+set header_cache = "~/.cache/mutt"
+set imap_check_subscribed
+set imap_keepalive = 300
+unset imap_passive
+set mail_check = 60
+set mbox_type=Maildir
+
+set sidebar_short_path
+set mail_check_stats = yes
+set sidebar_width = 20
+bind index,pager \Cp sidebar-prev # Move the highlight to the previous mailbox
+bind index,pager \Cn sidebar-next # Move the highlight to the next mailbox
+bind index,pager \Co sidebar-open # Open the highlighted mailbox
+
+## Formal Account
+source "~/.mutt/accounts/formal"
+folder-hook $folder 'source ~/.mutt/accounts/formal'
+folder-hook $folder 'set sort=reverse-date-sent'
+
+## Personal Account
+source "~/.mutt/accounts/personal"
+folder-hook $folder 'source ~/.mutt/accounts/personal'
+folder-hook $folder 'set sort=reverse-date-sent'
+
+# Appearance 
+
+## Shortcuts
+
+set my_leader=,
+
+# Accounts
+macro index,pager ${my_leader}1 '<sync-mailbox><enter-command>source ~/.mutt/accounts/formal<enter><change-folder>!<enter>'
+macro index,pager ${my_leader}2 '<sync-mailbox><enter-command>source ~/.mutt/accounts/personal<enter><change-folder>!<enter>'
+
+# Navigation
+bind pager j next-line
+bind pager k previous-line
+bind attach,index,pager \CD next-page
+bind attach,index,pager \CU previous-page
+bind pager g top
+bind pager G bottom
+bind attach,index g first-entry
+bind attach,index G last-entry
+
+bind index,pager ${my_leader}d sidebar-toggle-visible
+
+source ~/.mutt/colors

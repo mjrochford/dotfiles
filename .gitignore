@@ -40,6 +40,7 @@
 !.mailcap
 
 # Mutt 
+!/.mutt/
 !/.mutt/**
 
 !README.md
