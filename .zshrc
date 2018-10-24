@@ -31,6 +31,8 @@ alias la="ll -a"
 alias yt="youtube-dl -cn --add-metadata"
 alias yta="yt -x --audio-format mp3"
 
+alias start-mac="~/MacOs/start-mac.sh"
+
 
 #------------------------------
 # ShellFuncs
