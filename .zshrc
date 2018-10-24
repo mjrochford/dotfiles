@@ -107,7 +107,7 @@ colors
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git*' formats "%{${fg[cyan]}%}[%{${fg[green]}%}%s%{${fg[cyan]}%}][%{${fg[blue]}%}%r/%S%%{${fg[cyan]}%}][%{${fg[blue]}%}%b%{${fg[yellow]}%}%m%u%c%{${fg[cyan]}%}]%{$reset_color%}"
+zstyle ':vcs_info:git*' formats "%s [%b %m %u %c]"
 
 setprompt() {
   setopt prompt_subst
@@ -122,16 +122,12 @@ setprompt() {
     %F{cyan}[%f
     %(!.%F{red}%n%f.%F{green}%n%f)
     %F{cyan}@%f
-    ${p_host}
-    %F{cyan}][%f
-    %F{blue}%~%f
-    %F{cyan}]%f
-    %(!.%F{red}%#%f.%F{green}%#%f)
+    ${p_host}]
     " "
   '}}
 
   PS2=$'%_>'
-  RPROMPT=$'${vcs_info_msg_0_}'
+  RPROMPT=$'%F{green}[%2~]%f %F{cyan}${vcs_info_msg_0_}%f'
 }
 setprompt
 

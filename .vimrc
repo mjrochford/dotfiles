@@ -1,31 +1,3 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
-"       Amir Salihefendic — @amix3k
-"
-" Awesome_version:
-"       Get this config, nice color schemes and lots of plugins!
-"
-"       Install the awesome version from:
-"
-"           https://github.com/amix/vimrc
-"
-" Sections:
-"    -> General
-"    -> VIM user interface
-"    -> Colors and Fonts
-"    -> Files and backups
-"    -> Text, tab and indent related
-"    -> Visual mode related
-"    -> Moving around, tabs and buffers
-"    -> Status line
-"    -> Editing mappings
-"    -> vimgrep searching and cope displaying
-"    -> Spell checking
-"    -> Misc
-"    -> Helper functions
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Plugins
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -60,7 +32,6 @@ set relativenumber
 
 set clipboard=unnamed
 
-
 " Sets how many lines of history VIM has to remember
 set history=500
 
@@ -93,6 +64,9 @@ let $LANG='en'
 set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
+
+" Provide tab-completion for all file-related tasks
+set path+=**
 
 " Turn on the Wild menu
 set wildmenu
