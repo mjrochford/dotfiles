@@ -10,9 +10,8 @@
 !.bash_profile
 !.profile
 
-# Git configs
+# Git 
 !.gitignore
-!.gitconfig
 
 # Tmux configs
 !.tmux.conf
