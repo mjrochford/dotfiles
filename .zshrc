@@ -24,11 +24,12 @@ HISTFILE=~/.zsh/histfile
 HISTSIZE=1000
 SAVEHIST=10000
 
-alias ll="ls -lh --group-directories-first --color=auto"
+alias ll="ls -lh --group-directories-first --color=always"
 alias la="ll -a"
 
-alias yt="youtube-dl -cn --add-metadata"
-alias yta="yt -x --audio-format mp3"
+alias ytw="mpv --ytdl-format=bestvideo+bestaudio/best"
+alias ytd="youtube-dl -cn --add-metadata"
+alias ytda="yt -x --audio-format mp3"
 
 alias start-mac="~/MacOs/start-mac.sh"
 
