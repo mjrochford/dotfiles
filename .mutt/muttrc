@@ -13,14 +13,14 @@ bind index,pager \Cp sidebar-prev # Move the highlight to the previous mailbox
 bind index,pager \Cn sidebar-next # Move the highlight to the next mailbox
 bind index,pager \Co sidebar-open # Open the highlighted mailbox
 
-## Formal Account
-source "~/.mutt/accounts/formal"
-folder-hook $folder 'source ~/.mutt/accounts/formal'
-folder-hook $folder 'set sort=reverse-date-sent'
-
 ## Personal Account
 source "~/.mutt/accounts/personal"
 folder-hook $folder 'source ~/.mutt/accounts/personal'
+folder-hook $folder 'set sort=reverse-date-sent'
+
+## Formal Account
+source "~/.mutt/accounts/formal"
+folder-hook $folder 'source ~/.mutt/accounts/formal'
 folder-hook $folder 'set sort=reverse-date-sent'
 
 # Appearance 
