@@ -107,7 +107,7 @@ colors
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git*' formats "%F{cyan}%s%f %F{green}[%f%F{cyan}%b %m|%u|%c%f%F{green}]%f"
+  zstyle ':vcs_info:git*' formats "%F{cyan}%s%f %F{green}[%f%F{cyan}(%b) (%m)(%u)(%c)%f%F{green}]%f"
 
 setprompt() {
   setopt prompt_subst
