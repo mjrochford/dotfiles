@@ -30,10 +30,6 @@
 !.config/rtv/
 !.config/rtv/**
 
-# Latte Dock
-!.config/latte/
-!.config/latte/**
-
 # Ranger config
 !.config/ranger/
 !.config/ranger/**
