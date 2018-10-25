@@ -31,9 +31,6 @@ alias ytw="mpv --ytdl-format=bestvideo+bestaudio/best"
 alias ytd="youtube-dl -cn --add-metadata"
 alias ytda="yt -x --audio-format mp3"
 
-alias start-mac="~/MacOs/start-mac.sh"
-
-
 #------------------------------
 # ShellFuncs
 #------------------------------
