@@ -247,7 +247,7 @@ au TabLeave * let g:lasttab = tabpagenr()
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 map <leader>e :e <c-r>=expand("%:p:h")<cr>/
 
-map <leader>f :find
+map <leader>f :find 
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>

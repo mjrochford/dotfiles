@@ -1,0 +1,20 @@
+## Receive options.
+set imap_user=mattjr@uw.edu
+set imap_pass=`gpg -q -d ~/.passwords/mutt-school-pass.gpg`
+set folder = imaps://$imap_user@imap.gmail.com/
+set spoolfile = +INBOX
+set postponed = +Drafts
+set record = +Sent
+
+## Send options.
+set smtp_url=smtps://$imap_user:$imap_pass@smtp.gmail.com
+set realname='Matt Rochford'
+set from=mattjr@uw.edu
+set hostname="gmail.com"
+set signature="Matt Rochford"
+# Connection options
+set ssl_force_tls = yes
+unset ssl_starttls
+
+## Hook -- IMPORTANT!
+account-hook $folder "set imap_user=mattjr@uw.edu imap_pass='$imap_pass'"
