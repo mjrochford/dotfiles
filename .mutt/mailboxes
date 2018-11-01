@@ -1,1 +1,1 @@
-mailboxes "+formal/INBOX" "+formal/[Gmail].Drafts" "+formal/[Gmail].Sent Mail" "+formal/[Gmail].Spam" "+formal/[Gmail].Trash" "+personal/INBOX" "+personal/[Gmail].Drafts" "+personal/[Gmail].Sent Mail" "+personal/[Gmail].Spam" "+personal/[Gmail].Trash" "+school/INBOX" "+school/[Gmail].Drafts" "+school/[Gmail].Sent Mail" "+school/[Gmail].Spam" "+school/[Gmail].Trash"
+mailboxes "+formal/INBOX" "+formal/[Gmail].Drafts" "+formal/[Gmail].Sent Mail" "+formal/[Gmail].Spam" "+formal/[Gmail].Trash" "+personal/INBOX" "+school/INBOX"

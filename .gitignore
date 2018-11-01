@@ -36,6 +36,8 @@
 !/.mutt/**
 
 # Offline Imap
+!/.offlineimap/
+!/.offlineimap/*
 !/.offlineimap/offlineimap_scripts.py 
 !.offlineimaprc
 
