@@ -10,11 +10,13 @@ set record = "+school/Sent\ Items"
 set postponed = "+school/Drafts"
 
 ## Send options.
-set smtp_url=smtps://$imap_user:$imap_pass@smtp.gmail.com
 set realname='Matt Rochford'
 set from=mattjr@uw.edu
 set hostname="gmail.com"
-set signature="Matt Rochford"
+set smtp_pass=$imap_pass
+
+set smtp_url=smtps://$imap_user@smtp.gmail.com
+
 # Connection options
 set ssl_force_tls = yes
 unset ssl_starttls
