@@ -34,6 +34,7 @@
 # Mutt 
 !/.mutt/
 !/.mutt/**
+/.mutt/mailboxes
 
 # Offline Imap
 !/.offlineimap/
