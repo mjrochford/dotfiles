@@ -22,10 +22,6 @@
 !.config/
 /.config/*
 
-# Fish
-!.config/fish/
-!.config/fish/**
-
 # RTV
 !.config/rtv/
 !.config/rtv/**
@@ -39,5 +35,9 @@
 !/.mutt/
 !/.mutt/**
 
-!README.md
+# Offiline Imap
+!/.offlineimap/
+!/.offlineimap/**
+!.offlineimaprc
 
+!README.md

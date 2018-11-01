@@ -1,10 +1,13 @@
 ## Receive options.
 set imap_user=mrochford45@gmail.com
 set imap_pass=`gpg -q -d ~/.passwords/mutt-personal-pass.gpg`
-set folder = imaps://$imap_user@imap.gmail.com/
-set spoolfile = +INBOX
-set postponed = +Drafts
-set record = +Sent
+
+# IMAP: offlineimap
+set folder = "~/Mail/"
+source ~/.mutt/mailboxes
+set spoolfile = "+personal/INBOX"
+set record = "+personal/Sent\ Items"
+set postponed = "+personal/Drafts"
 
 ## Send options.
 set smtp_url=smtps://$imap_user:$imap_pass@smtp.gmail.com
@@ -12,6 +15,7 @@ set realname='Matt Rochford'
 set from=$imap_user
 set hostname="gmail.com"
 set signature="Matt Rochford"
+
 # Connection options
 set ssl_force_tls = yes
 unset ssl_starttls

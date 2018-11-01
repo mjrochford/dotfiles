@@ -16,6 +16,8 @@ export BROWSER="google-chrome"
 export EDITOR="vim"
 export PATH="${PATH}:${HOME}/Projects/bin"
 
+export TERM=screen-256color
+
 autoload -Uz compinit promptinit
 compinit
 promptinit
@@ -23,6 +25,11 @@ promptinit
 HISTFILE=~/.zsh/histfile
 HISTSIZE=1000
 SAVEHIST=10000
+
+# ---------
+# Vi Mode 
+# ---------
+bindkey -v 
 
 alias ll="ls -lh --group-directories-first --color=always"
 alias la="ll -a"
@@ -33,6 +40,8 @@ alias ytda="ytd -x --audio-format mp3"
 
 alias pomo_short='sleep 1500 && notify-send "break"; sleep 300 && notify-send "back to work"'
 alias pomo_long='sleep 1500 && notify-send "break"; sleep 900 && notify-send "back to work"'
+
+alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -'
 
 #------------------------------
 # ShellFuncs
