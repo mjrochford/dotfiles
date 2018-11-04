@@ -5,10 +5,6 @@
 # ./___|___/_| |_|_|  \___| 
 # Matt Rochford
 
-if [ -e ~/.config/wal/sequences ]; then
-  cat ~/.config/wal/sequences
-fi
-
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh//plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -27,6 +23,7 @@ autoload -Uz compinit promptinit
 compinit
 promptinit
 
+setopt HIST_IGNORE_SPACE
 HISTFILE=~/.zsh/histfile
 HISTSIZE=1000
 SAVEHIST=10000

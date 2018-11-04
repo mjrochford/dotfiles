@@ -14,6 +14,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'w0rp/ale'
 Plugin 'alvan/vim-closetag'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'junegunn/goyo.vim'
 
 call vundle#end()            " required
 
@@ -291,6 +292,7 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 map 0 ^
 
 map <leader>d :NERDTreeToggle<cr>
+map <leader>g :Goyo<cr>
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
