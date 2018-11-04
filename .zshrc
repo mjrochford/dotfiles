@@ -5,6 +5,11 @@
 # ./___|___/_| |_|_|  \___| 
 # Matt Rochford
 
+if [ -e ~/.config/wal/sequences ]; then
+  cat ~/.config/wal/sequences
+fi
+
+
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh//plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -112,32 +117,36 @@ esac
 #------------------------------
 autoload -U colors zsh/terminfo
 colors
+c1="cyan"
+c2="green"
+c3="yellow"
+c4="blue"
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:*' check-for-changes true
-  zstyle ':vcs_info:git*' formats "%F{cyan}%s%f %F{green}[%f%F{cyan}(%b) (%m)(%u)(%c)%f%F{green}]%f"
+  zstyle ':vcs_info:git*' formats "%F{$c1}%s%f %F{$c2}[%f%F{$c1}(%b) (%m)(%u)(%c)%f%F{$c2}]%f"
 
 setprompt() {
   setopt prompt_subst
 
   if [[ -n "$SSH_CLIENT"  ||  -n "$SSH2_CLIENT" ]]; then
-    p_host='%F{yellow}%M%f'
+    p_host='%F{$c4}%M%f'
   else
-    p_host='%F{cyan}%M%f'
+    p_host='%F{$c1}%M%f'
   fi
 
   PS1=${(j::Q)${(Z:Cn:):-$'
-    %(!.%F{red}%n%f.%F{cyan}%n%f)
-    %F{green}@%f
+    %(!.%F{$c2}%n%f.%F{$c1}%n%f)
+    %F{$c2}@%f
     ${p_host} 
     " "
-    %F{yellow}#%f
+    %F{$c3}#%f
     " "
   '}}
 
   PS2=$'%_>'
-  RPROMPT=$'%F{green}[%f%F{cyan}%2~%f%F{green}]%f ${vcs_info_msg_0_}'
+  RPROMPT=$'%F{$c2}[%f%F{$c1}%2~%f%F{$c2}]%f ${vcs_info_msg_0_}'
 }
 setprompt
 

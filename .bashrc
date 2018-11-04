@@ -18,6 +18,8 @@ export EDITOR="vim"
 
 # Adding color
 alias ls='ls -hN --color=auto --group-directories-first'
+alias ll='ls -l'
+alias la='ll -a'
 alias grep="grep --color=auto" # Color grep - highlight desired sequence.
 
 # Internet

@@ -13,6 +13,7 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'scrooloose/nerdtree'
 Plugin 'w0rp/ale'
 Plugin 'alvan/vim-closetag'
+Plugin 'sheerun/vim-polyglot'
 
 call vundle#end()            " required
 
@@ -252,10 +253,15 @@ map <leader>f :find
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Auto complete braces and parens tags
-imap { {<cr>}<esc>ko<tab>
-imap ( ()<esc>i
-imap [ []<esc>i
+" Close braces n stuff
+
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
 
 " Specify the behavior when switching between buffers 
 try
