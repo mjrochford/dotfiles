@@ -65,9 +65,9 @@ man() {
 # Comp stuff
 #------------------------------
 zmodload zsh/complist
-autoload -Uz compinit
-compinit
 zstyle :compinstall filename '${HOME}/.zshrc'
+
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 #- buggy
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
