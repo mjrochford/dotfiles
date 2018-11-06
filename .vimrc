@@ -14,6 +14,7 @@ Plugin 'w0rp/ale'
 Plugin 'alvan/vim-closetag'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'junegunn/goyo.vim'
+Plugin 'rhysd/vim-grammarous'
 
 call vundle#end()            " required
 
@@ -54,6 +55,8 @@ let mapleader = " "
 
 " Fast saving
 nmap <leader>w :w!<cr>
+
+nmap <leader>wc :w !wc -w<cr>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
@@ -298,6 +301,7 @@ map 0 ^
 
 map <leader>d :NERDTreeToggle<cr>
 map <leader>g :Goyo<cr>
+map <leader>G :Goyo 60%<cr>
 
 map <leader>E :edit ~/.vimrc<cr>
 
