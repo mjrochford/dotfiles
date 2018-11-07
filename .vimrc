@@ -33,7 +33,6 @@ call vundle#end()            " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufRead *.md Goyo 60%
 
-
 set number
 set relativenumber
 
