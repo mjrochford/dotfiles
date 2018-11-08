@@ -268,8 +268,8 @@ inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
-nnoremap <leader>oo :exe ':silent !okular % &>/dev/null &'<cr>
-nnoremap <leader>oc :exe ':silent !google-chrome-stable % &>/dev/null &'<cr>
+nnoremap <leader>oo :exe ':silent !okular "%" &>/dev/null &'<cr>
+nnoremap <leader>oc :exe ':silent !google-chrome-stable "%" &>/dev/null &'<cr>
 
 " Specify the behavior when switching between buffers 
 try
