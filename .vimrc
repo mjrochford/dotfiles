@@ -15,6 +15,7 @@ Plugin 'alvan/vim-closetag'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'junegunn/goyo.vim'
 Plugin 'rhysd/vim-grammarous'
+Plugin 'chrisbra/Colorizer'
 
 call vundle#end()            " required
 
