@@ -1,8 +1,8 @@
-#          | |              
-#   _______| |__  _ __ ___  
-#  |_  / __| '_ \| '__/ __| 
-#   / /\__ \ | | | | | (__  
-# ./___|___/_| |_|_|  \___| 
+#          | |
+#   _______| |__  _ __ ___
+#  |_  / __| '_ \| '__/ __|
+#   / /\__ \ | | | | | (__
+# ./___|___/_| |_|_|  \___|
 # Matt Rochford
 
 
@@ -17,6 +17,10 @@ export BROWSER="google-chrome"
 export EDITOR="vim"
 export PATH="${PATH}:${HOME}/Projects/bin"
 
+export CSE="$HOME/Documents/CSE142/code"
+export PROJ="$HOME/Projects"
+export HHH="$PROJ/HHH Scheduler"
+
 export TERM=screen-256color
 
 autoload -Uz compinit promptinit
@@ -24,14 +28,18 @@ compinit
 promptinit
 
 setopt HIST_IGNORE_SPACE
-HISTFILE=~/.zsh/histfile
+HISTFILE=$HOME/.zsh/histfile
 HISTSIZE=1000
 SAVEHIST=10000
 
 # ---------
-# Vi Mode 
+# Vi Mode
 # ---------
-bindkey -v 
+bindkey -v
+
+alias q="exit"
+alias weather="date; curl 'wttr.in?0'"
+alias weather_help="curl 'wttr.in/:help'"
 
 alias ll="ls -lh --group-directories-first --color=always"
 alias la="ll -a"
@@ -59,6 +67,17 @@ man() {
     LESS_TERMCAP_ue=$(printf "\e[0m") \
     LESS_TERMCAP_us=$(printf "\e[1;32m") \
     man "$@"
+}
+
+dev-tmux() {
+  cwd=$1
+  if [[ -z $1 ]]; then
+    cwd=.
+  fi
+
+  tmux new-session -c $cwd -s dev "vim" \; \
+   split-window -h \; \
+   resize-pane -R 25
 }
 
 #------------------------------
@@ -136,15 +155,13 @@ setprompt() {
   PS1=${(j::Q)${(Z:Cn:):-$'
     %(!.%F{$c2}%n%f.%F{$c1}%n%f)
     %F{$c2}@%f
-    ${p_host} 
+    ${p_host}
     " "
     %F{$c3}#%f
     " "
   '}}
 
   PS2=$'%_>'
-  RPROMPT=$'%F{$c2}[%f%F{$c1}%2~%f%F{$c2}]%f ${vcs_info_msg_0_}'
+  RPROMPT=$' %F{$c2}[%f%F{$c1}%2~%f%F{$c2}]%f ${vcs_info_msg_0_}'
 }
 setprompt
-
-

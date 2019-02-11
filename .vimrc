@@ -8,14 +8,18 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'scrooloose/nerdtree'
-Plugin 'w0rp/ale'
+" Plugin 'Chiel92/vim-autoformat'
 Plugin 'alvan/vim-closetag'
-Plugin 'sheerun/vim-polyglot'
+
+Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/goyo.vim'
-Plugin 'rhysd/vim-grammarous'
 Plugin 'chrisbra/Colorizer'
+Plugin 'rhysd/vim-grammarous'
+Plugin 'chrisbra/csv.vim'
+
+Plugin 'w0rp/ale'
+
+Plugin 'sheerun/vim-polyglot'
 
 call vundle#end()            " required
 
@@ -28,10 +32,26 @@ call vundle#end()            " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => ALE Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines'],
+\   'javascript': ['eslint'],
+\}
+
+let g:ale_fix_on_save = 1
+
+let g:ale_java_javac_classpath = '../bin'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufRead,BufWritePost *.csv :%ArrangeColumn
+autocmd BufWritePre *.csv :%UnArrangeColumn
+
 autocmd BufRead *.md Goyo 60%
 
 set number
@@ -56,14 +76,18 @@ let mapleader = " "
 " Fast saving
 nmap <leader>w :w!<cr>
 
+" Word Count
 nmap <leader>wc :w !wc -w<cr>
 
-" :W sudo saves the file 
+" Remove highlight on search
+nmap <leader><leader> :nohlsearch<cr>
+
+" :W sudo saves the file
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 
-" Create tags file (Requires ctags) 
-command MakeTags !ctags -R .
+" Create tags file (Requires ctags)
+command MakeTags !ctags --exclude=./bin -R .
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -72,7 +96,7 @@ command MakeTags !ctags -R .
 set so=7
 
 " Avoid garbled characters in Chinese language windows OS
-let $LANG='en' 
+let $LANG='en'
 set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -107,23 +131,23 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
 set hlsearch
 
 " Makes search act like search in modern browsers
-set incsearch 
+set incsearch
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw 
+set lazyredraw
 
 " For regular expressions turn magic on
 set magic
 
 " Show matching brackets when text indicator is over them
-set showmatch 
+set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -146,7 +170,7 @@ set foldcolumn=1
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
@@ -241,7 +265,7 @@ map <leader>h :bprevious<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
+map <leader>tm :tabmove
 map <leader>t<leader> :tabnext<cr>
 
 " Let 'tl' toggle between this and the last accessed tab
@@ -259,20 +283,10 @@ map <leader>f :find
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Close braces n stuff
-
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
-
 nnoremap <leader>oo :exe ':silent !okular "%" &>/dev/null &'<cr>
 nnoremap <leader>oc :exe ':silent !google-chrome-stable "%" &>/dev/null &'<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
 set switchbuf=useopen,usetab,newtab
 set stal=2
@@ -334,11 +348,11 @@ endif
 fun! AutoBreakMd()
 let save_cursor = getpos(".")
 let old_query = getreg('/')
-silent! %s/.$/&  / 
-silent! %s/\s\{3,}$/  / 
+silent! %s/.$/&  /
+silent! %s/\s\{3,}$/  /
 call setpos('.', save_cursor)
 call setreg('/', old_query)
-endfun 
+endfun
 
 if has("autocmd")
   autocmd BufWritePre *.md  :call AutoBreakMd()
@@ -408,7 +422,7 @@ endfunction
 
 function! CmdLine(str)
     call feedkeys(":" . a:str)
-endfunction 
+endfunction
 
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"

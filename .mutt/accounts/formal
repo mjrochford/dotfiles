@@ -1,6 +1,6 @@
 ## Receive options.
 set imap_user=mattjohnrochford@gmail.com
-set imap_pass="`gpg -q -d ~/.passwords/mutt-formal-pass.gpg`"
+set imap_pass="`pass show mutt/formal`"
 
 # IMAP: offlineimap
 set folder = "~/Mail/"
@@ -12,12 +12,13 @@ set postponed = "+formal/Drafts"
 ## Send options.
 set smtp_url=smtps://$imap_user:$imap_pass@smtp.gmail.com
 set realname='Matt Rochford'
-set from=mattjohnrochford@gmail.com
+set from=$imap_user
 set hostname="gmail.com"
 set signature="Matt Rochford"
+
 # Connection options
 set ssl_force_tls = yes
 unset ssl_starttls
 
 ## Hook -- IMPORTANT!
-account-hook $folder "set imap_user=mattjohnrochford@gmail.com imap_pass=`gpg -q -d ~/.passwords/mutt-formal-pass.gpg`"
+account-hook $folder "set imap_user=$imap_user imap_pass=$imap_pass"
