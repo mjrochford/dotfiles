@@ -1,21 +1,23 @@
 #!/bin/bash
 
 rm -rf ~/.config/ranger ~/.config/rtv
-ln -sf -n /home/matt/dotfiles/.config/* ~/.config
-ln -sf -n /home/matt/dotfiles/.offlineimap/* ~/.offlineimap
+ln -sf -n $HOME/dotfiles/config/* ~/.config
+ln -sf -n $HOME/dotfiles/offlineimap/* ~/.offlineimap
 
 rm -rf ~/.mutt/accounts
-ln -sf -n /home/matt/dotfiles/.mutt/* ~/.mutt
+ln -sf -n $HOME/dotfiles/mutt/* ~/.mutt
 
-ln -sf /home/matt/dotfiles/.bash_profile ~/.bash_profile
-ln -sf /home/matt/dotfiles/.bashrc ~/.bashrc
-ln -sf /home/matt/dotfiles/.gitconfig ~/.gitconfig
-ln -sf /home/matt/dotfiles/.gitignore ~/.gitignore
-ln -sf /home/matt/dotfiles/.mailcap ~/.mailcap
-ln -sf /home/matt/dotfiles/.offlineimaprc ~/.offlineimaprc
-ln -sf /home/matt/dotfiles/.profile ~/.profile
-ln -sf /home/matt/dotfiles/.tmux.conf ~/.tmux.conf
-ln -sf /home/matt/dotfiles/.tmux.conf.local ~/.tmux.conf.local
-ln -sf /home/matt/dotfiles/.vimrc ~/.vimrc
-ln -sf /home/matt/dotfiles/.zshrc ~/.zshrc
-
+ln -sf $HOME/dotfiles/bash_profile ~/.bash_profile
+ln -sf $HOME/dotfiles/bashrc ~/.bashrc
+ln -sf $HOME/dotfiles/gitconfig ~/.gitconfig
+ln -sf $HOME/dotfiles/gitignore ~/.gitignore
+ln -sf $HOME/dotfiles/mailcap ~/.mailcap
+ln -sf $HOME/dotfiles/offlineimaprc ~/.offlineimaprc
+ln -sf $HOME/dotfiles/profile ~/.profile
+ln -sf $HOME/dotfiles/tmux.conf ~/.tmux.conf
+ln -sf $HOME/dotfiles/tmux.conf.local ~/.tmux.conf.local
+ln -sf $HOME/dotfiles/vimrc ~/.vimrc
+mkdir ~/.config/nvim/
+ln -sf $HOME/dotfiles/init.vim ~/.config/nvim/init.vim
+ln -sf $HOME/dotfiles/zshrc ~/.zshrc
+ln -sf $HOME/dotfiles/ctags ~/.ctags

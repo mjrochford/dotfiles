@@ -4,4 +4,5 @@
 
 export PATH="$PATH:$HOME/Projects/bin"
 export EDITOR="vim"
+export BROSWER="firefox"
 

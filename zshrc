@@ -13,8 +13,8 @@ source /usr/share/zsh//plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Variables
 # ---------
 
-export BROWSER="google-chrome"
-export EDITOR="vim"
+export BROWSER="firefox"
+export EDITOR="nvim"
 export PATH="${PATH}:${HOME}/Projects/bin"
 
 export CSE="$HOME/Documents/CSE142/code"
@@ -37,9 +37,12 @@ SAVEHIST=10000
 # ---------
 bindkey -v
 
+alias vim="nvim"
+
 alias q="exit"
 alias weather="date; curl 'wttr.in?0'"
 alias weather_help="curl 'wttr.in/:help'"
+
 
 alias ll="ls -lh --group-directories-first --color=always"
 alias la="ll -a"
@@ -57,7 +60,7 @@ alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/m
 # ShellFuncs
 #------------------------------
 # -- coloured manuals
-man() {
+man () {
   env \
     LESS_TERMCAP_mb=$(printf "\e[1;31m") \
     LESS_TERMCAP_md=$(printf "\e[1;31m") \
@@ -69,7 +72,7 @@ man() {
     man "$@"
 }
 
-dev-tmux() {
+dev-tmux () {
   cwd=$1
   if [[ -z $1 ]]; then
     cwd=.
@@ -78,6 +81,12 @@ dev-tmux() {
   tmux new-session -c $cwd -s dev "vim" \; \
    split-window -h \; \
    resize-pane -R 25
+}
+
+twitch () {
+
+  mpv "https://twitch.tv/$1" &
+
 }
 
 #------------------------------
@@ -141,7 +150,7 @@ c4="blue"
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:*' check-for-changes true
-  zstyle ':vcs_info:git*' formats "%F{$c1}%s%f %F{$c2}[%f%F{$c1}(%b) (%m)(%u)(%c)%f%F{$c2}]%f"
+zstyle ':vcs_info:git*' formats "%F{$c1}%s%f %F{$c2}[%f%F{$c1}(%b) (%m)(%u)(%c)%f%F{$c2}]%f"
 
 setprompt() {
   setopt prompt_subst
@@ -162,6 +171,6 @@ setprompt() {
   '}}
 
   PS2=$'%_>'
-  RPROMPT=$' %F{$c2}[%f%F{$c1}%2~%f%F{$c2}]%f ${vcs_info_msg_0_}'
+  RPROMPT=$'%F{$c2}[%f%F{$c1}%2~%f%F{$c2}]%f ${vcs_info_msg_0_}'
 }
 setprompt

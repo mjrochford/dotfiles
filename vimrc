@@ -40,6 +40,7 @@ call vundle#end()            " required
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines'],
 \   'javascript': ['eslint'],
+\   'typescript': ['tslint'],
 \}
 
 let g:ale_fix_on_save = 1
@@ -53,6 +54,12 @@ autocmd BufRead,BufWritePost *.csv :%ArrangeColumn
 autocmd BufWritePre *.csv :%UnArrangeColumn
 
 autocmd BufRead *.md Goyo 60%
+
+set foldmethod=syntax
+set foldlevel=1
+
+set textwidth=100
+set colorcolumn=+1
 
 set number
 set relativenumber
@@ -87,7 +94,7 @@ nmap <leader><leader> :nohlsearch<cr>
 command W w !sudo tee % > /dev/null
 
 " Create tags file (Requires ctags)
-command MakeTags !ctags --exclude=./bin -R .
+command MakeTags !ctags --exclude=bin --exclude=node_modules --exclude=test -R .
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -258,6 +265,8 @@ map <leader>bd :Bclose<cr>:tabclose<cr>gT
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
 
+map <leader>b :b 
+
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
 
@@ -313,11 +322,13 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
+map <leader>/ mhI//<esc>`h
+
 map <leader>d :NERDTreeToggle<cr>
 map <leader>g :Goyo<cr>
 map <leader>G :Goyo 60%<cr>
 
-map <leader>E :edit ~/.vimrc<cr>
+map <leader>E :tabedit ~/.vimrc<cr>
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
