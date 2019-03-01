@@ -50,15 +50,14 @@ let g:ale_java_javac_classpath = '../bin'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd BufRead,BufWritePost *.csv :%ArrangeColumn
-autocmd BufWritePre *.csv :%UnArrangeColumn
+autocmd BufRead *.csv :%ArrangeColumn
 
 autocmd BufRead *.md Goyo 60%
 
 set foldmethod=syntax
-set foldlevel=1
+set foldlevel=2
 
-set textwidth=100
+set tw=100
 set colorcolumn=+1
 
 set number
@@ -108,6 +107,8 @@ set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
+set autochdir 
+
 " Provide tab-completion for all file-related tasks
 set path+=**
 
@@ -115,7 +116,7 @@ set path+=**
 set wildmenu
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc
+set wildignore=*.o,*~,*.pyc,**/node_modules/**,**/bin/**,*.zip
 if has("win16") || has("win32")
     set wildignore+=.git\*,.hg\*,.svn\*
 else
@@ -287,7 +288,7 @@ au TabLeave * let g:lasttab = tabpagenr()
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 map <leader>e :e <c-r>=expand("%:p:h")<cr>/
 
-map <leader>f :find 
+map <leader>f :find \c*
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>

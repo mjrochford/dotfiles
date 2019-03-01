@@ -13,7 +13,7 @@ source /usr/share/zsh//plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Variables
 # ---------
 
-export BROWSER="firefox"
+export BROWSER="google-chrome-stable"
 export EDITOR="nvim"
 export PATH="${PATH}:${HOME}/Projects/bin"
 
@@ -47,6 +47,9 @@ alias weather_help="curl 'wttr.in/:help'"
 alias ll="ls -lh --group-directories-first --color=always"
 alias la="ll -a"
 
+alias grep="grep --color=always"
+alias diff="diff -e --color=always"
+
 alias ytw="mpv --ytdl-format=bestvideo+bestaudio/best"
 alias ytd="youtube-dl -cn --add-metadata"
 alias ytda="ytd -x --audio-format mp3"
@@ -78,7 +81,8 @@ dev-tmux () {
     cwd=.
   fi
 
-  tmux new-session -c $cwd -s dev "vim" \; \
+  tmux kill-session -t dev > /dev/null
+  tmux new-session -c $cwd -s dev "$EDITOR" \; \
    split-window -h \; \
    resize-pane -R 25
 }
