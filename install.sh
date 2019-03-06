@@ -1,5 +1,15 @@
 #!/bin/bash
 
+
+if [[ -z ~/.config ]]; then mkdir ~/.config
+fi
+
+if [[ -z ~/.config/nvim ]]; then mkdir ~/.config/nvim/
+fi
+
+if [[ -z ~/.mutt ]]; then mkdir ~/.mutt
+fi
+
 rm -rf ~/.config/ranger ~/.config/rtv
 ln -sf -n $HOME/dotfiles/config/* ~/.config
 ln -sf -n $HOME/dotfiles/offlineimap/* ~/.offlineimap
@@ -17,7 +27,6 @@ ln -sf $HOME/dotfiles/profile ~/.profile
 ln -sf $HOME/dotfiles/tmux.conf ~/.tmux.conf
 ln -sf $HOME/dotfiles/tmux.conf.local ~/.tmux.conf.local
 ln -sf $HOME/dotfiles/vimrc ~/.vimrc
-mkdir ~/.config/nvim/
 ln -sf $HOME/dotfiles/init.vim ~/.config/nvim/init.vim
 ln -sf $HOME/dotfiles/zshrc ~/.zshrc
 ln -sf $HOME/dotfiles/ctags ~/.ctags
