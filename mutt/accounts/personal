@@ -2,12 +2,11 @@
 set imap_user=mrochford45@gmail.com
 set imap_pass=`pass show mutt/personal`
 
-# IMAP: offlineimap
-set folder = "~/Mail/"
-source ~/.mutt/mailboxes
-set spoolfile = "+personal/INBOX"
-set record = "+personal/Sent\ Items"
-set postponed = "+personal/Drafts"
+# IMAP 
+set folder = "imaps://$imap_user@imap.gmail.com/"
+set spoolfile = "+INBOX"
+set record = "+Sent"
+set postponed = "+Drafts"
 
 ## Send options.
 set smtp_url=smtps://$imap_user:$imap_pass@smtp.gmail.com

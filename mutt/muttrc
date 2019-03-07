@@ -37,9 +37,9 @@ folder-hook $folder 'set sort=reverse-date-sent'
 set my_leader=,
 
 # Accounts
-macro index,pager ${my_leader}1 '<sync-mailbox><enter-command>source ~/.mutt/accounts/formal<enter><change-folder>!<enter>'
-macro index,pager ${my_leader}2 '<sync-mailbox><enter-command>source ~/.mutt/accounts/school<enter><change-folder>!<enter>'
-macro index,pager ${my_leader}3 '<sync-mailbox><enter-command>source ~/.mutt/accounts/personal<enter><change-folder>!<enter>'
+macro index,pager ${my_leader}f '<sync-mailbox><enter-command>source ~/.mutt/accounts/formal<enter><change-folder>!<enter>'
+macro index,pager ${my_leader}s '<sync-mailbox><enter-command>source ~/.mutt/accounts/school<enter><change-folder>!<enter>'
+macro index,pager ${my_leader}p '<sync-mailbox><enter-command>source ~/.mutt/accounts/personal<enter><change-folder>!<enter>'
 
 # Navigation
 bind pager j next-line

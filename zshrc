@@ -38,6 +38,7 @@ SAVEHIST=10000
 bindkey -v
 
 alias vim="nvim"
+alias mutt="neomutt"
 
 alias q="exit"
 alias weather="date; curl 'wttr.in?0'"

@@ -2,12 +2,11 @@
 set imap_user=mattjr@uw.edu
 set imap_pass=`pass show mutt/school`
 
-# IMAP: offlineimap
-set folder = "~/Mail/"
-source ~/.mutt/mailboxes
-set spoolfile = "+school/INBOX"
-set record = "+school/Sent\ Items"
-set postponed = "+school/Drafts"
+# IMAP 
+set folder = "imaps://$imap_user@imap.gmail.com/"
+set spoolfile = "+INBOX"
+set record = "+Sent"
+set postponed = "+Drafts"
 
 ## Send options.
 set realname='Matt Rochford'
