@@ -18,7 +18,7 @@ export GPG_TTY=$(tty)
 export EDITOR="vim"
 
 # Adding color
-alias ls='ls -hN --color=auto --group-directories-first'
+alias ls='ls -hN --color=auto'
 alias ll='ls -l'
 alias la='ll -a'
 alias grep="grep --color=auto" # Color grep - highlight desired sequence.

@@ -6,15 +6,15 @@
 # Matt Rochford
 
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh//plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/locale/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # ---------
 # Variables
 # ---------
 
 export BROWSER="google-chrome-stable"
-export EDITOR="nvim"
+export EDITOR="vim"
 export PATH="${PATH}:${HOME}/Projects/bin"
 
 export CSE="$HOME/Documents/CSE142/code"
@@ -37,14 +37,12 @@ SAVEHIST=10000
 # ---------
 bindkey -v
 
-alias vim="nvim"
-
 alias q="exit"
 alias weather="date; curl 'wttr.in?0'"
 alias weather_help="curl 'wttr.in/:help'"
 
 
-alias ll="ls -lh --group-directories-first --color=always"
+alias ll="ls -lh --color=always"
 alias la="ll -a"
 
 alias grep="grep --color=always"
