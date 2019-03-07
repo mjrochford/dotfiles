@@ -2,26 +2,26 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-" Plugin 'Chiel92/vim-autoformat'
-Plugin 'alvan/vim-closetag'
-
-Plugin 'scrooloose/nerdtree'
-Plugin 'junegunn/goyo.vim'
-Plugin 'chrisbra/Colorizer'
-Plugin 'rhysd/vim-grammarous'
-Plugin 'chrisbra/csv.vim'
-
-Plugin 'w0rp/ale'
-
-Plugin 'sheerun/vim-polyglot'
-
-call vundle#end()            " required
+"" set the runtime path to include Vundle and initialize
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
+"
+"" let Vundle manage Vundle, required
+"Plugin 'VundleVim/Vundle.vim'
+"" Plugin 'Chiel92/vim-autoformat'
+"Plugin 'alvan/vim-closetag'
+"
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'junegunn/goyo.vim'
+"Plugin 'chrisbra/Colorizer'
+"Plugin 'rhysd/vim-grammarous'
+"Plugin 'chrisbra/csv.vim'
+"
+"Plugin 'w0rp/ale'
+"
+"Plugin 'sheerun/vim-polyglot'
+"
+"call vundle#end()            " required
 
 
 " Brief help
