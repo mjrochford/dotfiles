@@ -5,3 +5,5 @@
 export PATH="$PATH:$HOME/Projects/bin"
 export EDITOR="vim"
 
+
+export PATH="$HOME/.cargo/bin:$PATH"

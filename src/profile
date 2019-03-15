@@ -2,7 +2,11 @@
 
 # Profile file. Runs on login.
 
-export PATH="$PATH:$HOME/Projects/bin"
+export PATH="$PATH:$HOME/scripts"
 export EDITOR="vim"
+export TERM="st"
 export BROSWER="firefox"
 
+setfont latarcyrheb-sun32
+
+export PATH="$HOME/.cargo/bin:$PATH"

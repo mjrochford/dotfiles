@@ -13,9 +13,16 @@ source /usr/share/zsh//plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Variables
 # ---------
 
-export BROWSER="google-chrome-stable"
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+export FZF_DEFAULT_OPTS="--cycle --height=10 --reverse --border"
+export FZF_DEFAULT_COMMAND="ag --nocolor --ignore node_modules --ignore bin --ignore '*.o'  -g ''"
+
+export BROWSER="firefox"
 export EDITOR="nvim"
-export PATH="${PATH}:${HOME}/Projects/bin"
+export PHOTOVIEWER="sxiv"
+export PATH="${PATH}:${HOME}/scripts:${HOME}/.cargo/bin"
+fpath+=~/.zsh
 
 export CSE="$HOME/Documents/CSE142/code"
 export PROJ="$HOME/Projects"
@@ -37,13 +44,15 @@ SAVEHIST=10000
 # ---------
 bindkey -v
 
+alias tremote="transmission-remote"
+
 alias vim="nvim"
 alias mutt="neomutt"
 
 alias q="exit"
 alias weather="date; curl 'wttr.in?0'"
 alias weather_help="curl 'wttr.in/:help'"
-
+alias R="R --quiet"
 
 alias ll="ls -lh --group-directories-first --color=always"
 alias la="ll -a"
@@ -65,32 +74,32 @@ alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/m
 #------------------------------
 # -- coloured manuals
 man () {
-  env \
-    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-    LESS_TERMCAP_md=$(printf "\e[1;31m") \
-    LESS_TERMCAP_me=$(printf "\e[0m") \
-    LESS_TERMCAP_se=$(printf "\e[0m") \
-    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-    LESS_TERMCAP_ue=$(printf "\e[0m") \
-    LESS_TERMCAP_us=$(printf "\e[1;32m") \
-    man "$@"
-}
+        env \
+                LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+                LESS_TERMCAP_md=$(printf "\e[1;31m") \
+                LESS_TERMCAP_me=$(printf "\e[0m") \
+                LESS_TERMCAP_se=$(printf "\e[0m") \
+                LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+                LESS_TERMCAP_ue=$(printf "\e[0m") \
+                LESS_TERMCAP_us=$(printf "\e[1;32m") \
+                man "$@"
+        }
 
 dev-tmux () {
-  cwd=$1
-  if [[ -z $1 ]]; then
-    cwd=.
-  fi
+cwd=$1
+if [[ -z $1 ]]; then
+        cwd=.
+fi
 
-  tmux kill-session -t dev > /dev/null
-  tmux new-session -c $cwd -s dev "$EDITOR" \; \
-   split-window -h \; \
-   resize-pane -R 25
+tmux kill-session -t dev > /dev/null
+tmux new-session -c $cwd -s dev "$EDITOR" \; \
+        split-window -h \; \
+        resize-pane -R 25
 }
 
 twitch () {
 
-  mpv "https://twitch.tv/$1" &
+        mpv "https://twitch.tv/$1" &
 
 }
 
@@ -105,42 +114,42 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 #- buggy
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
-#-/buggy
+        #-/buggy
 
-zstyle ':completion:*:pacman:*' force-list always
-zstyle ':completion:*:*:pacman:*' menu yes select
+        zstyle ':completion:*:pacman:*' force-list always
+        zstyle ':completion:*:*:pacman:*' menu yes select
 
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+                zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-zstyle ':completion:*:*:kill:*' menu yes select
-zstyle ':completion:*:kill:*'   force-list always
+                zstyle ':completion:*:*:kill:*' menu yes select
+                        zstyle ':completion:*:kill:*'   force-list always
 
-zstyle ':completion:*:*:killall:*' menu yes select
-zstyle ':completion:*:killall:*'   force-list always
+                        zstyle ':completion:*:*:killall:*' menu yes select
+                                zstyle ':completion:*:killall:*'   force-list always
 
 #------------------------------
 # Window title
 #------------------------------
-case $TERM in
-  termite|*xterm*|rxvt|rxvt-unicode|rxvt-256color|rxvt-unicode-256color|(dt|k|E)term)
-    precmd () {
-      vcs_info
-      print -Pn "\e]0;[%n@%M][%~]%#\a"
-    }
-    preexec () { print -Pn "\e]0;[%n@%M][%~]%# ($1)\a" }
-    ;;
-  screen|screen-256color)
-    precmd () {
-      vcs_info
-      print -Pn "\e]83;title \"$1\"\a"
-      print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~]\a"
-    }
-    preexec () {
-      print -Pn "\e]83;title \"$1\"\a"
-      print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~] ($1)\a"
-    }
-    ;;
-esac
+#case $TERM in
+#        termite|*xterm*|rxvt|rxvt-unicode|rxvt-256color|rxvt-unicode-256color|(dt|k|E)term)
+#                precmd () {
+#                        vcs_info
+#                        print -Pn "\e]0;[%n@%M][%~]%#\a"
+#                }
+#        preexec () { print -Pn "\e]0;[%n@%M][%~]%# ($1)\a" }
+#        ;;
+#screen|screen-256color)
+#        precmd () {
+#                vcs_info
+#                print -Pn "\e]83;title \"$1\"\a"
+#                print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~]\a"
+#        }
+#preexec () {
+#        print -Pn "\e]83;title \"$1\"\a"
+#        print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~] ($1)\a"
+#}
+#;;
+#esac
 
 #------------------------------
 # Prompt
@@ -155,27 +164,27 @@ c4="blue"
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git*' formats "%F{$c1}%s%f %F{$c2}[%f%F{$c1}(%b) (%m)(%u)(%c)%f%F{$c2}]%f"
+        zstyle ':vcs_info:git*' formats "%F{$c1}%s%f %F{$c2}[%f%F{$c1}(%b) (%m)(%u)(%c)%f%F{$c2}]%f"
 
-setprompt() {
-  setopt prompt_subst
+        setprompt() {
+                setopt prompt_subst
 
-  if [[ -n "$SSH_CLIENT"  ||  -n "$SSH2_CLIENT" ]]; then
-    p_host='%F{$c4}%M%f'
-  else
-    p_host='%F{$c1}%M%f'
-  fi
+                if [[ -n "$SSH_CLIENT"  ||  -n "$SSH2_CLIENT" ]]; then
+                        p_host='%F{$c4}%M%f'
+                else
+                        p_host='%F{$c1}%M%f'
+                fi
 
-  PS1=${(j::Q)${(Z:Cn:):-$'
-    %(!.%F{$c2}%n%f.%F{$c1}%n%f)
-    %F{$c2}@%f
-    ${p_host}
-    " "
-    %F{$c3}#%f
-    " "
-  '}}
+                PS1=${(j::Q)${(Z:Cn:):-$'
+                %(!.%F{$c2}%n%f.%F{$c1}%n%f)
+                %F{$c2}@%f
+                ${p_host}
+                " "
+                %F{$c3}#%f
+                " "
+                '}}
 
-  PS2=$'%_>'
-  RPROMPT=$'%F{$c2}[%f%F{$c1}%2~%f%F{$c2}]%f ${vcs_info_msg_0_}'
-}
+                PS2=$'%_>'
+                RPROMPT=$'%F{$c2}[%f%F{$c1}%2~%f%F{$c2}]%f ${vcs_info_msg_0_}'
+        }
 setprompt

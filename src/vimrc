@@ -8,18 +8,20 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'alvan/vim-closetag'
 
 Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-fugitive'
+Plugin 'itchyny/lightline.vim'
 Plugin 'junegunn/goyo.vim'
-Plugin 'chrisbra/Colorizer'
-Plugin 'rhysd/vim-grammarous'
+"Plugin 'chrisbra/Colorizer'
 Plugin 'chrisbra/csv.vim'
 
 Plugin 'w0rp/ale'
-
 Plugin 'sheerun/vim-polyglot'
+Plugin 'junegunn/fzf.vim'
 
 call vundle#end()            " required
 
@@ -38,23 +40,21 @@ call vundle#end()            " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:ale_fixers = {
-\   '*': ['remove_trailing_lines'],
-\   'javascript': ['eslint'],
-\   'typescript': ['tslint'],
-\}
+                        \   '*': ['remove_trailing_lines'],
+                        \   'javascript': ['eslint'],
+                        \   'typescript': ['tslint'],
+                        \}
+let g:ale_conmpletion_enabled = 1
 
-let g:ale_fix_on_save = 1
+inoremap <silent> <C-Space> <C-\><C-O>:AleComplete<CR>
 
 let g:ale_java_javac_classpath = '../bin'
+let g:ale_java_javac_options= '-sourcepath ../include'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufRead *.csv :%ArrangeColumn
-
-autocmd BufRead *.md Goyo 60%
-
-autocmd BufWritePre * :Autoformat
 
 set foldmethod=syntax
 set foldlevel=2
@@ -65,7 +65,7 @@ set colorcolumn=+1
 set number
 set relativenumber
 
-set clipboard=unnamed
+set clipboard+=unnamedplus
 
 " Sets how many lines of history VIM has to remember
 set history=500
@@ -80,15 +80,6 @@ set autoread
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = " "
-
-" Fast saving
-nmap <leader>w :w!<cr>
-
-" Word Count
-nmap <leader>wc :w !wc -w<cr>
-
-" Remove highlight on search
-nmap <leader><leader> :nohlsearch<cr>
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
@@ -109,7 +100,7 @@ set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
-set autochdir 
+" set autochdir
 
 " Provide tab-completion for all file-related tasks
 set path+=**
@@ -120,10 +111,16 @@ set wildmenu
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc,**/node_modules/**,**/bin/**,*.zip
 if has("win16") || has("win32")
-    set wildignore+=.git\*,.hg\*,.svn\*
+        set wildignore+=.git\*,.hg\*,.svn\*
 else
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+        set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
+
+
+" FZF 
+
+map <leader>f :FZF<cr>
+map <leader>bf :Buffers<cr>
 
 "Always show current position
 set ruler
@@ -169,7 +166,7 @@ set tm=500
 
 " Properly disable sound on errors on MacVim
 if has("gui_macvim")
-    autocmd GUIEnter * set vb t_vb=
+        autocmd GUIEnter * set vb t_vb=
 endif
 
 " Add a bit extra margin to the left
@@ -184,11 +181,11 @@ syntax enable
 
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
+        set t_Co=256
 endif
 
 try
-    colorscheme desert
+        colorscheme desert
 catch
 endtry
 
@@ -196,10 +193,10 @@ set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
+        set guioptions-=T
+        set guioptions-=e
+        set t_Co=256
+        set guitablabel=%M\ %t
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -217,6 +214,8 @@ set nobackup
 set nowb
 set noswapfile
 
+set undodir=~/.vim/undo
+set undofile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -262,13 +261,13 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+set splitbelow splitright
+
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
-
-map <leader>b :b 
 
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
@@ -290,7 +289,7 @@ au TabLeave * let g:lasttab = tabpagenr()
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 map <leader>e :e <c-r>=expand("%:p:h")<cr>/
 
-map <leader>f :find \c*
+"map <leader>f :find \c*
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
@@ -300,8 +299,8 @@ nnoremap <leader>oc :exe ':silent !google-chrome-stable "%" &>/dev/null &'<cr>
 
 " Specify the behavior when switching between buffers
 try
-set switchbuf=useopen,usetab,newtab
-set stal=2
+        set switchbuf=useopen,usetab,newtab
+        set stal=2
 catch
 endtry
 
@@ -322,12 +321,24 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" Word Count
+nmap <leader>wc :w !wc -w<cr>
+
+" Remove highlight on search
+nmap <leader><leader> :nohlsearch<cr>
+
+nmap yg "+y
+
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
 map <leader>/ mhI//<esc>`h
 
-map <leader>d :NERDTreeToggle<cr>
+"map <leader>d :NERDTreeToggle<cr>
 map <leader>g :Goyo<cr>
 map <leader>G :Goyo 60%<cr>
 
@@ -340,36 +351,36 @@ vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 if has("mac") || has("macunix")
-nmap <D-j> <M-j>
-nmap <D-k> <M-k>
-vmap <D-j> <M-j>
-vmap <D-k> <M-k>
+        nmap <D-j> <M-j>
+        nmap <D-k> <M-k>
+        vmap <D-j> <M-j>
+        vmap <D-k> <M-k>
 endif
 
 " Delete trailing white space on save, useful for some filetypes ;)
 fun! CleanExtraSpaces()
-let save_cursor = getpos(".")
-let old_query = getreg('/')
-silent! %s/\s\+$//e
-call setpos('.', save_cursor)
-call setreg('/', old_query)
+        let save_cursor = getpos(".")
+        let old_query = getreg('/')
+        silent! %s/\s\+$//e
+        call setpos('.', save_cursor)
+        call setreg('/', old_query)
 endfun
 
 if has("autocmd")
-  autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+        autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
 
 fun! AutoBreakMd()
-let save_cursor = getpos(".")
-let old_query = getreg('/')
-silent! %s/.$/&  /
-silent! %s/\s\{3,}$/  /
-call setpos('.', save_cursor)
-call setreg('/', old_query)
+        let save_cursor = getpos(".")
+        let old_query = getreg('/')
+        silent! %s/.$/&  /
+        silent! %s/\s\{3,}$/  /
+        call setpos('.', save_cursor)
+        call setreg('/', old_query)
 endfun
 
 if has("autocmd")
-  autocmd BufWritePre *.md  :call AutoBreakMd()
+        autocmd BufWritePre *.md  :call AutoBreakMd()
 endif
 
 
@@ -407,50 +418,50 @@ map <leader>pp :setlocal paste!<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Returns true if paste mode is enabled
 function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    endif
-    return ''
+        if &paste
+                return 'PASTE MODE  '
+        endif
+        return ''
 endfunction
 
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
-    let l:currentBufNum = bufnr("%")
-    let l:alternateBufNum = bufnr("#")
+        let l:currentBufNum = bufnr("%")
+        let l:alternateBufNum = bufnr("#")
 
-    if buflisted(l:alternateBufNum)
-        buffer #
-    else
-        bnext
-    endif
+        if buflisted(l:alternateBufNum)
+                buffer #
+        else
+                bnext
+        endif
 
-    if bufnr("%") == l:currentBufNum
-        new
-    endif
+        if bufnr("%") == l:currentBufNum
+                new
+        endif
 
-    if buflisted(l:currentBufNum)
-        execute("bdelete! ".l:currentBufNum)
-    endif
+        if buflisted(l:currentBufNum)
+                execute("bdelete! ".l:currentBufNum)
+        endif
 endfunction
 
 function! CmdLine(str)
-    call feedkeys(":" . a:str)
+        call feedkeys(":" . a:str)
 endfunction
 
 function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
+        let l:saved_reg = @"
+        execute "normal! vgvy"
 
-    let l:pattern = escape(@", "\\/.*'$^~[]")
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
+        let l:pattern = escape(@", "\\/.*'$^~[]")
+        let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-    if a:direction == 'gv'
-        call CmdLine("Ack '" . l:pattern . "' " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    endif
+        if a:direction == 'gv'
+                call CmdLine("Ack '" . l:pattern . "' " )
+        elseif a:direction == 'replace'
+                call CmdLine("%s" . '/'. l:pattern . '/')
+        endif
 
-    let @/ = l:pattern
-    let @" = l:saved_reg
+        let @/ = l:pattern
+        let @" = l:saved_reg
 endfunction
