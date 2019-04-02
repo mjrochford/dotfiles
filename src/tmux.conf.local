@@ -294,3 +294,7 @@ tmux_conf_copy_to_os_clipboard=true
 
 # End Session
 bind C-x kill-session
+
+# -PLUGINS-
+
+set -g @plugin 'tmux-plugins/tmux-urlview'
