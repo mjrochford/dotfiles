@@ -24,7 +24,7 @@ export PHOTOVIEWER="sxiv"
 export PATH="${PATH}:${HOME}/scripts:${HOME}/.cargo/bin"
 fpath+=~/.zsh
 
-export CSE="$HOME/Documents/CSE142/code"
+export CSE="$HOME/Documents/CSE143/code"
 export PROJ="$HOME/Projects"
 export HHH="$PROJ/HHH Scheduler"
 
@@ -46,10 +46,8 @@ bindkey -v
 
 alias tremote="transmission-remote"
 
-alias vim="nvim"
 alias mutt="neomutt"
 
-alias q="exit"
 alias weather="date; curl 'wttr.in?0'"
 alias weather_help="curl 'wttr.in/:help'"
 alias R="R --quiet"

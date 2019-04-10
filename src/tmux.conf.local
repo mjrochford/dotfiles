@@ -292,6 +292,8 @@ tmux_conf_copy_to_os_clipboard=true
 # move status line to top
 #set -g status-position top
 
+new-session -n $HOST
+
 # End Session
 bind C-x kill-session
 
