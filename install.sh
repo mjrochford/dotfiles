@@ -1,12 +1,23 @@
 #!/bin/sh
 
-if [[ -z ~/.config ]]; then mkdir ~/.config
+if [[ -z ~/.config ]]; then
+    mkdir ~/.config
 fi
 
-if [[ -z ~/.config/nvim ]]; then mkdir ~/.config/nvim/
+if [[ -z ~/.config/nvim ]]; then
+    mkdir ~/.config/nvim/
 fi
 
-if [[ -z ~/.mutt ]]; then mkdir ~/.mutt
+if [[ -z ~/.config/bspwm ]]; then
+    mkdir ~/.config/bspwm/
+fi
+
+if [[ -z ~/.config/sxhkd ]]; then
+    mkdir ~/.config/sxhkd/
+fi
+
+if [[ -z ~/.mutt ]]; then
+    mkdir ~/.mutt
 fi
 
 rm -rf ~/.config/ranger ~/.config/rtv
@@ -14,6 +25,8 @@ rm -rf ~/.mutt/accounts
 
 ln -sf -n $PWD/src/config/* ~/.config
 ln -sf -n $PWD/src/mutt/* ~/.mutt
+ln -sf $PWD/src/config/sxhkd ~/.config/sxhkd/sxhkdrc
+ln -sf $PWD/src/config/bspwm ~/.config/bspwm/bspwmrc
 
 ln -sf $PWD/src/bash_profile ~/.bash_profile
 ln -sf $PWD/src/bashrc ~/.bashrc
