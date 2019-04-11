@@ -3,10 +3,7 @@
 
 # terminal emulator
 super + Return
-        st -e tmux attach
-
-super + shift + Return
-        st 
+        st
 
 # Browser
 super + w 

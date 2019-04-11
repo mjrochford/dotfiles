@@ -25,8 +25,8 @@ rm -rf ~/.mutt/accounts
 
 ln -sf -n $PWD/src/config/* ~/.config
 ln -sf -n $PWD/src/mutt/* ~/.mutt
-ln -sf $PWD/src/config/sxhkd ~/.config/sxhkd/sxhkdrc
-ln -sf $PWD/src/config/bspwm ~/.config/bspwm/bspwmrc
+ln -sf $PWD/src/config/sxhkd/sxhkdrc ~/.config/sxhkd/sxhkdrc
+ln -sf $PWD/src/config/bspwm/bspwmrc ~/.config/bspwm/bspwmrc
 
 ln -sf $PWD/src/bash_profile ~/.bash_profile
 ln -sf $PWD/src/bashrc ~/.bashrc
