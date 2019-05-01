@@ -1,29 +1,78 @@
+#
 # wm independent hotkeys
 #
 
+# Play the url in the clipboard with mpv
+super + alt + m 
+    mpv --ytdl-format='best[height<=1080]' "$(xsel -b)"
+
 # terminal emulator
 super + Return
-        st
+    st
+
+# terminal with tmux
+super + shift + Return
+    st -e tmux attach
 
 # Browser
 super + w 
-        firefox
+    firefox
 
 # program launcher
 super + @space
 	rofi -show drun
 
+# Open files
 super + o 
-        dopen
+    dopen
 
+# Open bluetooth devie chooser
 super + b 
-        dblue
+    dblue
 
+# Open password chooser
 super + p
-        passmenu
+    passmenu
 
+# Open clipboard dmenu manager
 super + c
-        clipmenu
+    clipmenu
+
+#
+# XF86 binds
+#
+
+# Raise Volume
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+# Lower Volume
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+# Mute volume
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Increase backlight
+XF86MonBrightnessUp
+    xbacklight -inc 5%
+
+# Decrease backlight
+XF86MonBrightnessDown
+    xbacklight -dec 5
+
+# Play media
+XF86AudioPlay
+    playerctl play
+
+# Pause Media
+XF86AudioPause
+    playerctl pause
+
+# Next Track
+XF86AudioNext
+    playerctl next
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -31,6 +80,10 @@ super + Escape
 #
 # bspwm hotkeys
 #
+
+# increase/decrease border
+super + g + {d,i}
+    bspc config window_gap $(($(bspc config window_gap) {-,+} 10))
 
 # quit/restart bspwm
 super + alt + {q,r}
@@ -47,10 +100,6 @@ super + m
 # send the newest marked node to the newest preselected node
 super + y
 	bspc node newest.marked.local -n newest.!automatic.local
-
-# swap the current node and the biggest node
-super + g
-	bspc node -s biggest
 
 #
 # state/flags
@@ -77,8 +126,8 @@ super + {_,shift + }{p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
-super + n
-	bspc node -f next.local
+super + {_, shift } + n
+	bspc node -f {next, prev}.local
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
@@ -133,4 +182,3 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
-

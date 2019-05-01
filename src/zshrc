@@ -58,6 +58,7 @@ alias la="ll -a"
 alias grep="grep --color=always"
 alias diff="diff -e --color=always"
 
+alias mpv="mpv --ytdl-format='best[height<=1080]'"
 alias ytw="mpv --ytdl-format=bestvideo+bestaudio/best"
 alias ytd="youtube-dl -cn --add-metadata"
 alias ytda="ytd -x --audio-format mp3"
@@ -95,10 +96,23 @@ tmux new-session -c $cwd -s dev "$EDITOR" \; \
         resize-pane -R 25
 }
 
+tpb () {
+    curl -s "$1" | grep -o "magnet:[^\"]\+" | head -n 1
+}
+
 twitch () {
 
         mpv "https://twitch.tv/$1" &
 
+}
+
+watchmovie () {
+    if [[ -z $1 ]]; then
+        1="archpi.local"
+    fi
+    echo $1
+
+    mpv "$(curl -s "$1" | sed "s/%20/ /g" | grep "<tr>.*</tr>" | grep --color=never -o "href=\"[^\";]*\"" | sed "s/href=\"\(.\+\)\"/http:\/\/$1\/\1/" | dmenu)"
 }
 
 #------------------------------

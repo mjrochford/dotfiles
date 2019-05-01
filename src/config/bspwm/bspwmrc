@@ -2,14 +2,15 @@
 
 xbindkeys
 xset r rate 300 60
+xset b off
 xfce4-power-manager
 ~/.fehbg 
+libinput-gestures-setup start
 
 sxhkd &
 compton &
 light-locker &
 launchpolybar &
-redshift-gtk &
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 bspc desktop II -l monocle
@@ -27,5 +28,4 @@ bspc rule -a mpv state=floating follow=on
 bspc rule -a feh state=floating follow=on
 bspc rule -a Sxiv state=floating follow=on
 bspc rule -a Zathura state=tiled 
-bspc rule -a Firefox desktop='^2'
 
