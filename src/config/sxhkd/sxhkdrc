@@ -60,7 +60,7 @@ XF86MonBrightnessUp
 
 # Decrease backlight
 XF86MonBrightnessDown
-    xbacklight -dec 5
+    xbacklight -dec 5%
 
 # Play media
 XF86AudioPlay
