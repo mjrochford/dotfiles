@@ -8,11 +8,11 @@ super + alt + m
 
 # terminal emulator
 super + Return
-    st
+    konsole
 
 # terminal with tmux
 super + shift + Return
-    st -e tmux attach
+    konsole -e tmux attach
 
 # Browser
 super + w 
@@ -29,6 +29,9 @@ super + o
 # Open bluetooth devie chooser
 super + b 
     dblue
+
+super + shift + b
+    echo "disconnect" | bluetoothctl
 
 # Open password chooser
 super + p

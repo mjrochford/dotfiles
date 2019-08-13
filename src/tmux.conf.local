@@ -300,3 +300,4 @@ bind C-x kill-session
 # -PLUGINS-
 
 set -g @plugin 'tmux-plugins/tmux-urlview'
+set -g @plugin 'tmux-plugins/tmux-yank'

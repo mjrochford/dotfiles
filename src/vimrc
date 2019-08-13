@@ -1,5 +1,4 @@
 " Plugins
-set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -58,9 +57,6 @@ autocmd BufRead *.csv :%ArrangeColumn
 
 set foldmethod=syntax
 set foldlevel=2
-
-set tw=100
-set colorcolumn=+1
 
 set number
 set relativenumber
@@ -227,15 +223,16 @@ set expandtab
 set smarttab
 
 " 1 tab == 4 spaces
+set tabstop=8
+set softtabstop=4
 set shiftwidth=4
-set tabstop=4
 
 " Linebreak on 500 characters
 set lbr
-set tw=500
+set textwidth=100
+set colorcolumn=+1
 
-set ai "Auto indent
-set si "Smart indent
+set autoindent "Auto indent
 set wrap "Wrap lines
 
 
@@ -294,9 +291,6 @@ map <leader>e :e <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-nnoremap <leader>oo :exe ':silent !okular "%" &>/dev/null &'<cr>
-nnoremap <leader>oc :exe ':silent !google-chrome-stable "%" &>/dev/null &'<cr>
-
 " Specify the behavior when switching between buffers
 try
         set switchbuf=useopen,usetab,newtab
@@ -334,8 +328,6 @@ nmap yg "+y
 
 " Remap VIM 0 to first non-blank character
 map 0 ^
-
-map <leader>/ mhI//<esc>`h
 
 "map <leader>d :NERDTreeToggle<cr>
 map <leader>g :Goyo<cr>
@@ -395,7 +387,6 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -410,7 +401,6 @@ map <leader>x :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
