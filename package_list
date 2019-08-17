@@ -1,4 +1,5 @@
 acpi
+aircrack-ng
 appmenu-gtk-module
 arandr
 ark
@@ -70,6 +71,7 @@ git
 glibc
 go
 google-chrome
+gparted
 gphoto2
 grep
 groff
@@ -178,6 +180,7 @@ nodejs
 nodejs-http-server
 npm
 nss-mdns
+ntfs-3g
 nvidia
 nvidia-settings
 obs-studio
