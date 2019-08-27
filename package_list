@@ -1,5 +1,6 @@
 acpi
 aircrack-ng
+android-studio
 appmenu-gtk-module
 arandr
 ark
@@ -10,13 +11,16 @@ autoconf
 automake
 bash
 bash-pipes
+bbswitch
 binutils
 bison
 bluedevil
 bluez-utils
 breeze
 breeze-gtk
+bridge-utils
 browserpass
+browserpass-chrome
 browserpass-firefox
 bspwm
 bumblebee
@@ -38,11 +42,13 @@ device-mapper
 dhcpcd
 diffutils
 discover
+dnsmasq
 dolphin
 dos2unix
 drkonqi
 dunst
 e2fsprogs
+ebtables
 ed
 efibootmgr
 electron
@@ -65,6 +71,7 @@ gcc
 gcc-libs
 gconf
 gdrive
+geary
 gettext
 gimp
 git
@@ -134,7 +141,13 @@ kwrite
 kwrited
 latte-dock
 less
+lib32-libdbusmenu-glib
+lib32-libdbusmenu-gtk2
+lib32-libdbusmenu-gtk3
 lib32-nvidia-utils
+lib32-primus
+lib32-virtualgl
+libdbusmenu-glib
 libinput-gestures
 libkscreen
 libksysguard
@@ -151,7 +164,9 @@ man-db
 man-pages
 mariadb
 mariadb-clients
+materia-gtk-theme
 mdadm
+mesa-demos
 milou
 minecraft
 mpc
@@ -173,6 +188,7 @@ nerd-fonts-terminus
 netctl
 networkmanager
 networkmanager-openvpn
+networkmanager-qt
 newsboat
 nmap
 nnn
@@ -208,6 +224,7 @@ plasma-nm
 plasma-pa
 plasma-sdk
 plasma-vault
+plasma-wayland-session
 plasma-workspace
 plasma-workspace-wallpapers
 playerctl
@@ -217,6 +234,7 @@ polkit-kde-agent
 polybar
 poppler-glib
 powerdevil
+primus
 print-manager
 procps-ng
 protobuf
@@ -247,7 +265,6 @@ shfmt
 spectacle
 spotify
 sshfs
-steam
 sudo
 sweeper
 sxhkd
@@ -278,6 +295,7 @@ usbutils
 user-manager
 util-linux
 vim
+virt-manager
 vitetris
 vlc
 w3m
@@ -290,7 +308,6 @@ xdg-user-dirs
 xf86-input-keyboard
 xf86-video-fbdev
 xf86-video-intel
-xf86-video-vesa
 xfce4-power-manager
 xfsprogs
 xlslib

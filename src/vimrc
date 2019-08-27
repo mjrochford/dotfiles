@@ -16,7 +16,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'itchyny/lightline.vim'
 Plugin 'junegunn/goyo.vim'
 "Plugin 'chrisbra/Colorizer'
-Plugin 'chrisbra/csv.vim'
+"Plugin 'chrisbra/csv.vim'
 
 Plugin 'w0rp/ale'
 Plugin 'sheerun/vim-polyglot'
@@ -53,7 +53,8 @@ let g:ale_java_javac_options= '-sourcepath ../include'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd BufRead *.csv :%ArrangeColumn
+
+"autocmd BufRead *.csv :%ArrangeColumn
 
 set foldmethod=syntax
 set foldlevel=2
