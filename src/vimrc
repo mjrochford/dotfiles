@@ -20,6 +20,7 @@ Plugin 'junegunn/goyo.vim'
 
 Plugin 'w0rp/ale'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 
 call vundle#end()            " required
