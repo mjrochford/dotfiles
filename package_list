@@ -9,6 +9,7 @@ astyle
 audacity
 autoconf
 automake
+autopep8
 bash
 bash-pipes
 bbswitch
@@ -55,6 +56,7 @@ electron
 eslint
 fakeroot
 feh
+ffmpegthumbs
 file
 filelight
 filesystem
@@ -77,11 +79,14 @@ gimp
 git
 glibc
 go
+go-langserver-git
 google-chrome
 gparted
 gphoto2
 grep
 groff
+gvfs
+gvfs-google
 gwenview
 gzip
 heroku-cli
@@ -121,6 +126,7 @@ kgamma5
 kgpg
 khelpcenter
 khotkeys
+kimageformats
 kinfocenter
 kmenuedit
 knetattach
@@ -194,6 +200,7 @@ nmap
 nnn
 nodejs
 nodejs-http-server
+nodejs-neovim
 npm
 nss-mdns
 ntfs-3g
@@ -207,6 +214,7 @@ openjdk8-src
 openvpn
 otf-overpass
 oxygen
+p7zip
 pacman
 pacman-contrib
 parsec-bin
@@ -238,17 +246,23 @@ primus
 print-manager
 procps-ng
 protobuf
+psmisc
 pulseaudio-alsa
 pulseaudio-bluetooth
+python-dateutil
 python-dbus
 python-httplib2
+python-levenshtein
 python-neovim
 python-pip
 python-pipenv
+python-pyflakes
 python-pylint
+python-rope
 qemu
 r
 ranger
+raw-thumbnailer
 redshift
 reiserfsprogs
 ripcord
@@ -282,6 +296,7 @@ tmux
 todotxt
 tpm
 transmission-cli
+transmission-qt
 ttf-font-awesome
 ttf-inconsolata
 ttf-liberation
@@ -302,6 +317,7 @@ w3m
 wget
 which
 wine
+wireshark-qt
 wqy-zenhei
 xdg-desktop-portal-kde
 xdg-user-dirs

@@ -20,7 +20,7 @@ export CSE="$HOME/Documents/CSE143/code"
 export PROJ="$HOME/Projects"
 export HHH="$PROJ/HHHScheduler"
 
-export TERM=screen-256color
+export TERM="screen-256color"
 
 autoload -Uz compinit promptinit
 compinit
@@ -85,10 +85,10 @@ dev-tmux () {
         cwd=.
     fi
 
-    tmux kill-session -t dev > /dev/null
+    tmux kill-session -t dev > /dev/null 2>&1
     tmux new-session -c $cwd -s dev "$EDITOR" \; \
     split-window -h \; \
-    resize-pane -R 25
+    resize-pane -R 12
 }
 
 tpb () {
@@ -166,3 +166,5 @@ setprompt() {
     RPROMPT=$'%F{$c2}[%f%F{$c1}%2~%f%F{$c2}]%f ${vcs_info_msg_0_}'
 }
 setprompt
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -36,3 +36,5 @@ bind -x '"\C-l": clear'
 
 export FZF_DEFAULT_OPTS="--cycle --height=10 --reverse --border"
 export FZF_DEFAULT_COMMAND="ag --nocolor --ignore node_modules --ignore bin --ignore '*.o'  -g ''"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
