@@ -1,6 +1,7 @@
 acpi
 aircrack-ng
 android-studio
+android-tools
 appmenu-gtk-module
 arandr
 ark
@@ -164,6 +165,7 @@ linux
 logrotate
 lvm2
 lxappearance
+lzip
 m4
 make
 man-db
@@ -253,13 +255,16 @@ python-dateutil
 python-dbus
 python-httplib2
 python-levenshtein
-python-neovim
 python-pip
 python-pipenv
 python-pyflakes
 python-pylint
+python-pynvim
 python-rope
 qemu
+qogir-gtk-theme-git
+qogir-icon-theme-git
+qogir-kde-theme-git
 r
 ranger
 raw-thumbnailer
@@ -268,6 +273,7 @@ reiserfsprogs
 ripcord
 rofi
 rofi-dmenu
+rsync
 rtv
 runelite
 rustup
@@ -280,6 +286,7 @@ spectacle
 spotify
 sshfs
 sudo
+sugar-artwork
 sweeper
 sxhkd
 sxiv
