@@ -1,6 +1,8 @@
 #!/bin/sh
 
 # Profile file. Runs on login.
+export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME}:="$HOME/.config"}
 
 export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:$HOME/go/bin"
@@ -11,8 +13,11 @@ export BROWSER="chromium"
 
 export FZF_DEFAULT_OPTS="--cycle --height=10 --reverse --border"
 export FZF_DEFAULT_COMMAND="ag --nocolor --ignore node_modules --ignore bin --ignore '*.o'  -g ''"
-export HHH="$HOME/Projects/Hounds"
+export VIMINIT="source ~/.config/vim/vimrc"
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
+
+export HHH="$HOME/Projects/Hounds"
 alias code="code --user-data-dir '$HOME/.config/vscode-oss' --extensions-dir \
     '$HOME/.config/vscode-oss'"
 

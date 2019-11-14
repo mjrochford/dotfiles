@@ -1,6 +1,8 @@
 " Plugins
 filetype off                  " required
 
+source ~/.config/vim/autoload/*
+
 call plug#begin('~/.config/vim/plugged')
 
 Plug 'Chiel92/vim-autoformat'
@@ -198,7 +200,7 @@ set nobackup
 set nowb
 set noswapfile
 
-set undodir=~/.vim/undo
+set undodir=~/.local/share/vim/undo
 set undofile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
