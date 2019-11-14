@@ -1,11 +1,3 @@
-#!/bin/sh
+if [[ -e ~/.bashrc ]]; then source ~/.bashrc; fi
+if [[ -e ~/.profile ]]; then source ~/.profile; fi
 
-# Profile file. Runs on login.
-
-export PATH="$PATH:$HOME/Projects/bin"
-export EDITOR="vim"
-
-
-export PATH="$HOME/.cargo/bin:$PATH"
-
-. ~/.bashrc
