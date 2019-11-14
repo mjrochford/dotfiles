@@ -16,18 +16,18 @@ alternative_order text/plain text/html
 auto_view text/html
 
 ## Personal Account
-source "~/.mutt/accounts/personal"
-folder-hook $folder 'source ~/.mutt/accounts/personal'
+source "~/.config/mutt/accounts/personal"
+folder-hook $folder 'source ~/.config/mutt/accounts/personal'
 folder-hook $folder 'set sort=reverse-date-sent'
 
 ## Formal Account
-source "~/.mutt/accounts/formal"
-folder-hook $folder 'source ~/.mutt/accounts/formal'
+source "~/.config/mutt/accounts/formal"
+folder-hook $folder 'source ~/.config/mutt/accounts/formal'
 folder-hook $folder 'set sort=reverse-date-sent'
 
 ## School Account
-source "~/.mutt/accounts/school"
-folder-hook $folder 'source ~/.mutt/accounts/school'
+source "~/.config/mutt/accounts/school"
+folder-hook $folder 'source ~/.config/mutt/accounts/school'
 folder-hook $folder 'set sort=reverse-date-sent'
 
 # Appearance 
@@ -37,9 +37,9 @@ folder-hook $folder 'set sort=reverse-date-sent'
 set my_leader=,
 
 # Accounts
-macro index,pager ${my_leader}f '<sync-mailbox><enter-command>source ~/.mutt/accounts/formal<enter><change-folder>!<enter>'
-macro index,pager ${my_leader}s '<sync-mailbox><enter-command>source ~/.mutt/accounts/school<enter><change-folder>!<enter>'
-macro index,pager ${my_leader}p '<sync-mailbox><enter-command>source ~/.mutt/accounts/personal<enter><change-folder>!<enter>'
+macro index,pager ${my_leader}f '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/formal<enter><change-folder>!<enter>'
+macro index,pager ${my_leader}s '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/school<enter><change-folder>!<enter>'
+macro index,pager ${my_leader}p '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal<enter><change-folder>!<enter>'
 
 # Navigation
 bind pager j next-line
@@ -53,4 +53,4 @@ bind attach,index G last-entry
 
 bind index,pager ${my_leader}d sidebar-toggle-visible
 
-source ~/.mutt/colors
+source ~/.config/mutt/colors
