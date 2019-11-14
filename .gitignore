@@ -1,0 +1,2 @@
+src/config/vim/*
+!src/config/vim/vimrc

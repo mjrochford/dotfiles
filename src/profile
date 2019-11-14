@@ -3,7 +3,16 @@
 # Profile file. Runs on login.
 
 export PATH="$PATH:$HOME/scripts"
-export EDITOR="nvim"
-export BROWSER="firefox"
+export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
 
-export PATH="$HOME/go/bin:$HOME/.cargo/bin:$PATH"
+export EDITOR="nvim"
+export BROWSER="chromium"
+
+export FZF_DEFAULT_OPTS="--cycle --height=10 --reverse --border"
+export FZF_DEFAULT_COMMAND="ag --nocolor --ignore node_modules --ignore bin --ignore '*.o'  -g ''"
+export HHH="$HOME/Projects/Hounds"
+
+alias code="code --user-data-dir '$HOME/.config/vscode-oss' --extensions-dir \
+    '$HOME/.config/vscode-oss'"
+
