@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-# Profile file. Runs on login.
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -20,7 +19,7 @@ export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export HHH="$HOME/Projects/Hounds"
 
 # Cope with the Derpstiny of package maintainers
-alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.config"
+alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 alias code="code --user-data-dir '$HOME/.config/vscode-oss' --extensions-dir \
     '$HOME/.config/vscode-oss'"
 
