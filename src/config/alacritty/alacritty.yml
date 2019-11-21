@@ -102,15 +102,15 @@ tabspaces: 8
 font:
   normal:
     style: Regular
-    family: ShareTechMono
+    family: Shure Tech Mono Nerd Font
 
   bold:
     style: Bold
-    family: ShareTechMono
+    family: Shure Tech Mono Nerd Font
 
   italic:
     style: Italic
-    family: ShareTechMono
+    family: Shure Tech Mono Nerd Font
 
   # Point size
   size: 9.0
