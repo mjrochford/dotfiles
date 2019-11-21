@@ -300,7 +300,9 @@ set laststatus=2
 " Format the status line
 "set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
-let g:lightline = {}
+let g:lightline = {
+            \ 'colorscheme': 'seoul256'
+            \ }
 
 let g:lightline.component_expand = {
             \  'linter_checking': 'lightline#ale#checking',

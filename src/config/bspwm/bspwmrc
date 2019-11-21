@@ -4,14 +4,12 @@ xset s 300 # Set screenscraver timeout to 5 minutes
 xset r rate 300 60 # Set keyboard to repeat faster
 
 xss-lock -- kush_lock &
-
 xfce4-panel & # Start the panel
 xfce4-power-manager
 # xdg_autostart
 xmodmap ~/.Xmodmap # Load Keymap
 pkill compton; compton &
 ~/.fehbg
-
 
 nm-applet &
 pgrep volumeicon || volumeicon &
@@ -30,8 +28,8 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 bspc rule -a Chromium desktop='^2'
-bspc rule -a net-runelite-client-RuneLite state=floating
 bspc rule -a mpv state=floating
 bspc rule -a feh state=floating rectangle=400x400
 bspc rule -a Transmission-gtk state=floating
+bspc rule -a net-runelite-client-RuneLite state=floating
 bspc rule -a Xfce4-panel state=floating
