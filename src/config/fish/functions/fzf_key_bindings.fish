@@ -1,0 +1,1 @@
+/home/matt/dotfiles/src/config/vim/fzf/shell/key-bindings.fish

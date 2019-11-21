@@ -1,8 +1,10 @@
 #! /bin/sh
 
-xfce4-panel &
-xmodmap ~/.Xmodmap
-xset r rate 300 60
+xset s 300 # Set screenscraver timeout to 5 minutes
+xset r rate 300 60 # Set keyboard to repeat faster
+
+xfce4-panel & # Start the panel
+xmodmap ~/.Xmodmap # Load Keymap
 
 # xdg_autostart
 xss-lock -- kush_lock &

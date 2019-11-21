@@ -22,6 +22,14 @@ super + @space
 super + @equal 
     =
 
+# rofi bluetooth selector
+super + d
+    dblue
+
+# rofi bluetooth selector
+super + shift + d
+    echo disconnect | bluetoothctl
+
 # make sxhkd reload its configuration files:
 super + Escape
     pkill -USR1 -x sxhkd

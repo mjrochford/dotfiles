@@ -1,0 +1,7 @@
+rofi.theme: ~/.config/rofi/themes/paper-float.rasi
+
+rofi.modi: drun,window,ssh
+rofi.font: Spacemono 12
+rofi.show-icons: true
+
+rofi.lines: 8
