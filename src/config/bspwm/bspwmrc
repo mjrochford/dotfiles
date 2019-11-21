@@ -33,7 +33,5 @@ bspc rule -a Chromium desktop='^2'
 bspc rule -a net-runelite-client-RuneLite state=floating
 bspc rule -a mpv state=floating
 bspc rule -a feh state=floating rectangle=400x400
-bspc rule -a Transmission state=floating
-bspc rule -a xfce4-panel state=floating
-
-bspc config external_rules_command "/home/matt/.config/bspwm/scratchpad_rules"
+bspc rule -a Transmission-gtk state=floating
+bspc rule -a Xfce4-panel state=floating
