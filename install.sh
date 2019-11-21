@@ -9,5 +9,5 @@ ln -sf $PWD/src/ctags ~/.ctags
 ln -sf $PWD/src/bashrc ~/.bashrc
 ln -sf $PWD/src/bash_profile ~/.bash_profile
 
-./vim-plugged.sh
+exec vim-plugged.sh
 

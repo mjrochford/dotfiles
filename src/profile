@@ -6,6 +6,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 export EDITOR="nvim"
 export BROWSER="chromium"
