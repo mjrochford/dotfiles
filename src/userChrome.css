@@ -1,0 +1,107 @@
+:root {
+    --tabs-border: transparent !important;
+    /* active tab left & right borders - not working in 58?*/
+    --toolbox-border-bottom-color: transparent !important;
+    /* 1px line under background tabs */
+    --chrome-nav-bar-controls-border-color: transparent !important;
+    /* border around url bar */
+}
+
+:-moz-any(.tabs-newtab-button,#new-tab-button,#alltabs-button) .toolbarbutton-icon{
+    transform: scale(0.5, 0.5) !important;
+    margin-top:1px !important;
+}
+
+:root:-moz-lwtheme {
+    --toolbox-border-bottom-color: rgba(0,0,0,0) !important; 
+}
+
+#nav-bar {
+    box-shadow:0px 0px 24px 0px rgba(0, 0, 0, 0.12) !important;
+    border:none !important;
+    padding:0px 8px !important;
+}
+
+#bookmarks-menu-button { /* 'Show your bookmarks' toolbar button */
+    list-style-image: url('bookmarks.svg') !important;
+}
+
+#back-button,
+#forward-button {
+    /* display: none !important; */
+}
+
+#PanelUI-button,
+#customization-panel-container,
+#customization-panelWrapper .panel-arrow {
+    -moz-box-ordinal-group: 0 !important;
+    margin-right: -2px !important;
+}
+
+.tabbrowser-tab::after,
+.tabbrowser-tab::before {
+    border: none !important;
+    color: grey !important;
+    opacity: .2 !important;
+}
+
+.tabbrowser-tab[visuallyselected="true"] {
+    box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.33);
+}
+
+.tab-line {
+    display: none !important;
+}
+
+/* URL Bar */
+#urlbar[focused="true"],
+#urlbar:hover, .searchbar-textbox:hover {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    outline: none !important;
+}
+
+#urlbar,
+.searchbar-textbox,
+#urlbar:hover,
+.searchbar-textbox:hover {
+    background: transparent !important;
+    height: 1.5rem !important;
+    padding: 0 10px !important;
+    font-size: 1.1em !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    -moz-appearance: none;
+    margin: 4px 0px !important;
+    min-height: 24px !important;
+    cursor: default;
+}
+
+#pageActionButton,
+#pocket-button-box,
+ar-button,
+/* .autocomplete-history-dropmarker, */
+#identity-box,
+.urlbar-history-dropmarker.urlbar-icon.chromeclass-toolbar-additional,
+#page-action-buttons,
+#PanelUI-menu-button,
+#identity-icon-labels {
+    display: none !important;
+    background: transparent !important;
+}
+
+#TabsToolbar .titlebar-placeholder[type="pre-tabs"] {
+    width:1.22em !important;
+    border-right: none !important;
+}
+
+.titlebar-placeholder[type="post-tabs"] {
+    width:8px !important;
+}
+
+#PersonalToolbar {
+    max-height: none !important; /* Otherwise it's limited to 4em */
+    height: 2.5em; /* Just some ridiculous size so you know it works. */
+}

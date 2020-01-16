@@ -14,8 +14,7 @@ export BROWSER="chromium"
 export FZF_DEFAULT_OPTS="--cycle --height=10 --reverse --border"
 export FZF_DEFAULT_COMMAND="ag --nocolor --ignore node_modules --ignore bin --ignore '*.o'  -g ''"
 export VIMINIT="source ~/.config/vim/vimrc"
-export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
-
+export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
 
 export HHH="$HOME/Projects/Hounds"
 
