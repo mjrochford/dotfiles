@@ -1,0 +1,3 @@
+[submodule "src/startpage/tilde-enhanced"]
+	path = src/startpage/tilde-enhanced
+	url = https://github.com/ozencb/tilde-enhanced
