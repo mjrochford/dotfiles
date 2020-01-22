@@ -10,12 +10,17 @@ HISTSIZE= HISTFILESIZE= # Infinite history.
 # vi-mode 
 set -o vi 
 
-# Setting Bash prompt. Capitalizes username and host if root user (my root user uses this same config file).
-if [ "$EUID" -ne 0 ]; then
-  export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
-else
-  export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]ROOT\[$(tput setaf 2)\]@\[$(tput setaf 4)\]$(hostname | awk '{print toupper($0)}') \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
-fi
+bold="\[$(tput bold)\]"
+reset="\[$(tput sgr0)\]"
+red="\[$(tput setaf 1)\]"
+green="\[$(tput setaf 2)\]"
+yellow="\[$(tput setaf 3)\]"
+blue="\[$(tput setaf 4)\]"
+purple="\[$(tput setaf 5)\]"
+lgreen="\[$(tput setaf 6)\]"
+white="\[$(tput setaf 7)\]"
+grey="\[$(tput setaf 8)\]"
+export PS1="$bold $blue\u$grey@$purple\h $yellow\W $grey\$$reset "
 
 export GPG_TTY=$(tty)
 export EDITOR="vim"
@@ -31,10 +36,26 @@ alias yt="youtube-dl --add-metadata -ic" # Download video link
 alias yta="yt -x -f mp3" # Download only audio
 alias starwars="telnet towel.blinkenlights.nl"
 
+alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf" 
+alias code="code --user-data-dir '$HOME/.config/vscode-oss' --extensions-dir \
+    '$HOME/.config/vscode-oss'"
+
 # ctrl-l == clear
 bind -x '"\C-l": clear'
 
-export FZF_DEFAULT_OPTS="--cycle --height=10 --reverse --border"
 export FZF_DEFAULT_COMMAND="ag --nocolor --ignore node_modules --ignore bin --ignore '*.o'  -g ''"
+export FZF_DEFAULT_OPTS="--cycle --height=10 --reverse --border"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+man () {
+    env \
+     LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+     LESS_TERMCAP_md=$(printf "\e[1;31m") \
+     LESS_TERMCAP_me=$(printf "\e[0m") \
+     LESS_TERMCAP_se=$(printf "\e[0m") \
+     LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+     LESS_TERMCAP_ue=$(printf "\e[0m") \
+     LESS_TERMCAP_us=$(printf "\e[1;32m") \
+     man "$@"
+}
