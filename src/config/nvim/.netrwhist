@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =7
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/matt/.config/kitty'
+let g:netrw_dirhist_9='/home/matt/.config'
+let g:netrw_dirhist_8='/home/matt/.config/kitty'
 let g:netrw_dirhist_7='/home/matt/dotfiles/src/config/sxhkd'
 let g:netrw_dirhist_6='/home/matt/dotfiles'
 let g:netrw_dirhist_5='/home/matt/dotfiles/src/config/bspwm/bspwm'
