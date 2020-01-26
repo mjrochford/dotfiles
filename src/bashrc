@@ -43,6 +43,7 @@ alias code="code --user-data-dir '$HOME/.config/vscode-oss' --extensions-dir \
 # ctrl-l == clear
 bind -x '"\C-l": clear'
 
+# Only set FZF command if the_silver_searcher exists
 command -v ag >/dev/null 2>&1 && export FZF_DEFAULT_COMMAND="ag --nocolor --ignore node_modules --ignore bin --ignore '*.o'  -g ''"
 export FZF_DEFAULT_OPTS="--cycle --height=10 --reverse --border"
 
