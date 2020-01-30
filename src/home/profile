@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+
+export PATH="$PATH:$HOME/scripts"
+export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.local/bin"
+
+export EDITOR="nvim"
+export BROWSER="chromium"
+
+export FZF_DEFAULT_OPTS="--cycle --height=10 --reverse --border"
+export FZF_DEFAULT_COMMAND="ag --nocolor --ignore node_modules --ignore bin --ignore '*.o'  -g ''"
+export VIMINIT="source ~/.config/vim/vimrc"
+export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
+
+export HHH="$HOME/Projects/Hounds"
+
+# Cope with the Derpstiny of package maintainers
+alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
+alias code="code --user-data-dir '$HOME/.config/vscode-oss' --extensions-dir \
+    '$HOME/.config/vscode-oss'"
+
