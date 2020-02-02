@@ -23,7 +23,6 @@ grey="\[$(tput setaf 8)\]"
 export PS1="$bold $blue\u$grey@$purple\h $yellow\W $grey\$$reset "
 
 export GPG_TTY=$(tty)
-export EDITOR="vim"
 
 # Adding color
 alias ls='ls -hN --color=auto --group-directories-first'

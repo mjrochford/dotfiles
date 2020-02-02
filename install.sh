@@ -1,13 +1,14 @@
 #!/usr/bin/env sh
 
+# Links the first argument as a dotfile in the user's home dir
+linkDotfile() {
+    ln -sf $1 ~/.$(basename $1)
+}
+export -f linkDotfile
+
+find $PWD/src/home -type f -regextype posix-egrep -regex "[^\.].*" -exec sh -c "linkDotfile {}" \;
 ln -sf -n $PWD/src/config/* ~/.config
 
-ln -sf $PWD/src/gitconfig ~/.gitconfig
-ln -sf $PWD/src/mailcap ~/.mailcap
-ln -sf $PWD/src/profile ~/.profile
-ln -sf $PWD/src/ctags ~/.ctags
-ln -sf $PWD/src/bashrc ~/.bashrc
-ln -sf $PWD/src/bash_profile ~/.bash_profile
-ln -sf $PWD/src/Xmodmap ~/.Xmodmap
-
 exec ./vim-plugged.sh
+
+unset linkDotfile
