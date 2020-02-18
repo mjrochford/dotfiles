@@ -7,22 +7,19 @@ call plug#begin('~/.config/vim/plugged')
 
 Plug 'Chiel92/vim-autoformat'
 Plug 'alvan/vim-closetag'
-
-"Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/goyo.vim'
 "Plug 'chrisbra/Colorizer'
 "Plug 'chrisbra/csv.vim'
-
+Plug 'wellle/context.vim'
 Plug 'w0rp/ale'
 Plug 'maximbaz/lightline-ale'
-Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'dir': '~/.config/vim/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()            " required
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ALE Settings
@@ -37,6 +34,7 @@ let g:ale_fixers = {
 let g:ale_linters = {
             \ 'python': ['pylint', 'pyls'],
             \ 'typescript': ['tsserver', 'tslint'],
+            \ 'javascript': ['tsserver', 'tslint'],
             \}
 
 let g:ale_lint_on_text_changed = 0
@@ -58,7 +56,7 @@ nmap <leader>d <Plug>(ale_go_to_definition_in_vsplit)
 "autocmd BufRead *.csv :%ArrangeColumn
 
 set foldmethod=syntax
-set foldlevel=2
+set foldlevel=8
 
 set number
 set relativenumber
@@ -254,6 +252,9 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 set splitbelow splitright
+
+" Format the file
+map <leader> = 
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
@@ -481,4 +482,3 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
-
