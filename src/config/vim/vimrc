@@ -5,6 +5,8 @@ source ~/.config/vim/autoload/*
 
 call plug#begin('~/.config/vim/plugged')
 
+Plug 'jaredgorski/spacecamp'
+
 Plug 'Chiel92/vim-autoformat'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-fugitive'
@@ -34,8 +36,10 @@ let g:ale_fixers = {
 let g:ale_linters = {
             \ 'python': ['pylint', 'pyls'],
             \ 'typescript': ['tsserver', 'tslint'],
-            \ 'javascript': ['tsserver', 'tslint'],
+            \ 'rust': ['rls'],
             \}
+
+let g:ale_rust_rls_toolchain = 'nightly'
 
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_enter = 0
@@ -174,7 +178,7 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 try
-    colorscheme pablo
+    colorscheme spacecamp
 catch
 endtry
 
