@@ -8,11 +8,11 @@ super + alt + m
 
 # terminal emulator
 super + Return
-    alacritty
+    kitty
 
 # browser
 super + w
-    chromium
+    firefox
 
 # program launcher
 super + @space
@@ -86,6 +86,10 @@ super + {p,b,comma,period}
 super + {n , p}
     bspc node -f {next,prev}.local
 
+# focus the next/previous monitor
+super + shift + {n , p}
+    bspc monitor -f {next,prev}
+
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
     bspc desktop -f {prev,next}.local
@@ -100,9 +104,16 @@ super + {o,i}
      bspc node {older,newer} -f; \
      bspc wm -h on
 
-# focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-     bspc {desktop -f,node -d} '^{1-9,10}'
+# send to the given desktop
+super + shift + {1-5}
+     bspc node -d '^{1-5}'
+
+# send to next monitor 
+super + ctrl + {n, p}
+     bspc node -m {next, prev}
+
+super + {1-5}
+    bspwm-change-desktop {1-5}
 
 #
 # preselect
