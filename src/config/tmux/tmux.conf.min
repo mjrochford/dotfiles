@@ -1,0 +1,56 @@
+# force Vi mode
+#   really you should export VISUAL or EDITOR environment variable, see manual
+set -g status-keys vi
+set -g mode-keys vi
+
+set-window-option -g mode-keys vi
+
+# GNU-Screen compatible prefix
+set -g prefix2 C-a
+bind C-a send-prefix -2
+
+# Use vi mode for pane selection
+bind -r h select-pane -L
+bind -r j select-pane -D
+bind -r k select-pane -U
+bind -r l select-pane -R
+
+# Use vi mode for pane resize
+bind -r H resize-pane -L 4
+bind -r J resize-pane -D 4
+bind -r K resize-pane -U 4
+bind -r L resize-pane -R 4
+
+# so that escapes register immidiately in vim
+set -sg escape-time 0
+
+# start index at 1
+set -g base-index 1
+
+# mouse support
+set -g mouse on
+
+# split current window horizontally
+bind - split-window -v
+# split current window vertically
+bind _ split-window -h
+unbind '"'
+unbind %
+
+# styling
+set -g status-bg default
+set -g status-fg white
+
+set -g status-right ""
+set -g status-left ""
+
+set -g status-justify centre
+
+set -g window-status-current-format "#[fg=magenta]#[fg=black]#[bg=magenta]#I #[bg=brightblack]#[fg=white] #W#[fg=brightblack]#[bg=default] "
+set -g window-status-format "#[fg=yellow]#[fg=black]#[bg=yellow]#I #[bg=brightblack]#[fg=white] #W#[fg=brightblack]#[bg=default]"
+
+# Plugins
+
+# -PLUGINS-
+set -g @plugin 'tmux-plugins/tmux-urlview'
+set -g @plugin 'tmux-plugins/tmux-yank'

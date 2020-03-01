@@ -12,6 +12,7 @@ Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 "Plug 'chrisbra/Colorizer'
 "Plug 'chrisbra/csv.vim'
 Plug 'wellle/context.vim'
@@ -30,12 +31,13 @@ call plug#end()            " required
 let g:ale_fixers = {
             \   '*': ['remove_trailing_lines'],
             \   'javascript': ['eslint'],
-            \   'typescript': ['tslint'],
+            \   'typescript': ['eslint'],
+            \   'typescriptreact': ['eslint'],
             \}
 
 let g:ale_linters = {
             \ 'python': ['pylint', 'pyls'],
-            \ 'typescript': ['tsserver', 'tslint'],
+            \ 'typescript': ['tsserver', 'eslint'],
             \ 'rust': ['rls'],
             \}
 
@@ -51,7 +53,6 @@ let g:ale_java_javac_classpath = '../bin'
 let g:ale_java_javac_options= '-sourcepath ../include'
 
 imap <C-Space> <Plug>(ale_complete)
-nmap <leader>d <Plug>(ale_go_to_definition_in_vsplit)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -257,9 +258,6 @@ map <C-l> <C-W>l
 
 set splitbelow splitright
 
-" Format the file
-map <leader> = 
-
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
@@ -356,11 +354,6 @@ nmap <leader>w :w!<cr>
 " Word Count
 nmap <leader>wc :w !wc -w<cr>
 
-" Remove highlight on search
-nmap <leader><leader> :nohlsearch<cr>
-
-nmap yg "+y
-
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
@@ -368,7 +361,10 @@ map 0 ^
 map <leader>g :Goyo<cr>
 map <leader>G :Goyo 60%<cr>
 
-map <leader>E :tabedit ~/.vimrc<cr>
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+map <leader>E :tabedit ~/.config/vim/vimrc<cr>
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
