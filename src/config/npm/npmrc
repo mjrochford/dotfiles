@@ -2,4 +2,3 @@ prefix=/home/matt/.local/share/npm
 cache=/home/matt/.cache/npm
 tmp=/home/matt/.cache/npm
 init-module=/home/matt/.config/npm/config/npm-init.js
-//registry.npmjs.org/:_authToken=52aa14d0-c1f7-4a77-b736-aebd3d3bb6aa
