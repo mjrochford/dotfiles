@@ -1,12 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =9
-let g:netrw_dirhist_9='/home/matt/scripts'
-let g:netrw_dirhist_8='/home/matt/dotfiles/src/config/sxhkd'
-let g:netrw_dirhist_7='/home/matt/Projects/learning/rust/guessing_game/src'
-let g:netrw_dirhist_6='/home/matt/Projects/learning/rust/guessing_game'
-let g:netrw_dirhist_5='/home/matt/Projects/learning/rust'
-let g:netrw_dirhist_4='/home/matt/dotfiles/src/config/vim/plugged/ale/test/smlnj'
-let g:netrw_dirhist_3='/home/matt/dotfiles/src/config/vim/plugged/ale/test/smlnj/file'
-let g:netrw_dirhist_2='/home/matt/.mozilla/firefox/6gnzzn9o.default-release/chrome'
-let g:netrw_dirhist_1='/home/matt/.mozilla/firefox/6gnzzn9o.default-release'
-let g:netrw_dirhist_0='/home/matt/.config/kitty'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/home/matt/dotfiles/src/config/vim'
