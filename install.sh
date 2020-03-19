@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Links the first argument as a dotfile in the user's home dir
 linkDotfile() {
@@ -6,7 +6,7 @@ linkDotfile() {
 }
 export -f linkDotfile
 
-find $PWD/src/home -type f -regextype posix-egrep -regex "[^\.].*" -exec sh -c "linkDotfile {}" \;
+find $PWD/src/home -type f -regextype posix-egrep -regex "[^\.].*" -exec bash -c "linkDotfile {}" \;
 ln -sf -n $PWD/src/config/* ~/.config
 
 exec ./vim-plugged.sh
