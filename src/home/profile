@@ -9,7 +9,7 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/bin"
 
 export EDITOR="nvim"
-export BROWSER="firefox"
+export BROWSER="chromium"
 
 export FZF_DEFAULT_OPTS="--cycle --height=10 --reverse --border"
 export FZF_DEFAULT_COMMAND="ag --nocolor --ignore node_modules --ignore bin --ignore '*.o'  -g ''"

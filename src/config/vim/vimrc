@@ -20,17 +20,30 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 " Plug 'wellle/context.vim'
 
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-snippets', {'do': 'npm install'}
+Plug 'neoclide/coc-tsserver', {'do': 'npx yarn install'}
+Plug 'neoclide/coc-json', {'do': 'npm install'}
+Plug 'neoclide/coc-css', {'do': 'npm install'}
+Plug 'neoclide/coc-html', {'do': 'npm install'}
+Plug 'neoclide/coc-eslint', {'do': 'npm install'}
+Plug 'fannheyward/coc-rust-analyzer', {'do': 'npm install'}
 
 call plug#end() " required
 
+command! MdMakePdf silent! !pandoc -o out.pdf %
+command! MakeOnSave au BufWritePost *.md MdMakePdf
+
 let g:rustfmt_autosave = 1
+
+set list
+set listchars=tab:>-,trail:~,space:.
 
 " COC YEP
 set updatetime=300
 set shortmess+=c
-set signcolumn=yes
+set signcolumn=no
+highlight clear SignColumn
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
