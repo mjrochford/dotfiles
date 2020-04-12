@@ -30,11 +30,7 @@ Plug 'fannheyward/coc-rust-analyzer', {'do': 'npm install'}
 
 call plug#end() " required
 
-command! MdMakePdf silent! !pandoc -o out.pdf %
-command! MakeOnSave au BufWritePost *.md MdMakePdf
-
 let g:rustfmt_autosave = 1
-
 set list
 set listchars=tab:>-,trail:~,space:.
 
@@ -44,18 +40,6 @@ set shortmess+=c
 set signcolumn=no
 highlight clear SignColumn
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -81,6 +65,8 @@ filetype indent on
 " Set to auto read when a file is changed from the outside
 set autoread
 
+map 0 ^
+
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = " "
@@ -91,40 +77,18 @@ let mapleader = " "
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
-" Avoid garbled characters in Chinese language windows OS
 let $LANG='en'
 set langmenu=en
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
 
-" set autochdir
-
-" Provide tab-completion for all file-related tasks
 set path+=**
-
-" Turn on the Wild menu
 set wildmenu
-
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc,**/node_modules/**,**/bin/**,*.zip
-if has("win16") || has("win32")
-    set wildignore+=.git\*,.hg\*,.svn\*
-else
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-endif
 
 " FZF 
 map <leader>f :FZF<cr>
 map <leader>o :Buffers<cr>
 
-set browsedir=buffer
-
-"Always show current position
-set ruler
-
 " Height of the command bar
 set cmdheight=1
-
 " A buffer becomes hidden when it is abandoned
 set hid
 
@@ -132,16 +96,10 @@ set hid
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
-" Ignore case when searching
 set ignorecase
-
-" When searching try to be smart about cases
 set smartcase
 
-" Highlight search results
 set hlsearch
-
-" Makes search act like search in modern browsers
 set incsearch
 
 " Don't redraw while executing macros (good performance config)
@@ -150,16 +108,12 @@ set lazyredraw
 " For regular expressions turn magic on
 set magic
 
-" Show matching brackets when text indicator is over them
 set showmatch
-" How many tenths of a second to blink when matching brackets
 set mat=2
 
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
-set t_vb=
-set tm=500
 
 syntax enable
 
@@ -185,12 +139,9 @@ set expandtab
 set smarttab
 
 " 1 tab == 4 spaces
-set tabstop=8
 set softtabstop=4
-set shiftwidth=4
 
-set lbr
-set textwidth=100
+set textwidth=80
 set colorcolumn=+1
 
 set autoindent 
@@ -206,69 +157,46 @@ map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
 map <C-j> <C-W>j
-map <C-k> <C-W>k
 map <C-h> <C-W>h
+map <C-k> <C-W>k
 map <C-l> <C-W>l
 
 set splitbelow splitright
 
-" Close the current buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
+" Fast saving
+nmap <leader>w :w!<cr>
 
-" Close all the buffers
-map <leader>ba :bufdo bd<cr>
+noremap <leader>q :q<cr>
+noremap <leader>x :Bclose<cr>:tabclose<cr>gT
+" Don't close window, when deleting a buffer
+command! Bclose call <SID>BufcloseCloseIt()
+function! <SID>BufcloseCloseIt()
+    let l:currentBufNum = bufnr("%")
+    let l:alternateBufNum = bufnr("#")
+
+    if buflisted(l:alternateBufNum)
+        buffer #
+    else
+        bnext
+    endif
+
+    if bufnr("%") == l:currentBufNum
+        new
+    endif
+
+    if buflisted(l:currentBufNum)
+        execute("bdelete! ".l:currentBufNum)
+    endif
+endfunction
+map <leader>X :bufdo bd<cr>
 
 " Left and right can switch buffers
 nnoremap <left> :bp<CR>
 nnoremap <right> :bn<CR>
+nnoremap <m-h> :bp<CR>
+nnoremap <m-l> :bn<CR>
 
-vnoremap > >gv
-vnoremap < <gv
-nnoremap <Tab> >>_
-nnoremap <S-Tab> <<_
-inoremap <S-Tab> <C-D>
-vnoremap <Tab> >gv
-vnoremap <S-Tab> <gv
-
-" Opens a new tab or buffer with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 map <leader>e :e <c-r>=expand("%:p:h")<cr>/
-
-" Return to last edit position when opening files (You want this!)
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
-
-let g:lightline = {
-            \ 'colorscheme': 'seoul256'
-            \ }
-
-let g:lightline.active = {
-            \ 'left': [ [ 'mode', 'paste' ],
-            \           [ 'readonly', 'filename', 'modified' ] ],
-            \ 'right': [ [ 'lineinfo' ],
-            \            [ 'percent' ],
-            \            [ 'fileformat', 'fileencoding', 'filetype' ],
-            \            [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ] ] }
-let g:lightline.inactive = {
-            \ 'left': [ [ 'filename' ] ],
-            \ 'right': [ [ 'lineinfo' ],
-            \            [ 'percent' ] ] }
-let g:lightline.tabline = {
-            \ 'left': [ [ 'tabs' ] ],
-            \ 'right': [ [ 'close' ] ] }
-
-set noshowmode
-" Fast saving
-nmap <leader>w :w!<cr>
-
-" Remap VIM 0 to first non-blank character
-map 0 ^
 
 "map <leader>d :NERDTreeToggle<cr>
 map <leader>g :Goyo<cr>
@@ -302,23 +230,37 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-    let l:currentBufNum = bufnr("%")
-    let l:alternateBufNum = bufnr("#")
+vnoremap > >gv
+vnoremap < <gv
+nnoremap <Tab> >>_
+nnoremap <S-Tab> <<_
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
 
-    if buflisted(l:alternateBufNum)
-        buffer #
-    else
-        bnext
-    endif
+" Return to last edit position when opening files (You want this!)
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-    if bufnr("%") == l:currentBufNum
-        new
-    endif
+""""""""""""""""""""""""""""""
+" => Status line
+""""""""""""""""""""""""""""""
+" Always show the status line
+set laststatus=2
 
-    if buflisted(l:currentBufNum)
-        execute("bdelete! ".l:currentBufNum)
-    endif
-endfunction
+let g:lightline = { 'colorscheme': 'seoul256' }
+
+let g:lightline.active = {
+            \ 'left': [ [ 'mode', 'paste' ],
+            \           [ 'readonly', 'filename', 'modified' ] ],
+            \ 'right': [ [ 'lineinfo' ],
+            \            [ 'percent' ],
+            \            [ 'fileformat', 'fileencoding', 'filetype' ] ] }
+let g:lightline.inactive = {
+            \ 'left': [ [ 'filename' ] ],
+            \ 'right': [ [ 'lineinfo' ],
+            \            [ 'percent' ] ] }
+let g:lightline.tabline = {
+            \ 'left': [ [ 'tabs' ] ],
+            \ 'right': [ [ 'close' ] ] }
+
+set noshowmode

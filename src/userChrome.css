@@ -1,111 +1,34 @@
-:root {
-    --tabs-border: transparent !important;
-    /* active tab left & right borders - not working in 58?*/
-    --toolbox-border-bottom-color: transparent !important;
-    /* 1px line under background tabs */
-    --chrome-nav-bar-controls-border-color: transparent !important;
-    /* border around url bar */
+#tabbrowser-tabs {
+        --tab-line-color: none !important;
+}
+#urlbar.megabar > #urlbar-input-container {
+    border: none !important;
 }
 
-:-moz-any(.tabs-newtab-button,#new-tab-button,#alltabs-button) .toolbarbutton-icon{
-    transform: scale(0.5, 0.5) !important;
-    margin-top:1px !important;
-}
-
-:root:-moz-lwtheme {
-    --toolbox-border-bottom-color: rgba(0,0,0,0) !important; 
+#urlbar.megabar > #urlbar-background {
+        background-color: var(--toolbar-bgcolor) !important;
+        border: none !important;
 }
 
 #nav-bar {
-    box-shadow:0px 0px 24px 0px rgba(0, 0, 0, 0.12) !important;
-    border:none !important;
-    padding:0px 8px !important;
+        height: 2.5rem !important;
 }
 
-#bookmarks-menu-button { /* 'Show your bookmarks' toolbar button */
-    list-style-image: url('bookmarks.svg') !important;
+/* Make urlbar megabar appear more compact */
+/* Set the pref browser.urlbar.megabar to true */
+#urlbar[breakout]{
+  margin-inline-start: 0px !important;
+  width: 100% !important;
+  left: 0 !important;
+  top: calc((var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2) !important;
 }
+#urlbar[breakout]:not([open]){ bottom: calc((var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2) !important; }
+.urlbarView{ margin-inline: 0 !important; width: auto !important; }
+.urlbarView-row{ padding: 0 4px !important; }
+#urlbar-background{ animation: none !important; }
+#urlbar-input-container{ padding: 0 !important; height: 100% !important; }
+#identity-box{ padding-block: var(--urlbar-icon-padding) }
 
-#back-button,
-#forward-button {
-    /* display: none !important; */
-}
-
-#PanelUI-button,
-#customization-panel-container,
-#customization-panelWrapper .panel-arrow {
-    -moz-box-ordinal-group: 0 !important;
-    margin-right: -2px !important;
-}
-
-.tabbrowser-tab::after,
-.tabbrowser-tab::before {
-    border: none !important;
-    color: grey !important;
-    opacity: .2 !important;
-}
-
-.tabbrowser-tab[visuallyselected="true"] {
-    box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.33);
-}
-
-.tab-line {
-    display: none !important;
-}
-
-/* URL Bar */
-#urlbar[focused="true"],
-#urlbar:hover, .searchbar-textbox:hover {
-    background: transparent !important;
-    box-shadow: none !important;
-    border: none !important;
-    outline: none !important;
-}
-
-#urlbar,
-.searchbar-textbox,
-#urlbar:hover,
-.searchbar-textbox:hover {
-    background: transparent !important;
-    height: 1.5rem !important;
-    padding: 0 10px !important;
-    font-size: 1.1em !important;
-    outline: none !important;
-    box-shadow: none !important;
-    border: none !important;
-    -moz-appearance: none;
-    margin: 4px 0px !important;
-    min-height: 24px !important;
-    cursor: default;
-}
-
-.urlbar-input-box {
-    margin-left: 0.5rem;
-}
-
-#pageActionButton,
-#pocket-button-box,
-ar-button,
-/* .autocomplete-history-dropmarker, */
-#identity-box,
-.urlbar-history-dropmarker.urlbar-icon.chromeclass-toolbar-additional,
-#page-action-buttons,
-#PanelUI-menu-button,
-#identity-icon-labels {
-    display: none !important;
-    background: transparent !important;
-}
-
-#TabsToolbar .titlebar-placeholder[type="pre-tabs"] {
-    width:1.22em !important;
-    border-right: none !important;
-}
-
-.titlebar-placeholder[type="post-tabs"] {
-    width:8px !important;
-
-}
-#PersonalToolbar {
-    max-height: none !important; /* Otherwise it's limited to 4em */
-    height: 2.5em; /* Just some ridiculous size so you know it works. */
+#urlbar[breakout] > #urlbar-input-container {
+    margin-bottom: 0.25rem !important;
 }
