@@ -1,11 +1,8 @@
 #tabbrowser-tabs {
         --tab-line-color: none !important;
 }
-#urlbar.megabar > #urlbar-input-container {
-    border: none !important;
-}
 
-#urlbar.megabar > #urlbar-background {
+#urlbar-background {
         background-color: var(--toolbar-bgcolor) !important;
         border: none !important;
 }
