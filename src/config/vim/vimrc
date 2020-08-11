@@ -26,6 +26,7 @@ Plug 'neoclide/coc-json', {'do': 'npm install'}
 Plug 'neoclide/coc-css', {'do': 'npm install'}
 Plug 'neoclide/coc-html', {'do': 'npm install'}
 Plug 'neoclide/coc-eslint', {'do': 'npm install'}
+Plug 'clangd/coc-clangd', {'do': 'npm install'}
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'npm install'}
 
 call plug#end() " required
@@ -141,7 +142,7 @@ set smarttab
 " 1 tab == 4 spaces
 set softtabstop=4
 
-set textwidth=80
+set textwidth=120
 set colorcolumn=+1
 
 set autoindent 
