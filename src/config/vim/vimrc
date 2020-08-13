@@ -15,7 +15,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.config/vim/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 " Plug 'wellle/context.vim'
 
@@ -31,21 +30,112 @@ Plug 'fannheyward/coc-rust-analyzer', {'do': 'npm install'}
 
 call plug#end() " required
 
+autocmd!
+
 let g:rustfmt_autosave = 1
-set list
-set listchars=tab:>-,trail:~,space:.
 
-" COC YEP
-set updatetime=300
-set shortmess+=c
-set signcolumn=auto
+" Always show the status line
+set laststatus=2
+set noshowmode
+let g:lightline = { 'colorscheme': 'seoul256' }
 
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = " "
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+autocmd BufWrite *.c Format
+autocmd BufWrite *.cpp Format
+
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+
+" FZF 
+map <leader>f :FZF<cr>
+map <leader>b :Buffers<cr>
+
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-h> <C-W>h
+map <C-k> <C-W>k
+map <C-l> <C-W>l
+
+" Fast saving
+nmap <leader>w :w<cr>
+map <leader>X :bufdo bd<cr>
+
+" Left and right can switch buffers
+nnoremap <left> :bp<CR>
+nnoremap <right> :bn<CR>
+
+map <leader>e :e <c-r>=expand("%:p:h")<cr>/
+
+" Move a line of text using ALT+[jk] or Command+[jk] on mac
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+" Tabbing out lines
+vnoremap > >gv
+vnoremap < <gv
+nnoremap <Tab> >>_
+nnoremap <S-Tab> <<_
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
+map 0 ^
+
+" Return to last edit position when opening files (You want this!)
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Set 7 lines to the cursor - when moving vertically using j/k
+set so=7
+
+set splitbelow splitright
+
+set updatetime=300
+set shortmess+=c
+set signcolumn=auto
+
+set list
+set listchars=tab:>-,trail:~,space:.
 
 set foldmethod=syntax
 set foldlevel=8
@@ -58,34 +148,12 @@ set clipboard+=unnamedplus
 " Sets how many lines of history VIM has to remember
 set history=500
 
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
-
 " Set to auto read when a file is changed from the outside
 set autoread
 
-map 0 ^
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = " "
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
-
-let $LANG='en'
-set langmenu=en
-
-set path+=**
-set wildmenu
-
-" FZF 
-map <leader>f :FZF<cr>
-map <leader>o :Buffers<cr>
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
 
 " Height of the command bar
 set cmdheight=1
@@ -108,22 +176,10 @@ set lazyredraw
 " For regular expressions turn magic on
 set magic
 
-set showmatch
-set mat=2
-
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
 
-syntax enable
-
-try
-    colorscheme spacecamp
-catch
-endtry
-
-set background=dark
-set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -141,128 +197,20 @@ set smarttab
 " 1 tab == 4 spaces
 set softtabstop=4
 
-set textwidth=120
+set textwidth=100
 set colorcolumn=+1
 
-set autoindent 
+set autoindent
 set wrap
 
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+syntax enable
 
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
+try
+    colorscheme spacecamp
+catch
+endtry
 
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-h> <C-W>h
-map <C-k> <C-W>k
-map <C-l> <C-W>l
-
-set splitbelow splitright
-
-" Fast saving
-nmap <leader>w :w!<cr>
-
-noremap <leader>q :q<cr>
-noremap <leader>x :Bclose<cr>:tabclose<cr>gT
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-    let l:currentBufNum = bufnr("%")
-    let l:alternateBufNum = bufnr("#")
-
-    if buflisted(l:alternateBufNum)
-        buffer #
-    else
-        bnext
-    endif
-
-    if bufnr("%") == l:currentBufNum
-        new
-    endif
-
-    if buflisted(l:currentBufNum)
-        execute("bdelete! ".l:currentBufNum)
-    endif
-endfunction
-map <leader>X :bufdo bd<cr>
-
-" Left and right can switch buffers
-nnoremap <left> :bp<CR>
-nnoremap <right> :bn<CR>
-nnoremap <m-h> :bp<CR>
-nnoremap <m-l> :bn<CR>
-
-map <leader>e :e <c-r>=expand("%:p:h")<cr>/
-
-"map <leader>d :NERDTreeToggle<cr>
-map <leader>g :Goyo<cr>
-map <leader>G :Goyo 60%<cr>
-
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-
-map <leader>E :tabedit ~/.config/vim/vimrc<cr>
-
-" Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-    nmap <D-j> <M-j>
-    nmap <D-k> <M-k>
-    vmap <D-j> <M-j>
-    vmap <D-k> <M-k>
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle spell checking
-map <leader>ss :setlocal spell!<cr>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
-
-vnoremap > >gv
-vnoremap < <gv
-nnoremap <Tab> >>_
-nnoremap <S-Tab> <<_
-inoremap <S-Tab> <C-D>
-vnoremap <Tab> >gv
-vnoremap <S-Tab> <gv
-
-" Return to last edit position when opening files (You want this!)
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
-
-let g:lightline = { 'colorscheme': 'seoul256' }
-
-let g:lightline.active = {
-            \ 'left': [ [ 'mode', 'paste' ],
-            \           [ 'readonly', 'filename', 'modified' ] ],
-            \ 'right': [ [ 'lineinfo' ],
-            \            [ 'percent' ],
-            \            [ 'fileformat', 'fileencoding', 'filetype' ] ] }
-let g:lightline.inactive = {
-            \ 'left': [ [ 'filename' ] ],
-            \ 'right': [ [ 'lineinfo' ],
-            \            [ 'percent' ] ] }
-let g:lightline.tabline = {
-            \ 'left': [ [ 'tabs' ] ],
-            \ 'right': [ [ 'close' ] ] }
-
-set noshowmode
+set background=dark
+set encoding=utf8
 
 highlight clear SignColumn
