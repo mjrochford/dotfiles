@@ -19,11 +19,11 @@ Plug 'junegunn/limelight.vim'
 " Plug 'wellle/context.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-snippets', {'do': 'npm install'}
+"Plug 'neoclide/coc-snippets', {'do': 'npm install'}
 Plug 'neoclide/coc-tsserver', {'do': 'npx yarn install'}
-Plug 'neoclide/coc-json', {'do': 'npm install'}
-Plug 'neoclide/coc-css', {'do': 'npm install'}
-Plug 'neoclide/coc-html', {'do': 'npm install'}
+"Plug 'neoclide/coc-json', {'do': 'npm install'}
+"Plug 'neoclide/coc-css', {'do': 'npm install'}
+"Plug 'neoclide/coc-html', {'do': 'npm install'}
 Plug 'neoclide/coc-eslint', {'do': 'npm install'}
 Plug 'clangd/coc-clangd', {'do': 'npm install'}
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'npm install'}
