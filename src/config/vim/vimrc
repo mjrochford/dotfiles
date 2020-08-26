@@ -45,9 +45,14 @@ let mapleader = " "
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
-
 autocmd BufWrite *.c Format
 autocmd BufWrite *.cpp Format
+
+command! MesonC :!meson compile -C build
+
+" command! AutoMesonC :autocmd! BufWritePost *.c MesonC
+" command! NoAutoMesonC :autocmd! BufWritePost
+nmap <leader>c :MesonC<CR>
 
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
@@ -95,9 +100,9 @@ map <C-l> <C-W>l
 nmap <leader>w :w<cr>
 map <leader>X :bufdo bd<cr>
 
-" Left and right can switch buffers
-nnoremap <left> :bp<CR>
-nnoremap <right> :bn<CR>
+" Alt {a,d} can switch buffers
+nnoremap <M-a> :bp<CR>
+nnoremap <M-d> :bn<CR>
 
 map <leader>e :e <c-r>=expand("%:p:h")<cr>/
 
