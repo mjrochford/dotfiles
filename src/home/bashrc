@@ -39,6 +39,8 @@ alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 alias code="code --user-data-dir '$HOME/.config/vscode-oss' --extensions-dir \
     '$HOME/.config/vscode-oss'"
 
+alias trii="sed 's/\s\+//g' .gitignore | tr '\n' '|' | xargs tree -I"
+
 # ctrl-l == clear
 bind -x '"\C-l": clear'
 
