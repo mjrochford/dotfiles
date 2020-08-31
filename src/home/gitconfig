@@ -5,3 +5,9 @@
 	helper = store
 [pull]
 	rebase = false
+[difftool]
+        prompt = false
+[diff]
+        tool = nvimdiff
+[difftool "nvimdiff"]
+        cmd = "nvim -d -u \"$VIMRC\" \"$LOCAL\" \"$REMOTE\""
