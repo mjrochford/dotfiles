@@ -44,8 +44,8 @@ alias trii="sed 's/\s\+//g' .gitignore | tr '\n' '|' | xargs tree -I"
 # ctrl-l == clear
 bind -x '"\C-l": clear'
 
-# Only set FZF command if the_silver_searcher exists
-command -v ag >/dev/null 2>&1 && export FZF_DEFAULT_COMMAND="ag --nocolor --ignore node_modules --ignore bin --ignore '*.o'  -g ''"
+# Only set FZF command if ripgrep exists
+command -v rg >/dev/null 2>&1 && export FZF_DEFAULT_COMMAND="rg --color=never --files ."
 export FZF_DEFAULT_OPTS="--cycle --height=10 --reverse --border"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

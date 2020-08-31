@@ -12,10 +12,8 @@ export EDITOR="nvim"
 export BROWSER="chromium"
 
 export FZF_DEFAULT_OPTS="--cycle --height=40% --reverse --border"
-export FZF_DEFAULT_COMMAND="rg --color=never --files ."
+command -v rg >/dev/null 2>&1 && export FZF_DEFAULT_COMMAND="rg --color=never --files ."
 export VIMRC="~/.config/vim/vimrc"
-export VIMINIT="source $VIMRC"
-export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
 
 export HHH="$HOME/Projects/Hounds"
 
