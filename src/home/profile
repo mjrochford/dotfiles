@@ -9,6 +9,7 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/bin"
 
 export EDITOR="nvim"
+export PAGER="bat"
 export BROWSER="chromium"
 
 export FZF_DEFAULT_OPTS="--cycle --height=40% --reverse --border"
