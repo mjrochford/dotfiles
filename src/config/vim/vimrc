@@ -224,3 +224,8 @@ set background=dark
 set encoding=utf8
 
 highlight clear SignColumn
+
+augroup filetypedetect
+  " Mail
+  autocmd BufRead,BufNewFile *mutt-*  setfiletype mail
+augroup END
