@@ -52,7 +52,7 @@ autocmd BufWrite *.cpp Format
 
 function! Compile()
     if filereadable("Makefile")
-        make
+        execute "!make"
     elseif filereadable("meson.build")
         execute "!meson compile -C build"
     else
