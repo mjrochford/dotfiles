@@ -1,3 +1,4 @@
+autocmd!
 filetype off " required
 
 source ~/.config/vim/autoload/*
@@ -10,7 +11,7 @@ Plug 'jaredgorski/spacecamp'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'rust-lang/rust.vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'alvan/vim-closetag'
 Plug 'junegunn/fzf', { 'dir': '~/.config/vim/fzf', 'do': './install --all' }
@@ -30,9 +31,11 @@ Plug 'neoclide/coc-eslint', {'do': 'npm install'}
 Plug 'clangd/coc-clangd', {'do': 'npm install'}
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'npm install'}
 
+Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
+
 call plug#end() " required
 
-autocmd!
+set termguicolors
 
 let g:rustfmt_autosave = 1
 
@@ -55,6 +58,8 @@ function! Compile()
         execute "!make"
     elseif filereadable("meson.build")
         execute "!meson compile -C build"
+    elseif filereadable("Cargo.toml")
+        execute "!cargo build"
     else
         echo "not a project directory"
     endif
