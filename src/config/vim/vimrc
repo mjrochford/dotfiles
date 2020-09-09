@@ -4,13 +4,15 @@ filetype off " required
 source ~/.config/vim/autoload/*
 
 call plug#begin('~/.config/vim/plugged')
+Plug 'jaredgorski/spacecamp'
+Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
 
 Plug 'tpope/vim-fugitive'
-
-Plug 'jaredgorski/spacecamp'
 Plug 'editorconfig/editorconfig-vim'
+
 Plug 'sheerun/vim-polyglot'
 Plug 'rust-lang/rust.vim'
+Plug 'fannheyward/coc-rust-analyzer', {'do': 'npm install'}
 "Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'alvan/vim-closetag'
@@ -29,9 +31,7 @@ Plug 'neoclide/coc-tsserver', {'do': 'npx yarn install'}
 "Plug 'neoclide/coc-html', {'do': 'npm install'}
 Plug 'neoclide/coc-eslint', {'do': 'npm install'}
 Plug 'clangd/coc-clangd', {'do': 'npm install'}
-Plug 'fannheyward/coc-rust-analyzer', {'do': 'npm install'}
-
-Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 call plug#end() " required
 

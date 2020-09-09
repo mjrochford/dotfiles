@@ -12,16 +12,17 @@ export EDITOR="nvim"
 export PAGER="bat"
 export BROWSER="chromium"
 
+export HHH="$HOME/Projects/Hounds"
+
 export FZF_DEFAULT_OPTS="--cycle --height=40% --reverse --border"
 command -v rg >/dev/null 2>&1 && export FZF_DEFAULT_COMMAND="rg --color=never --files ."
-export VIMRC="~/.config/vim/vimrc"
-
-export HHH="$HOME/Projects/Hounds"
 
 # Cope with the Derpstiny of package maintainers
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 alias code="code --user-data-dir '$HOME/.config/vscode-oss' --extensions-dir \
     '$HOME/.config/vscode-oss'"
+alias ls='ls -hN --color=auto --group-directories-first'
+alias ll='ls -l'
+alias la='ll -a'
+alias grep="grep --color=auto" # Color grep - highlight desired sequence.
 
-
-export PATH="$HOME/.cargo/bin:$PATH"

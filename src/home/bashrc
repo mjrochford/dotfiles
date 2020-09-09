@@ -9,6 +9,8 @@ HISTSIZE= HISTFILESIZE= # Infinite history.
 
 # vi-mode 
 set -o vi 
+# ctrl-l == clear
+bind -x '"\C-l": clear'
 
 bold="\[$(tput bold)\]"
 reset="\[$(tput sgr0)\]"
@@ -23,30 +25,6 @@ grey="\[$(tput setaf 8)\]"
 export PS1="$bold $blue\u$grey@$purple\h $yellow\W $grey\$$reset "
 
 export GPG_TTY=$(tty)
-
-# Adding color
-alias ls='ls -hN --color=auto --group-directories-first'
-alias ll='ls -l'
-alias la='ll -a'
-alias grep="grep --color=auto" # Color grep - highlight desired sequence.
-
-# Internet
-alias yt="youtube-dl --add-metadata -ic" # Download video link
-alias yta="yt -x -f mp3" # Download only audio
-alias starwars="telnet towel.blinkenlights.nl"
-
-alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf" 
-alias code="code --user-data-dir '$HOME/.config/vscode-oss' --extensions-dir \
-    '$HOME/.config/vscode-oss'"
-
-alias trii="sed 's/\s\+//g' .gitignore | tr '\n' '|' | xargs tree -I"
-
-# ctrl-l == clear
-bind -x '"\C-l": clear'
-
-# Only set FZF command if ripgrep exists
-command -v rg >/dev/null 2>&1 && export FZF_DEFAULT_COMMAND="rg --color=never --files ."
-export FZF_DEFAULT_OPTS="--cycle --height=10 --reverse --border"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
