@@ -3,14 +3,14 @@
 # | |_) | (_| \__ \ | | | | | (__
 # |_.__/ \__,_|___/_| |_|_|  \___|
 
+[[ -r ~/.bash_profile ]] && source ~/.bash_profile
+
 stty -ixon # Disable ctrl-s and ctrl-q.
 shopt -s autocd #Allows you to cd into directory merely by typing the directory name.
 HISTSIZE= HISTFILESIZE= # Infinite history.
 
 # vi-mode 
 set -o vi 
-# ctrl-l == clear
-bind -x '"\C-l": clear'
 
 bold="\[$(tput bold)\]"
 reset="\[$(tput sgr0)\]"
