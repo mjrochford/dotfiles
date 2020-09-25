@@ -23,6 +23,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/limelight.vim'
 " Plug 'wellle/context.vim'
 
+Plug 'ludovicchabant/vim-gutentags'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'neoclide/coc-snippets', {'do': 'npm install'}
 Plug 'neoclide/coc-tsserver', {'do': 'npx yarn install'}
@@ -53,19 +55,7 @@ command! -nargs=0 Format :call CocAction('format')
 autocmd BufWrite *.c Format
 autocmd BufWrite *.cpp Format
 
-function! Compile()
-    if filereadable("Makefile")
-        execute "!make"
-    elseif filereadable("meson.build")
-        execute "!meson compile -C build"
-    elseif filereadable("Cargo.toml")
-        execute "!cargo build"
-    else
-        echo "not a project directory"
-    endif
-endfunction
-
-nmap <leader>c :call Compile()<CR>
+nmap <leader>c :make<CR>
 
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
@@ -111,7 +101,10 @@ map <C-l> <C-W>l
 
 " Fast saving
 nmap <leader>w :w<cr>
-map <leader>X :bufdo bd<cr>
+" delete all buffers
+nmap <leader>X :bufdo bd<cr>
+" delete all buffers but current
+nmap <leader>x :%bd\|e#\|bd# <cr> 
 
 " Alt {a,d} can switch buffers
 nnoremap <M-a> :bp<CR>
@@ -229,6 +222,9 @@ set background=dark
 set encoding=utf8
 
 highlight clear SignColumn
+" make transparent bg work -- alacritty
+highlight Normal ctermbg=NONE guibg=NONE 
+highlight NonText ctermbg=NONE guibg=NONE
 
 augroup filetypedetect
   " Mail
