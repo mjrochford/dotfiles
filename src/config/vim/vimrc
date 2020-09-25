@@ -1,61 +1,45 @@
+" reset autocmd's useful for :so $MYVIMRC
 autocmd!
-filetype off " required
+" required
+filetype off
 
 source ~/.config/vim/autoload/*
-
 call plug#begin('~/.config/vim/plugged')
 Plug 'jaredgorski/spacecamp'
 Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
 
-Plug 'tpope/vim-fugitive'
-Plug 'editorconfig/editorconfig-vim'
-
 Plug 'sheerun/vim-polyglot'
-Plug 'rust-lang/rust.vim'
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'npm install'}
-"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'igankevich/mesonic'
+Plug 'ludovicchabant/vim-gutentags'
+
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
 
 Plug 'alvan/vim-closetag'
+
 Plug 'junegunn/fzf', { 'dir': '~/.config/vim/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/limelight.vim'
-" Plug 'wellle/context.vim'
-
-Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'neoclide/coc-snippets', {'do': 'npm install'}
 Plug 'neoclide/coc-tsserver', {'do': 'npx yarn install'}
-"Plug 'neoclide/coc-json', {'do': 'npm install'}
-"Plug 'neoclide/coc-css', {'do': 'npm install'}
-"Plug 'neoclide/coc-html', {'do': 'npm install'}
 Plug 'neoclide/coc-eslint', {'do': 'npm install'}
 Plug 'clangd/coc-clangd', {'do': 'npm install'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+"Plug 'neoclide/coc-snippets', {'do': 'npm install'}
+"Plug 'neoclide/coc-json', {'do': 'npm install'}
+"Plug 'neoclide/coc-css', {'do': 'npm install'}
+"Plug 'neoclide/coc-html', {'do': 'npm install'}
+call plug#end()
 
-call plug#end() " required
-
-set termguicolors
-
-let g:rustfmt_autosave = 1
-
-" Always show the status line
-set laststatus=2
-set noshowmode
-let g:lightline = { 'colorscheme': 'seoul256' }
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = " "
-
+"" COC
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 autocmd BufWrite *.c Format
 autocmd BufWrite *.cpp Format
-
-nmap <leader>c :make<CR>
 
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
@@ -79,7 +63,11 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+"" COC end
 
+let mapleader = " "
+
+nmap <leader>c :make<CR>
 
 " FZF 
 map <leader>f :FZF<cr>
@@ -132,9 +120,17 @@ map 0 ^
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup filetypedetect
+  " Mail
+  autocmd BufRead,BufNewFile *mutt-*  setfiletype mail
+augroup END
+
+autocmd BufEnter * let &titlestring = expand("%:t")
+set title
+
+set termguicolors
+set noshowmode
+let g:lightline = { 'colorscheme': 'seoul256' }
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
@@ -146,7 +142,7 @@ set shortmess+=c
 set signcolumn=auto
 
 set list
-set listchars=tab:>-,trail:~,space:.
+" set listchars=tab:>-,trail:~,space:.
 
 set foldmethod=syntax
 set foldlevel=8
@@ -156,30 +152,17 @@ set relativenumber
 
 set clipboard+=unnamedplus
 
-" Sets how many lines of history VIM has to remember
-set history=500
-
-" Set to auto read when a file is changed from the outside
-set autoread
-
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
-
 " Height of the command bar
 set cmdheight=1
 " A buffer becomes hidden when it is abandoned
-set hid
+set hidden
 
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
 set ignorecase
 set smartcase
 
 set hlsearch
-set incsearch
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
@@ -190,7 +173,6 @@ set magic
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
-
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -203,15 +185,12 @@ set undodir=~/.local/share/vim/undo
 set undofile
 
 " tabs
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4
 
 set textwidth=100
 set colorcolumn=+1
 
-set autoindent
 set wrap
-
-syntax enable
 
 try
     colorscheme spacecamp
@@ -219,17 +198,8 @@ catch
 endtry
 
 set background=dark
-set encoding=utf8
 
 highlight clear SignColumn
 " make transparent bg work -- alacritty
 highlight Normal ctermbg=NONE guibg=NONE 
 highlight NonText ctermbg=NONE guibg=NONE
-
-augroup filetypedetect
-  " Mail
-  autocmd BufRead,BufNewFile *mutt-*  setfiletype mail
-augroup END
-
-autocmd BufEnter * let &titlestring = expand("%:t")
-set title
