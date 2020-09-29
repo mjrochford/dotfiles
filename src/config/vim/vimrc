@@ -12,6 +12,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'npm install'}
 Plug 'igankevich/mesonic'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'preservim/tagbar'
 
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
@@ -33,6 +34,8 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 "Plug 'neoclide/coc-json', {'do': 'npm install'}
 "Plug 'neoclide/coc-css', {'do': 'npm install'}
 "Plug 'neoclide/coc-html', {'do': 'npm install'}
+
+Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 call plug#end()
 
 "" COC
@@ -131,6 +134,18 @@ set title
 set termguicolors
 set noshowmode
 let g:lightline = { 'colorscheme': 'seoul256' }
+
+let g:cargo_makeprg_params = 'build'
+
+let g:gutentags_file_list_command = {
+            \ 'markers': {
+            \ '.git': 'git ls-files',
+            \ '.hg': 'hg files',
+            \ },
+            \ }
+let g:gutentags_cache_dir = expand('~/.cache/vim/gutentags')
+
+let g:minimap_width = 30
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
