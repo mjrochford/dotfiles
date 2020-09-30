@@ -1,7 +1,5 @@
 " reset autocmd's useful for :so $MYVIMRC
 autocmd!
-" required
-filetype off
 
 source ~/.config/vim/autoload/*
 call plug#begin('~/.config/vim/plugged')
@@ -9,7 +7,7 @@ Plug 'jaredgorski/spacecamp'
 Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
 
 Plug 'sheerun/vim-polyglot'
-Plug 'fannheyward/coc-rust-analyzer', {'do': 'npm install'}
+Plug 'fannheyward/coc-rust-analyzer', {'do': 'npm install', 'for': 'rust'}
 Plug 'igankevich/mesonic'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'preservim/tagbar'
@@ -26,10 +24,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-tsserver', {'do': 'npx yarn install'}
-Plug 'neoclide/coc-eslint', {'do': 'npm install'}
-Plug 'clangd/coc-clangd', {'do': 'npm install'}
-Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'neoclide/coc-tsserver', {'do': 'npx yarn install', 'for': ['javascript', 'typescript']}
+Plug 'neoclide/coc-eslint', {'do': 'npm install', 'for': ['javascript', 'typescript']}
+Plug 'clangd/coc-clangd', {'do': 'npm install', 'for': ['c', 'cpp']}
+Plug 'jackguo380/vim-lsp-cxx-highlight', {'for': ['c', 'cpp']}
 "Plug 'neoclide/coc-snippets', {'do': 'npm install'}
 "Plug 'neoclide/coc-json', {'do': 'npm install'}
 "Plug 'neoclide/coc-css', {'do': 'npm install'}
