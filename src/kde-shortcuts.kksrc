@@ -1,12 +1,54 @@
+[ActivityManager][Global Shortcuts]
+switch-to-activity-738415e5-a9bf-4dac-8600-000b2609653c=
+
+[KDE Keyboard Layout Switcher][Global Shortcuts]
+Switch keyboard layout to English (US)=
+Switch to Next Keyboard Layout=Ctrl+Alt+K
+
+[chromium.desktop][Global Shortcuts]
+_launch=Meta+W
+new-private-window=Meta+Shift+W
+new-window=
+
+[kaccess][Global Shortcuts]
+Toggle Screen Reader On and Off=Meta+Alt+S
+
+[kcm_touchpad][Global Shortcuts]
+Disable Touchpad=Touchpad Off
+Enable Touchpad=Touchpad On
+Toggle Touchpad=Touchpad Toggle
+
+[kded5][Global Shortcuts]
+Show System Activity=Ctrl+Esc
+display=Meta+P; Display
+
 [khotkeys][Global Shortcuts]
 {2bbdc109-b3b4-40f0-9d37-ca356b749890}=Meta+W
 {5afe2e5d-5a42-4729-9061-dc3121a2f24d}=Meta+Return
 {9a725be7-a2a0-40bd-98d7-4b7bbc15dfad}=Meta+Shift+Return
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=
 
+[kitty.desktop][Global Shortcuts]
+_launch=Meta+Return
+
+[kmix][Global Shortcuts]
+decrease_microphone_volume=Microphone Volume Down
+decrease_volume=Volume Down
+increase_microphone_volume=Microphone Volume Up
+increase_volume=Volume Up
+mic_mute=Microphone Mute
+mute=Volume Mute
+
 [krunner.desktop][Global Shortcuts]
 RunClipboard=Alt+Shift+F2
-_launch=Meta+Space; Search; Alt+F2; Alt+Space
+_launch=Search; Alt+F2; Meta+Space; Alt+Space
+
+[ksmserver][Global Shortcuts]
+Halt Without Confirmation=Ctrl+Alt+Shift+PgDown
+Lock Session=Screensaver; Meta+L; Ctrl+Alt+L
+Log Out=Ctrl+Alt+Del
+Log Out Without Confirmation=Ctrl+Alt+Shift+Del
+Reboot Without Confirmation=Ctrl+Alt+Shift+PgUp
 
 [kwin][Global Shortcuts]
 Activate Window Demanding Attention=Ctrl+Alt+A
@@ -16,7 +58,7 @@ ExposeAll=Ctrl+F10; Launch (C)
 ExposeClass=Ctrl+F7
 Increase Opacity=
 Invert Screen Colors=
-Kill Window=Ctrl+Alt+Esc; Meta+Shift+Q
+Kill Window=Meta+Shift+Q; Ctrl+Alt+Esc
 MoveMouseToCenter=Meta+F6
 MoveMouseToFocus=Meta+F5
 MoveZoomDown=
@@ -25,7 +67,7 @@ MoveZoomRight=
 MoveZoomUp=
 Setup Window Shortcut=
 Show Desktop=Meta+D
-ShowDesktopGrid=Meta+A; Ctrl+F8
+ShowDesktopGrid=Ctrl+F8; Meta+A
 Suspend Compositing=Alt+Shift+F12
 Switch One Desktop Down=Meta+Ctrl+Down
 Switch One Desktop Up=Meta+Ctrl+Up
@@ -35,7 +77,7 @@ Switch Window Down=Meta+Alt+Down
 Switch Window Left=Meta+Alt+Left
 Switch Window Right=Meta+Alt+Right
 Switch Window Up=Meta+Alt+Up
-Switch to Desktop 1=Meta+1; Ctrl+F1
+Switch to Desktop 1=Ctrl+F1; Meta+1
 Switch to Desktop 10=
 Switch to Desktop 11=
 Switch to Desktop 12=
@@ -48,8 +90,8 @@ Switch to Desktop 18=
 Switch to Desktop 19=
 Switch to Desktop 2=Ctrl+F2; Meta+2
 Switch to Desktop 20=
-Switch to Desktop 3=Meta+3; Ctrl+F3
-Switch to Desktop 4=Meta+4; Ctrl+F4
+Switch to Desktop 3=Ctrl+F3; Meta+3
+Switch to Desktop 4=Ctrl+F4; Meta+4
 Switch to Desktop 5=Meta+5
 Switch to Desktop 6=Meta+6
 Switch to Desktop 7=
@@ -83,12 +125,12 @@ Walk Through Windows of Current Application Alternative=
 Walk Through Windows of Current Application Alternative (Reverse)=
 Window Above Other Windows=
 Window Below Other Windows=
-Window Close=Alt+F4; Meta+Q
+Window Close=Meta+Q; Alt+F4
 Window Fullscreen=
 Window Grow Horizontal=
 Window Grow Vertical=
 Window Lower=
-Window Maximize=Meta+T; Meta+PgUp
+Window Maximize=Meta+PgUp; Meta+T
 Window Maximize Horizontal=
 Window Maximize Vertical=
 Window Minimize=Meta+PgDown
@@ -165,6 +207,18 @@ CurrentMonitorScreenShot=
 FullScreenScreenShot=Shift+Print
 RectangularRegionScreenShot=Meta+Shift+Print; Meta+Shift+S
 _launch=Print
+
+[org_kde_powerdevil][Global Shortcuts]
+Decrease Keyboard Brightness=Keyboard Brightness Down
+Decrease Screen Brightness=Monitor Brightness Down
+Hibernate=Hibernate
+Increase Keyboard Brightness=Keyboard Brightness Up
+Increase Screen Brightness=Monitor Brightness Up
+PowerDown=Power Down
+PowerOff=Power Off
+Sleep=Sleep
+Toggle Keyboard Backlight=Keyboard Light On/Off
+Turn Off Screen=
 
 [plasmashell][Global Shortcuts]
 activate task manager entry 1=
