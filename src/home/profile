@@ -13,7 +13,7 @@ export BROWSER="chromium"
 
 export FZF_DEFAULT_OPTS="--cycle --height=40% --reverse --border"
 command -v rg >/dev/null 2>&1 && export FZF_DEFAULT_COMMAND="rg --color=never --files ."
-command -v bat>/dev/null 2>&1 && export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+command -v bat >/dev/null 2>&1 && export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 
