@@ -9,12 +9,12 @@ set page-completions off
 set completion-display-width 0
 set mark-symlinked-directories on
 
-set editing-mode vi
-set keymap vi-insert
-"\C-l": clear-screen
+# set editing-mode vi
+# set keymap vi-insert
+# "\C-l": clear-screen
 
-set show-mode-in-prompt on
-set vi-ins-mode-string "\1\e[0;49;1;42m\2[I]\1\e[0m\2 "
-set vi-cmd-mode-string "\1\e[0;49;1;41m\2[N]\1\e[0m\2 "
+# set show-mode-in-prompt on
+# set vi-ins-mode-string "\1\e[0;49;1;42m\2[I]\1\e[0m\2 "
+# set vi-cmd-mode-string "\1\e[0;49;1;41m\2[N]\1\e[0m\2 "
 
 set bell-style visible
