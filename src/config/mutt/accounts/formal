@@ -4,6 +4,5 @@ set imap_user=mattjohnrochford@gmail.com
 set imap_pass=`pass show mutt/formal`
 
 source "~/.config/mutt/accounts/common"
-
 mailboxes "+-- Formal -------------"
 mailboxes =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Trash

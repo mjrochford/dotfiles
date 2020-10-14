@@ -13,15 +13,15 @@ set sort_aux=reverse-date-received
 
 ## Personal Account
 source "~/.config/mutt/accounts/personal"
-folder-hook $folder 'source ~/.config/mutt/accounts/personal'
+# folder-hook $folder 'source ~/.config/mutt/accounts/personal'
 
 ## Formal Account
 source "~/.config/mutt/accounts/formal"
-folder-hook $folder 'source ~/.config/mutt/accounts/formal'
+# folder-hook $folder 'source ~/.config/mutt/accounts/formal'
 
 ## School Account
 source "~/.config/mutt/accounts/school"
-folder-hook $folder 'source ~/.config/mutt/accounts/school'
+# folder-hook $folder 'source ~/.config/mutt/accounts/school'
 
 bind index,pager <space> noop
 set my_leader=" "

@@ -4,6 +4,5 @@ set imap_user=mattjr@uw.edu
 set imap_pass=`pass show mutt/school`
 
 source "~/.config/mutt/accounts/common"
-
 mailboxes "+-- School -------------"
 mailboxes =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Trash
