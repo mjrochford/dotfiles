@@ -6,10 +6,6 @@ call plug#begin('~/.config/vim/plugged')
 Plug 'jaredgorski/spacecamp'
 Plug 'sheerun/vim-polyglot'
 
-Plug 'igankevich/mesonic'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'preservim/tagbar'
-
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
@@ -21,14 +17,23 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'itchyny/lightline.vim'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'jackguo380/vim-lsp-cxx-highlight', {'for': ['c', 'cpp']}
+if executable('meson')
+    Plug 'igankevich/mesonic'
+endif
+
+if executable('ctags')
+    Plug 'preservim/tagbar'
+    Plug 'ludovicchabant/vim-gutentags'
+endif
+
 
 if executable("go")
     Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
 endif
 
 if executable("npm")
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'jackguo380/vim-lsp-cxx-highlight', {'for': ['c', 'cpp']}
     Plug 'fannheyward/coc-rust-analyzer', {'do': 'npm install', 'for': 'rust'}
     Plug 'neoclide/coc-tsserver', {'do': 'npx yarn install', 'for': ['javascript', 'typescript']}
     Plug 'neoclide/coc-eslint', {'do': 'npm install', 'for': ['javascript', 'typescript']}
