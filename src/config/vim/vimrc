@@ -34,15 +34,8 @@ endif
 if executable("npm")
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'jackguo380/vim-lsp-cxx-highlight', {'for': ['c', 'cpp']}
-    Plug 'fannheyward/coc-rust-analyzer', {'do': 'npm install', 'for': 'rust'}
-    Plug 'neoclide/coc-tsserver', {'do': 'npx yarn install', 'for': ['javascript', 'typescript']}
-    Plug 'neoclide/coc-eslint', {'do': 'npm install', 'for': ['javascript', 'typescript']}
-    Plug 'clangd/coc-clangd', {'do': 'npm install', 'for': ['c', 'cpp']}
 endif
-"Plug 'neoclide/coc-snippets', {'do': 'npm install'}
-"Plug 'neoclide/coc-json', {'do': 'npm install'}
-"Plug 'neoclide/coc-css', {'do': 'npm install'}
-"Plug 'neoclide/coc-html', {'do': 'npm install'}
+let g:coc_global_extensions = ['coc-json', 'coc-rust-analyzer', 'coc-tsserver', 'coc-eslint', 'coc-clangd']
 
 if executable("cargo")
     Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
@@ -230,3 +223,5 @@ highlight clear SignColumn
 " make transparent bg work -- alacritty
 highlight Normal ctermbg=NONE guibg=NONE 
 highlight NonText ctermbg=NONE guibg=NONE
+" type correct color
+highlight link Type cType
