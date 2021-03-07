@@ -1,6 +1,0 @@
-rofi.modi: drun,window,ssh
-rofi.font: Roboto 12
-
-rofi.lines: 8
-rofi.matching: fuzzy
-rofi.theme: /home/matt/.config/rofi/themes/style_normal_rainbow.rasi
