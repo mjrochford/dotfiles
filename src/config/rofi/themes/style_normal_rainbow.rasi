@@ -17,8 +17,9 @@ configuration {
     fake-transparency: false;
     hide-scrollbar: true;
     fullscreen: false;
-    show-icons: true;
     terminal: "kitty";
+    icon-theme: "Papirus";
+    lines: 6;
 }
 
 * {
@@ -28,7 +29,7 @@ configuration {
   red: #EC5250;
   blue: #25B1CA;
   green: #2ABB9C;
-  purple: #5537D2;
+  purple: #5037D2;
   white: #ffffff;
 }
 
@@ -38,8 +39,7 @@ configuration {
 }
 
 window {
-  height: 36%;
-  width: 500;
+  width: 40%;
   transparency: "real";
 }
 
@@ -47,7 +47,7 @@ mainbox {
   children: [ inputbar, listview ];
   padding: 0;
   background-color: @bg;
-  border-radius: 8;
+  border-radius: 4;
 }
 
 listview {
@@ -59,8 +59,8 @@ listview {
 element {
   border: 0;
   text-color: @fg;
-  orientation: vertical;
-  padding: 12;
+  orientation: horizontal;
+  padding: 8;
   border-radius: 0;
 }
 
@@ -84,5 +84,5 @@ prompt {
 
 entry {
   text-color: @white;
-  padding: 8 12;
+  padding: 8;
 }
