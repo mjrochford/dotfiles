@@ -1,6 +1,8 @@
 [user]
 	email = mattjohnrochford@gmail.com
 	name = Matt Rochford
+[commit]
+        gpgsign = true
 [credential]
 	helper = store
 [pull]
