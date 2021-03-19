@@ -3,3 +3,5 @@
 
 __pycache__
 tags
+
+/src/config/tmux/plugins/*

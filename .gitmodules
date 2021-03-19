@@ -1,3 +1,6 @@
 [submodule "src/startpage/tilde-enhanced"]
 	path = src/startpage/tilde-enhanced
 	url = https://github.com/ozencb/tilde-enhanced
+[submodule "src/config/tmux/plugins/tpm"]
+	path = src/config/tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
