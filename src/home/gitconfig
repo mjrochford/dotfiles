@@ -12,4 +12,4 @@
 [diff]
         tool = nvimdiff
 [difftool "nvimdiff"]
-        cmd = "nvim -d -u \"$VIMRC\" \"$LOCAL\" \"$REMOTE\""
+        cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""

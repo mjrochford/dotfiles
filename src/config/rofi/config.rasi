@@ -1,18 +1,6 @@
 configuration {
 	modi: "drun,window,ssh";
-	lines: 6;
-	font: "Roboto 12";
-	location: 0;
-	yoffset: 0;
-	xoffset: 0;
-	show-icons: true;
 	terminal: "kitty";
-	icon-theme: "Papirus";
-	drun-display-format: "{icon} {name}";
 	matching: "fuzzy";
-	hide-scrollbar: true;
-	fullscreen: false;
-	fake-transparency: false;
 	theme: "/home/matt/.config/rofi/themes/style_normal_rainbow.rasi";
-	display-drun: "Apps";
 }

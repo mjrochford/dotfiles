@@ -1,15 +1,6 @@
-/*
- *
- * Author : Aditya Shakya (adi1090x) tweaked by Matt Rochford
- * Mail : adi1090x@gmail.com
- * Github : @adi1090x
- * Reddit : @adi1090x
- *
- */
-
 configuration {
     drun-display-format: "{icon} {name}";
-    display-drun: "Apps";
+    display-drun: "> ";
     show-icons: true;
     location: 0;
     yoffset: 0;
@@ -19,70 +10,84 @@ configuration {
     fullscreen: false;
     terminal: "kitty";
     icon-theme: "Papirus";
-    lines: 6;
 }
 
 * {
-  bg: #151515dd;
-  bg-sel: #151515ff;
+  bg: #121212;
+  bg-sel: #282828;
   fg: #ffffff;
-  red: #EC5250;
-  blue: #25B1CA;
-  green: #2ABB9C;
-  purple: #5037D2;
-  white: #ffffff;
+  red: #D71A1A;
+  blue: #91AADF;
+  green: #57BA37;
+  purple: #CF73E6;
+  white: #EEEEEE;
 }
 
 * {
   background-color: #00000000;
-  font: "Roboto 12";
+  font: "Fira Code 12";
 }
 
 window {
-  width: 40%;
+  border: 1;
+  border-color: @bg-sel;
+  border-radius: 4;
+  width: 30%;
   transparency: "real";
 }
 
 mainbox {
+  orientation: horizontal;
+  spacing: 8px;
+
   children: [ inputbar, listview ];
-  padding: 0;
+  padding: 4;
   background-color: @bg;
   border-radius: 4;
 }
 
 listview {
-  columns: 1;
-  padding: 0;
-  spacing: 0;
+  layout: horizontal;
+  height: 100%;
 }
 
 element {
   border: 0;
   text-color: @fg;
   orientation: horizontal;
-  padding: 8;
   border-radius: 0;
+  padding: 8;
 }
 
 element selected {
-  background-color: @purple;
+  background-color: @bg-sel;
   border-color: @bg;
   text-color: @fg;
 }
 
+element-icon {
+    size: 2%;
+}
+
 inputbar {
-  children: [entry];
-  padding: 8;
+  padding: 8 0 0 4;
+  children: [prompt, entry];
+  width: 10%;
+
   /* change this colors to change style*/
-  background-color: @purple;
-  border: 0;
+  background-color: @bg;
+  border: 0 0 2 0;
+  border-color: @purple;
 }
 
 prompt {
+  text-color: @white;
   enabled: true;
 }
 
 entry {
   text-color: @white;
-  padding: 8;
 }
+
+/* vim:ft=css
+
