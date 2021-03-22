@@ -37,7 +37,8 @@ if executable("npm")
 endif
 let g:coc_global_extensions = ['coc-json', 'coc-rust-analyzer', 'coc-tsserver', 'coc-eslint', 'coc-clangd']
 
-if executable("cargo")
+if executable("cargo") && (has("nvim-5.0") || v:version >= 802)
+    " requires nvim > 5.0 || vim > 8.2
     Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 endif
 
@@ -49,10 +50,15 @@ command! -nargs=0 Format :call CocAction('format')
 autocmd BufWrite *.c Format
 autocmd BufWrite *.cpp Format
 
+let mapleader = " "
+
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>qf <Plug>(coc-fix-current)
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+
+nmap <leader>a :CocAction<CR>
+
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -73,13 +79,13 @@ function! s:show_documentation()
 endfunction
 "" COC end
 
-let mapleader = " "
-
 nmap <leader>c :make<CR>
 
 " FZF 
 map <leader>f :FZF<cr>
 map <leader>b :Buffers<cr>
+map <leader>t :Tags<cr>
+map <leader><Tab> :Tagbar<cr>
 
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
