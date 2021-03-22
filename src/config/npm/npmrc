@@ -1,4 +1,0 @@
-prefix=/home/matt/.local/share/npm
-cache=/home/matt/.cache/npm
-tmp=/home/matt/.cache/npm
-init-module=/home/matt/.config/npm/config/npm-init.js
