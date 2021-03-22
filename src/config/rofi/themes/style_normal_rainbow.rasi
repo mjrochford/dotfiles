@@ -1,6 +1,10 @@
 configuration {
     drun-display-format: "{icon} {name}";
     display-drun: "> ";
+    display-window: "- ";
+    display-ssh: "ssh ";
+    display-file-browser: "🗄️ ";
+
     show-icons: true;
     location: 0;
     yoffset: 0;
@@ -25,14 +29,14 @@ configuration {
 
 * {
   background-color: #00000000;
-  font: "Fira Code 12";
+  font: "Fira Code 11";
 }
 
 window {
   border: 1;
   border-color: @bg-sel;
   border-radius: 4;
-  width: 30%;
+  width: 40%;
   transparency: "real";
 }
 
