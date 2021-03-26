@@ -63,7 +63,7 @@ endtry
 
 lua require('lsp')
 
-au BufEnter * lua require('completion').on_attach()
+" TODO map this in lsp.lua
 imap <silent> <c-space> <Plug>(completion_trigger)
 
 " Set completeopt to have a better completion experience
