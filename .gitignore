@@ -1,6 +1,11 @@
 /src/config/vim/*
 !/src/config/vim/vimrc
 
+/src/config/nvim/*
+!/src/config/nvim/init.vim
+!/src/config/nvim/lua
+!/src/config/nvim/autoload
+
 __pycache__
 tags
 

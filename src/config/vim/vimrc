@@ -1,91 +1,7 @@
-" reset autocmd's useful for :so $MYVIMRC
-autocmd!
-
-source ~/.config/vim/autoload/*
-call plug#begin('~/.config/vim/plugged')
-Plug 'jaredgorski/spacecamp'
-Plug 'sheerun/vim-polyglot'
-
-Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-sensible'
-
-Plug 'alvan/vim-closetag'
-
-Plug 'junegunn/fzf', { 'dir': '~/.config/vim/fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-Plug 'itchyny/lightline.vim'
-
-if executable('meson')
-    Plug 'igankevich/mesonic'
-endif
-
-if executable('ctags')
-    Plug 'preservim/tagbar'
-    Plug 'ludovicchabant/vim-gutentags'
-endif
-
-
-if executable("go")
-    Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
-endif
-
-if executable("npm")
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'jackguo380/vim-lsp-cxx-highlight', {'for': ['c', 'cpp']}
-endif
-let g:coc_global_extensions = ['coc-json', 'coc-rust-analyzer', 'coc-tsserver', 'coc-eslint', 'coc-clangd']
-
-if executable("cargo") && (has("nvim-5.0") || v:version >= 802)
-    " requires nvim > 5.0 || vim > 8.2
-    Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
-endif
-
-call plug#end()
-
-"" COC
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-autocmd BufWrite *.c Format
-autocmd BufWrite *.cpp Format
-
 let mapleader = " "
-
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf <Plug>(coc-fix-current)
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-nmap <leader>a :CocAction<CR>
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-"" COC end
+set mouse=nv
 
 nmap <leader>c :make<CR>
-
-" FZF 
-map <leader>f :FZF<cr>
-map <leader>b :Buffers<cr>
-map <leader>t :Tags<cr>
-map <leader><Tab> :Tagbar<cr>
 
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
@@ -100,8 +16,6 @@ map <C-j> <C-W>j
 map <C-h> <C-W>h
 map <C-k> <C-W>k
 map <C-l> <C-W>l
-
-set mouse=nv
 
 " Fast saving
 nmap <leader>w :w<cr>
@@ -135,30 +49,6 @@ map 0 ^
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-augroup filetypedetect
-  " Mail
-  autocmd BufRead,BufNewFile *mutt-*  setfiletype mail
-augroup END
-
-autocmd BufEnter * let &titlestring = expand("%:t")
-set title
-
-set termguicolors
-set noshowmode
-let g:lightline = { 'colorscheme': 'seoul256' }
-
-let g:cargo_makeprg_params = 'build'
-
-let g:gutentags_file_list_command = {
-            \ 'markers': {
-            \ '.git': 'git ls-files',
-            \ '.hg': 'hg files',
-            \ },
-            \ }
-let g:gutentags_cache_dir = expand('~/.cache/vim/gutentags')
-
-let g:minimap_width = 30
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
@@ -219,17 +109,4 @@ set textwidth=100
 set colorcolumn=+1
 
 set wrap
-
-try
-    colorscheme spacecamp
-catch
-endtry
-
 set background=dark
-
-highlight clear SignColumn
-" make transparent bg work -- alacritty
-highlight Normal ctermbg=NONE guibg=NONE 
-highlight NonText ctermbg=NONE guibg=NONE
-" type correct color
-highlight link Type cType
