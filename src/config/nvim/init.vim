@@ -74,12 +74,11 @@ set shortmess+=c
 
 let mapleader = " "
 
-nnoremap <silent> <leader>go :silent! !open https://github.com/<C-R><C-F><CR>
 nnoremap <silent> <leader>of :silent! !open <C-R><C-P><CR>
 
 nmap <leader>c :make<CR>
-
 " FZF 
+nnoremap <leader>g :G<CR>
 nmap <leader>f :FZF<cr>
 nmap <leader>b :Buffers<cr>
 nmap <leader>t :Tags<cr>
@@ -94,6 +93,9 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
+"
+nmap <M-q> <C-W>q
+
 map <C-j> <C-W>j
 map <C-h> <C-W>h
 map <C-k> <C-W>k
