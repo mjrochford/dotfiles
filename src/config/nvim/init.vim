@@ -4,7 +4,8 @@ autocmd!
 source "~/.config/nvim/autoload/*"
 call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-sensible'
-
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jaredgorski/spacecamp'
 Plug 'sheerun/vim-polyglot'
@@ -76,7 +77,7 @@ set shortmess+=c
 
 let mapleader = " "
 
-nnoremap <silent> <leader>of :silent! !open <C-R><C-P><CR>
+nnoremap <silent> <leader>of :silent! !open <C-R><C-F><CR>
 
 nmap <leader>c :make<CR>
 " FZF 
@@ -140,7 +141,6 @@ map 0 ^
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
 autocmd BufEnter * let &titlestring = expand("%:t")
 set title
 set undodir=~/.local/share/nvim/undo
@@ -148,6 +148,8 @@ set undofile
 set mouse=nv
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
+
+setglobal errorformat^=%-Gmake:\ ***%m
 
 set splitbelow splitright
 
