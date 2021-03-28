@@ -12,7 +12,7 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'alvan/vim-closetag'
 
-Plug 'junegunn/fzf', { 'dir': '~/.config/vim/fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'itchyny/lightline.vim'
@@ -40,6 +40,8 @@ if executable("cargo") && (has("nvim-0.5") || v:version >= 802)
 endif
 
 call plug#end()
+
+let g:fzf_layout = { 'window': {'width': 0.4, 'height': 0.3}}
 
 let g:lightline = { 'colorscheme': 'seoul256' }
 
@@ -96,6 +98,11 @@ map <silent> <leader><cr> :noh<cr>
 "
 nmap <M-q> <C-W>q
 
+map <leader><S-J> <C-W>J
+map <leader><S-H> <C-W>H
+map <leader><S-K> <C-W>K
+map <leader><S-L> <C-W>L
+
 map <C-j> <C-W>j
 map <C-h> <C-W>h
 map <C-k> <C-W>k
@@ -139,7 +146,6 @@ set title
 set undodir=~/.local/share/nvim/undo
 set undofile
 set mouse=nv
-
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
