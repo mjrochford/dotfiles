@@ -1,2 +1,2 @@
-# Arch Dotfiles
-Mostly Tracks my vim, tmux, zsh, mutt, and ranger configs
+# Dotfiles
+Configs for the programs that I use
