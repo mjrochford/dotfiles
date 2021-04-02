@@ -61,11 +61,24 @@ nvim_lsp.rust_analyzer.setup{
 nvim_lsp.ccls.setup{
     on_attach = on_attach,
     init_options = {
+	compilationDatabaseDirectory = "build",
         highlight = {
-            lsRanges = true;
+            lsRanges = true,
         }
     }
 }
 nvim_lsp.gopls.setup{
+    on_attach = on_attach,
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
+        },
+    },
+}
+
+nvim_lsp.pyls.setup{
     on_attach = on_attach,
 }

@@ -1,6 +1,6 @@
 " reset autocmd's useful for :so $MYVIMRC
-autocmd!
 
+autocmd!
 source "~/.config/nvim/autoload/*"
 call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-sensible'
@@ -13,8 +13,11 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'alvan/vim-closetag'
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'itchyny/lightline.vim'
 
@@ -41,8 +44,6 @@ if executable("cargo") && (has("nvim-0.5") || v:version >= 802)
 endif
 
 call plug#end()
-
-let g:fzf_layout = { 'window': {'width': 0.4, 'height': 0.3}}
 
 let g:lightline = { 'colorscheme': 'seoul256' }
 
@@ -80,12 +81,13 @@ let mapleader = " "
 nnoremap <silent> <leader>of :silent! !open <C-R><C-F><CR>
 
 nmap <leader>c :make<CR>
-" FZF 
+
 nnoremap <leader>g :G<CR>
-nmap <leader>f :FZF<cr>
-nmap <leader>b :Buffers<cr>
-nmap <leader>t :Tags<cr>
 nmap <leader><Tab> :Tagbar<cr>
+
+nnoremap <leader>f <cmd>lua require('telescope.builtin').git_files()<cr>
+nnoremap <leader>rg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
 
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
@@ -143,6 +145,9 @@ map 0 ^
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 autocmd BufEnter * let &titlestring = expand("%:t")
 set title
+
+au TermOpen * startinsert
+
 set undodir=~/.local/share/nvim/undo
 set undofile
 set mouse=nv
