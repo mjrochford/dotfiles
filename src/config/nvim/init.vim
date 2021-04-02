@@ -6,12 +6,13 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'jaredgorski/spacecamp'
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 
+Plug 'sheerun/vim-polyglot'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'alvan/vim-closetag'
+
+Plug 'jaredgorski/spacecamp'
 
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
