@@ -1,10 +1,12 @@
 configuration {
     drun-display-format: "{icon} {name}";
+    window-thumbnail: true;
     display-drun: "> ";
     display-window: "- ";
     display-ssh: "ssh ";
     display-file-browser: "🗄️ ";
 
+    width: -80;
     show-icons: true;
     location: 0;
     yoffset: 0;
@@ -36,7 +38,6 @@ window {
   border: 1;
   border-color: @bg-sel;
   border-radius: 4;
-  width: 40%;
   transparency: "real";
 }
 
