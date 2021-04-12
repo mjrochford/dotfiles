@@ -6,7 +6,10 @@ linkDotfile() {
 }
 export -f linkDotfile
 
-find $PWD/src/home -type f -regextype posix-egrep -regex "[^\.].*" -exec bash -c "linkDotfile {}" \;
+for item in $PWD/src/home/*; do
+    linkDotfile $item
+done
+
 ln -sf -n $PWD/src/config/* ~/.config
 
 exec ./vim-plugged.sh

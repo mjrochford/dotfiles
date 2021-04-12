@@ -1,6 +1,10 @@
 /src/config/vim/*
 !/src/config/vim/vimrc
 
+/src/home/emacs.d/*
+!/src/home/emacs.d/custom.el
+!/src/home/emacs.d/init.el
+
 /src/config/nvim/*
 !/src/config/nvim/init.vim
 !/src/config/nvim/lua
