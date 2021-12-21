@@ -7,6 +7,8 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 
 Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
@@ -35,14 +37,17 @@ if executable("go")
     Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
 endif
 
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'jackguo380/vim-lsp-cxx-highlight', {'for': ['c', 'cpp']}
+if has("nvim-0.5")
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-lua/completion-nvim'
+    Plug 'jackguo380/vim-lsp-cxx-highlight', {'for': ['c', 'cpp']}
+endif
 
 if executable("cargo") && (has("nvim-0.5") || v:version >= 802)
     " requires nvim > 5.0 || vim > 8.2
     Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 endif
+Plug 'soywod/himalaya', {'rtp': 'vim'}
 
 call plug#end()
 
@@ -90,27 +95,8 @@ nnoremap <leader>f <cmd>lua require('telescope.builtin').git_files()<cr>
 nnoremap <leader>rg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
 
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
-
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
-
-" Smart way to move between windows
-"
-nmap <M-q> <C-W>q
-
-map <leader><S-J> <C-W>J
-map <leader><S-H> <C-W>H
-map <leader><S-K> <C-W>K
-map <leader><S-L> <C-W>L
-
-map <C-j> <C-W>j
-map <C-h> <C-W>h
-map <C-k> <C-W>k
-map <C-l> <C-W>l
 
 " Fast saving
 nmap <leader>w :w<cr>
@@ -144,7 +130,7 @@ map 0 ^
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-autocmd BufEnter * let &titlestring = expand("%:t")
+    autocmd BufEnter * let &titlestring = expand("%:t")
 set title
 
 au TermOpen * startinsert
@@ -154,8 +140,6 @@ set undofile
 set mouse=nv
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
-
-setglobal errorformat^=%-Gmake:\ ***%m
 
 set splitbelow splitright
 

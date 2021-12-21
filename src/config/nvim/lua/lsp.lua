@@ -79,6 +79,5 @@ nvim_lsp.gopls.setup{
     },
 }
 
-nvim_lsp.pyls.setup{
-    on_attach = on_attach,
-}
+nvim_lsp.zls.setup{}
+nvim_lsp.hls.setup{}

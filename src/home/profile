@@ -15,6 +15,8 @@ export FZF_DEFAULT_OPTS="--cycle --height=40% --reverse --border"
 command -v rg >/dev/null 2>&1 && export FZF_DEFAULT_COMMAND="rg --color=never --files ."
 command -v bat >/dev/null 2>&1 && export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
+export MAKEFLAGS="-j8"
+
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 
 alias ls='ls -hN --color=auto --group-directories-first'
