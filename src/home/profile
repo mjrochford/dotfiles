@@ -19,7 +19,6 @@ export MAKEFLAGS="-j8"
 
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 
-alias ls='ls -hN --color=auto --group-directories-first'
-alias ll='ls -l'
-alias la='ll -a'
 alias grep="grep --color=auto"
+
+alias emacs='emacsclient --alternate-editor /usr/bin/nvim' 
