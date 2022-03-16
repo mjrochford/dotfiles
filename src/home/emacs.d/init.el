@@ -46,35 +46,18 @@
   (package-install 'use-package))
 (require 'use-package)
 
-(use-package eshell
-  :init
+(defun create-term ()
+  "Create new window for a term."
+  (interactive)
+  (split-window-below)
+  (other-window 1)
+  (sane-term))
 
-  (defun fst-letter(str) "STR shortens director name."
-	 (cond
-					; empty string gets empty string
-	  ((eq (length str) 0) "")
-					; hidden dirs get two chars
-	  ((string= (substring str 0 1) ".") (substring str 0 2))
-					; everything else first character
-	  (t (substring str 0 1))))
-  (defun shorten-paths(p-lst) "P-LST shortens a path list."
-	 (if (> (length p-lst) 1)
-	     (concat
-	      (mapconcat (lambda (elm) (fst-letter elm)) (butlast p-lst) "/")
-	      "/"
-	      (mapconcat (lambda (elm) elm) (last p-lst) "/"))
-	   (car p-lst)))
-  (defun short-path() "Return a short version of PWD."
-	 (shorten-paths (split-string (abbreviate-file-name (eshell/pwd)) "/")))
-
-  (defvar eshell-prompt-regexp "\.\+ (>|#) $")
-  (defvar eshell-prompt-function
-    (lambda() (concat
-	       (with-face (short-path) :foreground "lightblue")
-	       (if (= (user-uid) 0)
-		   (with-face " #" :weight 'bold :foreground "red")
-		 (with-face " >" :weight 'bold :foreground "lightyellow"))
-	       " "))))
+(use-package sane-term
+  :ensure t
+  :bind (
+    ("C-x t" . create-term))
+    ("C-x T" . sane-term-create))
 
 (use-package evil-leader
   :init
@@ -105,6 +88,7 @@
 
   :config
   (global-evil-leader-mode)
+  (evil-ex-define-cmd "bd" 'kill-this-buffer)
   (evil-mode 1))
 
 (use-package evil-commentary
@@ -207,6 +191,13 @@
 (use-package lsp-haskell :ensure t)
 (use-package rust-mode :ensure t)
 
-(server-start)
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
+
+(use-package slime)
+(setq inferior-lisp-program "/usr/bin/sbcl")
+
 
 ;;; init.el ends here
