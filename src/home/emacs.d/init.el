@@ -6,10 +6,14 @@
 (global-set-key [escape] 'keyboard-escape-quit) ;; escape to close prompts
 (menu-bar-mode -1) ;; remove menubar & toolbar
 
+(toggle-truncate-lines)
+
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+
+(setq dired-listing-switches "-lha")
 
 (tool-bar-mode -1) ;; --
 (scroll-bar-mode -1) ;; hide scrollbars
@@ -23,6 +27,7 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
+
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file) ;; dont pollute init.el with customize-* things
@@ -51,24 +56,22 @@
   (interactive)
   (split-window-below)
   (other-window 1)
-  (sane-term))
+  (sane-term-create))
 
-(use-package sane-term
-  :ensure t
-  :bind (
-    ("C-x t" . create-term))
-    ("C-x T" . sane-term-create))
+(use-package sane-term)
 
 (use-package evil-leader
   :init
-  (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
+  (setq evil-want-keybinding t)
   :config
   (if (fboundp 'evil-leader/set-leader)
       (evil-leader/set-leader "<SPC>"))
 
   (if (fboundp 'evil-leader/set-key)
       (evil-leader/set-key
+	"t" 'create-term
+	"T" 'create-term
 	"h" 'which-key-show-top-level
 	"a" 'switch-to-prev-buffer
 	"b" 'switch-to-buffer
@@ -195,9 +198,5 @@
   :ensure t
   :config
   (editorconfig-mode 1))
-
-(use-package slime)
-(setq inferior-lisp-program "/usr/bin/sbcl")
-
 
 ;;; init.el ends here
