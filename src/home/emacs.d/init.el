@@ -63,7 +63,7 @@
 (use-package evil-leader
   :init
   (setq evil-want-C-u-scroll t)
-  (setq evil-want-keybinding t)
+  (setq evil-want-keybinding nil)
   :config
   (if (fboundp 'evil-leader/set-leader)
       (evil-leader/set-leader "<SPC>"))
@@ -72,10 +72,9 @@
       (evil-leader/set-key
 	"t" 'create-term
 	"T" 'create-term
+	"a" 'lsp-ui-sideline-apply-code-actions
 	"h" 'which-key-show-top-level
-	"a" 'switch-to-prev-buffer
 	"b" 'switch-to-buffer
-	"d" 'switch-to-next-buffer
 	"f" 'find-file
 	"g" 'magit-status
 	"p" 'projectile-find-file
@@ -147,10 +146,7 @@
   :ensure t
   :config
   (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((emacs-lisp . nil)
-     (haskell . t)
-     (python . t)))
+   'org-babel-load-languages '((C, t)))
   (setq org-src-fontify-natively t))
 
 (use-package evil-org
@@ -166,8 +162,7 @@
 (use-package lsp-mode
   :init
   (setq lsp-keymap-prefix "C-c l")
-  :hook (
-         (rust-mode . lsp)
+  :hook ((rust-mode . lsp)
          (python-mode . lsp)
          (haskell-mode . lsp)
 	 (c-mode . lsp)
@@ -179,8 +174,8 @@
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
-(use-package lsp-ivy :ensure t :commands lsp-ivy-workspace-symbol)
-(use-package lsp-ui :ensure t :commands lsp-ui-mode)
+(use-package lsp-ivy :ensure t)
+(use-package lsp-ui :ensure t)
 
 (use-package flycheck :ensure t)
 
@@ -192,7 +187,10 @@
   (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
   :ensure t)
 (use-package lsp-haskell :ensure t)
-(use-package rust-mode :ensure t)
+(use-package rustic :ensure t)
+(use-package geiser-mit :ensure t)
+(use-package geiser-racket :ensure t)
+(use-package geiser-guile :ensure t)
 
 (use-package editorconfig
   :ensure t
