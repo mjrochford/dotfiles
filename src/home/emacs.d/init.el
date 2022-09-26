@@ -34,7 +34,7 @@
 
 ;; make editing init.el less horrid
 (defun reload-config () "Reloads the init file." (interactive)
-       (load-file "~/.emacs.d/init.el"))
+       (load-file (expand-file-name "init.el" user-emacs-directory)))
 
 (defun with-face (str &rest face-plist) "STR FACE-PLIST, Format face strings."
   (propertize str 'face face-plist))
@@ -58,7 +58,8 @@
   (other-window 1)
   (sane-term-create))
 
-(use-package sane-term)
+(use-package sane-term
+  :ensure t)
 
 (use-package evil-leader
   :init
