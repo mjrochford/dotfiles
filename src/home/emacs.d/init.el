@@ -172,6 +172,7 @@
          (python-mode . lsp)
          (haskell-mode . lsp)
 	 (c-mode . lsp)
+	 (java-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
   :ensure t)
@@ -187,6 +188,7 @@
 
 (global-flycheck-mode)
 
+(use-package lsp-java :ensure t)
 (use-package go-mode :ensure t)
 (use-package haskell-mode
   :config
@@ -199,5 +201,9 @@
   :ensure t
   :config
   (editorconfig-mode 1))
+
+(use-package geiser-mit :ensure t)
+(use-package geiser-guile :ensure t)
+(use-package geiser-racket :ensure t)
 
 ;;; init.el ends here
