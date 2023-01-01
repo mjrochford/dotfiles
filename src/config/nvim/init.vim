@@ -1,80 +1,15 @@
 " reset autocmd's useful for :so $MYVIMRC
+"
+lua require('plugins')
+lua require('lsp')
 
 autocmd!
 source "~/.config/nvim/autoload/*"
-call plug#begin('~/.config/nvim/plugged')
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-
-Plug 'sheerun/vim-polyglot'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'alvan/vim-closetag'
-
-Plug 'jaredgorski/spacecamp'
-
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-Plug 'itchyny/lightline.vim'
-
-if executable('meson')
-    Plug 'igankevich/mesonic'
-endif
-
-if executable('ctags')
-    Plug 'preservim/tagbar'
-    Plug 'ludovicchabant/vim-gutentags'
-endif
-
-if executable("go")
-    Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
-endif
-
-if has("nvim-0.5")
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'nvim-lua/completion-nvim'
-    Plug 'jackguo380/vim-lsp-cxx-highlight', {'for': ['c', 'cpp']}
-endif
-
-if executable("cargo") && (has("nvim-0.5") || v:version >= 802)
-    " requires nvim > 5.0 || vim > 8.2
-    Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
-endif
-Plug 'soywod/himalaya', {'rtp': 'vim'}
-
-call plug#end()
-
-let g:lightline = { 'colorscheme': 'seoul256' }
-
-let g:cargo_makeprg_params = 'build'
-
-let g:gutentags_file_list_command = {
-            \ 'markers': {
-            \ '.git': 'git ls-files',
-            \ '.hg': 'hg files',
-            \ },
-            \ }
-
-let g:gutentags_cache_dir = expand('~/.cache/nvim/gutentags')
-
-let g:minimap_width = 30
 
 try
     colorscheme spacecamp
 catch
 endtry
-
-lua require('lsp')
-
-" TODO map this in lsp.lua
-imap <silent> <c-space> <Plug>(completion_trigger)
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
@@ -91,9 +26,9 @@ nmap <leader>c :make<CR>
 nnoremap <leader>g :G<CR>
 nmap <leader><Tab> :Tagbar<cr>
 
-nnoremap <leader>f <cmd>lua require('telescope.builtin').git_files()<cr>
-nnoremap <leader>rg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>. :Ido std.browse<cr>
+nnoremap <leader>> :Ido std.git_files<cr>
+nnoremap <leader>b :Ido std.buffer<cr>
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -109,7 +44,7 @@ nmap <leader>x :%bd\|e#\|bd# <cr>
 nnoremap <M-a> :bp<CR>
 nnoremap <M-d> :bn<CR>
 
-map <leader>e :e <c-r>=expand("%:p:h")<cr>/
+" map <leader>e :e <c-r>=expand("%:p:h")<cr>/
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
@@ -134,6 +69,8 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 set title
 
 au TermOpen * startinsert
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+set grepformat=%f:%l:%c:%m
 
 set undodir=~/.local/share/nvim/undo
 set undofile
@@ -204,3 +141,5 @@ highlight Normal ctermbg=NONE guibg=NONE
 highlight NonText ctermbg=NONE guibg=NONE
 " type correct color
 highlight link Type cType
+
+hi StatusLine ctermbg=235 ctermfg=White
