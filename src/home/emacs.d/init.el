@@ -28,7 +28,6 @@
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file) ;; dont pollute init.el with customize-* things
 
@@ -160,17 +159,7 @@
 
 ; (use-package spinner :ensure t)
 
-(use-package lsp-mode
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  :hook ((rust-mode . lsp)
-         (python-mode . lsp)
-         (haskell-mode . lsp)
-	 (c-mode . lsp)
-	 (java-mode . lsp)
-         ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration))
-  :ensure t)
+(use-package lsp-mode :ensure t)
 (setq byte-compile-warnings '(cl-functions))
 
 (setq gc-cons-threshold 100000000)
@@ -183,7 +172,6 @@
 
 (global-flycheck-mode)
 
-(use-package lsp-java :ensure t)
 (use-package go-mode :ensure t)
 (use-package haskell-mode
   :config
@@ -199,9 +187,4 @@
   :ensure t
   :config
   (editorconfig-mode 1))
-
-(use-package geiser-mit :ensure t)
-(use-package geiser-guile :ensure t)
-(use-package geiser-racket :ensure t)
-
 ;;; init.el ends here
