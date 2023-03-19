@@ -22,5 +22,3 @@ export MAKEFLAGS="-j8"
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 
 alias grep="grep --color=auto"
-
-alias emacs='emacsclient --alternate-editor /usr/bin/nvim' 

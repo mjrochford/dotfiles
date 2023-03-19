@@ -1,0 +1,17 @@
+import:
+  - ~/.config/alacritty/themes/themes/omni.yaml
+window:
+  opacity: 0.99
+  dimensions:
+    columns: 80
+    lines: 24
+  padding:
+    x: 10
+    y: 10
+font:
+  normal:
+    style: Regular
+    family: Fira Code
+  size: 10.0
+dynamic_title: true
+
