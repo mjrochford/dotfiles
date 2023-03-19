@@ -9,9 +9,10 @@ export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
 
-export EDITOR="nvim"
-export BROWSER="chromium"
+export EDITOR="helix"
+export BROWSER="firefox"
 
 export FZF_DEFAULT_OPTS="--cycle --height=40% --reverse --border"
 command -v rg >/dev/null 2>&1 && export FZF_DEFAULT_COMMAND="rg --color=never --files ."
