@@ -72,13 +72,14 @@
       (evil-leader/set-key
 	"t" 'create-term
 	"T" 'create-term
-	"a" 'lsp-ui-sideline-apply-code-actions
+	"e" 'flycheck-list-errors
+	"r" 'lsp-rename
+	"a" 'lsp-execute-code-action
 	"h" 'which-key-show-top-level
 	"b" 'switch-to-buffer
 	"f" 'find-file
 	"g" 'magit-status
 	"p" 'projectile-find-file
-	"r" 'reload-config
 	"w" 'save-buffer
 	"x" 'execute-extended-command))
 
@@ -90,7 +91,6 @@
 
   :config
   (global-evil-leader-mode)
-  (evil-ex-define-cmd "bd" 'kill-this-buffer)
   (evil-mode 1))
 
 (use-package evil-commentary
@@ -129,7 +129,7 @@
 (use-package base16-theme
   :ensure t
   :config
-  (load-theme 'base16-circus t))
+  (load-theme 'base16-chalk t))
 
 (add-to-list 'default-frame-alist
 	    '(font . "Fira Code-10"))
