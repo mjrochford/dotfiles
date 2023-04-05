@@ -8,27 +8,18 @@ super + alt + m
 
 # terminal emulator
 super + Return
-    kitty
+    exo-open --launch TerminalEmulator
 
 # browser
 super + w
-    firefox
+    $BROWSER
 
 # program launcher
 super + @space
-    rofi -show drun
+    dmenu_run 
 
-# rofi calc
-super + @equal 
-    =
-
-# rofi bluetooth selector
-super + d
-    dblue
-
-# rofi bluetooth selector
-super + shift + d
-    echo disconnect | bluetoothctl
+super + alt + @space
+    bocks -dc
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -105,15 +96,15 @@ super + {o,i}
      bspc wm -h on
 
 # send to the given desktop
-super + shift + {1-5}
-     bspc node -d '^{1-5}'
+super + shift + {1-9}
+     bspc node -d '^{1-9}'
 
 # send to next monitor 
 super + ctrl + {n, p}
      bspc node -m {next, prev}
 
-super + {1-5}
-    bspwm-change-desktop {1-5}
+super + {1-9}
+    bspc desktop -f {1-9}
 
 #
 # preselect
