@@ -4,11 +4,15 @@
 
 # Play the url in the clipboard with mpv
 super + alt + m 
-    mpv --ytdl-format='best[height<=1080]' "$(xsel -b)"
+    mpv --ytdl-format='best[height<=1080]' "$(xclip -o -selection clipboard)"
 
 # terminal emulator
 super + Return
     exo-open --launch TerminalEmulator
+
+# terminal emulator
+super + e
+    exo-open --launch FileManager
 
 # browser
 super + w
@@ -24,6 +28,9 @@ super + alt + @space
 # make sxhkd reload its configuration files:
 super + Escape
     pkill -USR1 -x sxhkd
+
+super + Tab
+    skippy-xd
 
 #
 # bspwm hotkeys

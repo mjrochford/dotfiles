@@ -1,7 +1,7 @@
 import:
   - ~/.config/alacritty/themes/themes/omni.yaml
 window:
-  opacity: 0.99
+  opacity: 0.95
   dimensions:
     columns: 80
     lines: 24
@@ -11,7 +11,8 @@ window:
 font:
   normal:
     style: Regular
-    family: Fira Code
-  size: 10.0
+    # family: Fira Code
+    family: ProggyCleanTT Nerd Font
+  size: 18.0
 dynamic_title: true
 
