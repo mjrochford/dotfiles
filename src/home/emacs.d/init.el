@@ -147,9 +147,6 @@
 
 (use-package evil-org :after org)
 
-(use-package company)
-(use-package company-lsp)
-
 (use-package lsp-mode)
 (setq byte-compile-warnings '(cl-functions))
 (setq gc-cons-threshold 100000000)
