@@ -56,77 +56,87 @@
   (interactive)
   (split-window-below)
   (other-window 1)
-  (sane-term-create))
+  (vterm))
 
-(use-package sane-term
-  )
+(use-package vterm :ensure t)
+
+(use-package eglot :ensure t)
+
+(use-package company :ensure t)
+
+(use-package rust-mode
+  :ensure t
+  :config
+  (add-hook 'rust-mode-hook 'eglot-ensure))
 
 (use-package evil-leader
+  :ensure t
   :init
-  (setq evil-want-C-u-scroll t)
   (setq evil-want-keybinding nil)
+  (setq evil-want-C-u-scroll t)
   :config
   (if (fboundp 'evil-leader/set-leader)
       (evil-leader/set-leader "<SPC>"))
 
   (if (fboundp 'evil-leader/set-key)
       (evil-leader/set-key
+	"c" 'compile
 	"t" 'create-term
 	"T" 'create-term
-	"e" 'flycheck-list-errors
-	"r" 'lsp-rename
-	"a" 'lsp-execute-code-action
+	"e" 'flymake-show-project-diagnostics
+	"r" 'eglot-rename
+	"a" 'eglot-code-actions
+	"k" 'eldoc
 	"h" 'which-key-show-top-level
 	"b" 'switch-to-buffer
 	"f" 'find-file
+	"s" 'swiper
 	"g" 'magit-status
-	"p" 'projectile-find-file
-	"w" 'save-buffer
+	"/" 'counsel-rg
 	"x" 'execute-extended-command))
 
   )
 
 (use-package evil
-  
-  :init
-
+  :ensure t
   :config
   (global-evil-leader-mode)
   (evil-mode 1))
 
 (use-package evil-commentary
-  
+  :ensure t
   :config
   (evil-commentary-mode))
 
 (use-package evil-matchit
-  
+  :ensure t
   :config
   (evil-matchit-mode))
 
 (use-package evil-visualstar
-  
+  :ensure t
   :config
   (evil-visualstar-mode))
 
 (use-package evil-collection
+  :ensure t
   :after evil
-  
+  :init 
+  (setq evil-want-keybinding nil)
   :config
   (evil-collection-init))
 
 (use-package ivy
+  :ensure t
   :config
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
   (ivy-mode 1))
-
-(use-package projectile
-  
-  :config
-  (projectile-mode +1))
+(use-package counsel :ensure t)
+(use-package swiper :ensure t)
 
 (use-package base16-theme
+  :ensure t
   :config
   (load-theme 'base16-chalk t))
 
@@ -134,28 +144,23 @@
 	     '(font . "ProggyCleanTT Nerd Font-18"))
 
 (use-package which-key
+  :ensure t
   :config
   (which-key-mode 1))
 
-(use-package magit)
+(use-package magit :ensure t)
 
 (use-package org
+  :ensure t
   :config
   (org-babel-do-load-languages
    'org-babel-load-languages '((C, t)))
   (setq org-src-fontify-natively t))
 
-(use-package evil-org :after org)
-
-(use-package lsp-mode)
-(setq byte-compile-warnings '(cl-functions))
-(setq gc-cons-threshold 100000000)
-(setq read-process-output-max (* 1024 1024)) ;; 1mb
-
-(use-package lsp-ivy)
-(use-package lsp-ui)
+(use-package evil-org :after org :ensure t)
 
 (use-package editorconfig
+  :ensure t
   :config
   (editorconfig-mode 1))
 

@@ -9,7 +9,7 @@
    '(autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands readonly ring scrolltobottom stamp track))
  '(org-agenda-files '("~/todo.org"))
  '(package-selected-packages
-   '(lsp-java rustic flycheck-rust csharp-mode geiser-racket racket-mode sane-term editorconfig slime slime-fancy slime-mode ilisp request emacs-request lsp-haskell lsp-treemacs org spinner lsp-ui lsp-ivy lsp-mode emacs-tree-sitter company-box projectile rust-mode haskell-mode evil-vimish-fold vimish-fold eshell-syntax-highlighting man-mode go-mode flycheck evil-org "use-package" evil-collection swiper magit which-key base16-theme use-package ivy evil))
+   '(counsel vterm eglot lsp-java rustic flycheck-rust csharp-mode geiser-racket racket-mode sane-term editorconfig slime slime-fancy slime-mode ilisp request emacs-request lsp-haskell lsp-treemacs org spinner lsp-ui lsp-ivy lsp-mode emacs-tree-sitter company-box projectile rust-mode haskell-mode evil-vimish-fold vimish-fold eshell-syntax-highlighting man-mode go-mode flycheck evil-org "use-package" evil-collection swiper magit which-key base16-theme use-package ivy evil))
  '(which-key-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
