@@ -93,6 +93,7 @@
 	"s" 'swiper
 	"g" 'magit-status
 	"/" 'counsel-rg
+	"." 'project-find-file
 	"x" 'execute-extended-command))
 
   )
