@@ -7,7 +7,6 @@
 (menu-bar-mode -1) ;; remove menubar & toolbar
 
 (toggle-truncate-lines)
-(global-linum-mode)
 
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
