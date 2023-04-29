@@ -4,7 +4,7 @@ window:
   opacity: 0.95
   dimensions:
     columns: 80
-    lines: 24
+    lines: 20
   padding:
     x: 10
     y: 10
@@ -12,7 +12,8 @@ font:
   normal:
     style: Regular
     # family: Fira Code
-    family: ProggyCleanTT Nerd Font
-  size: 18.0
+    # family: ProggyCleanTT Nerd Font
+    family: Iosevka Term Nerd Font
+  size: 14.0
 dynamic_title: true
 

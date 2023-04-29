@@ -3,11 +3,11 @@
 
 ;;; Code:
 
+(add-hook 'prog-mode-hook #'(lambda () (hs-minor-mode t))) ; code folding
 (global-set-key [escape] 'keyboard-escape-quit) ;; escape to close prompts
 (menu-bar-mode -1) ;; remove menubar & toolbar
 
 (toggle-truncate-lines)
-(global-linum-mode)
 
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
@@ -51,12 +51,10 @@
   (package-install 'use-package))
 (require 'use-package)
 
-(defun create-term ()
-  "Create new window for a term."
+(defun fmt ()
   (interactive)
-  (split-window-below)
-  (other-window 1)
-  (vterm))
+  "format buffer/project"
+  (eglot-format))
 
 (use-package vterm :ensure t)
 
@@ -81,8 +79,7 @@
   (if (fboundp 'evil-leader/set-key)
       (evil-leader/set-key
 	"c" 'compile
-	"t" 'create-term
-	"T" 'create-term
+	"t" 'vterm-other-window
 	"e" 'flymake-show-project-diagnostics
 	"r" 'eglot-rename
 	"a" 'eglot-code-actions
@@ -94,9 +91,7 @@
 	"g" 'magit-status
 	"/" 'counsel-rg
 	"." 'project-find-file
-	"x" 'execute-extended-command))
-
-  )
+	"x" 'execute-extended-command)))
 
 (use-package evil
   :ensure t
@@ -141,9 +136,6 @@
   :config
   (load-theme 'base16-chalk t))
 
-(add-to-list 'default-frame-alist
-	     '(font . "ProggyCleanTT Nerd Font-18"))
-
 (use-package which-key
   :ensure t
   :config
@@ -154,8 +146,6 @@
 (use-package org
   :ensure t
   :config
-  (org-babel-do-load-languages
-   'org-babel-load-languages '((C, t)))
   (setq org-src-fontify-natively t))
 
 (use-package evil-org :after org :ensure t)
