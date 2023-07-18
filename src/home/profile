@@ -17,6 +17,7 @@ export FZF_DEFAULT_OPTS="--cycle --height=40% --reverse --border"
 command -v rtx >/dev/null 2>&1 && eval "$(rtx activate)"
 command -v rg >/dev/null 2>&1 && export FZF_DEFAULT_COMMAND="rg --color=never --files ."
 command -v bat >/dev/null 2>&1 && export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 
 export MAKEFLAGS="-j8"
 
