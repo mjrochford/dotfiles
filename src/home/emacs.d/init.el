@@ -16,7 +16,7 @@
 
 (setq dired-listing-switches "-lha --sort time --group-directories-first")
 
-(tool-bar-mode -1) ;; --
+;; (tool-bar-mode -1) ;; --
 (scroll-bar-mode -1) ;; hide scrollbars
 (save-place-mode 1) ;; remember position in files
 
@@ -32,18 +32,10 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file) ;; dont pollute init.el with customize-* things
 
-;; make editing init.el less horrid
-(defun reload-config () "Reloads the init file." (interactive)
-       (load-file (expand-file-name "init.el" user-emacs-directory)))
-
-(defun with-face (str &rest face-plist) "STR FACE-PLIST, Format face strings."
-       (propertize str 'face face-plist))
-
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
 			 ("gnu" . "https://elpa.gnu.org/packages/")))
-
-(package-initialize)
+(package-initialize nil)
 (unless package-archive-contents ;; update repos if not updated
   (package-refresh-contents))
 
@@ -51,24 +43,21 @@
   (package-install 'use-package))
 (require 'use-package)
 
-(defun fmt ()
-  (interactive)
-  "format buffer/project"
-  (eglot-format))
+(use-package vterm :ensure t :defer)
 
-(use-package vterm :ensure t)
+(use-package eglot :ensure t :defer)
 
-(use-package eglot :ensure t)
-
-(use-package company :ensure t)
+(use-package company :ensure t :defer)
 
 (use-package rust-mode
   :ensure t
   :config
+  :defer
   (add-hook 'rust-mode-hook 'eglot-ensure))
 
 (use-package evil-leader
   :ensure t
+  :defer
   :init
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
@@ -78,6 +67,7 @@
 
   (if (fboundp 'evil-leader/set-key)
       (evil-leader/set-key
+	"5" 'racket-run
 	"c" 'compile
 	"t" 'vterm-other-window
 	"e" 'flymake-show-project-diagnostics
@@ -91,7 +81,7 @@
 	"g" 'magit-status
 	"/" 'counsel-rg
 	"." 'project-find-file
-	"x" 'execute-extended-command)))
+	"x" 'kill-buffer)))
 
 (use-package evil
   :ensure t
@@ -134,6 +124,7 @@
 (use-package base16-theme
   :ensure t
   :config
+  (setq base16-theme-256-color-source 'colors)
   (load-theme 'base16-chalk t))
 
 (use-package which-key
@@ -141,11 +132,12 @@
   :config
   (which-key-mode 1))
 
-(use-package magit :ensure t)
+(use-package magit :ensure t :defer)
 
 (use-package org
   :ensure t
   :config
+  :defer
   (setq org-src-fontify-natively t))
 
 (use-package evil-org :after org :ensure t)
@@ -155,4 +147,15 @@
   :config
   (editorconfig-mode 1))
 
+;; make editing init.el less horrid
+(defun reload-config () "Reloads the init file." (interactive)
+       (load-file (expand-file-name "init.el" user-emacs-directory)))
+
+(defun with-face (str &rest face-plist) "STR FACE-PLIST, Format face strings."
+       (propertize str 'face face-plist))
+
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (ansi-color-apply-on-region compilation-filter-start (point)))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 ;;; init.el ends here
