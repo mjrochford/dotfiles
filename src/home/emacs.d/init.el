@@ -151,13 +151,6 @@
   :config
   (editorconfig-mode 1))
 
-;; make editing init.el less horrid
-(defun reload-config () "Reloads the init file." (interactive)
-       (load-file (expand-file-name "init.el" user-emacs-directory)))
-
-(defun with-face (str &rest face-plist) "STR FACE-PLIST, Format face strings."
-       (propertize str 'face face-plist))
-
 (require 'ansi-color)
 (defun colorize-compilation-buffer ()
   (ansi-color-apply-on-region compilation-filter-start (point)))
