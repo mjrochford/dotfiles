@@ -1,8 +1,6 @@
 let mapleader = " "
 set mouse=nv
 
-nmap <leader>c :make<CR>
-
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
@@ -24,11 +22,11 @@ nmap <leader>X :bufdo bd<cr>
 " delete all buffers but current
 nmap <leader>x :%bd\|e#\|bd# <cr> 
 
-" Alt {a,d} can switch buffers
-nnoremap <M-a> :bp<CR>
-nnoremap <M-d> :bn<CR>
-
+set path=.,**
 map <leader>e :e <c-r>=expand("%:p:h")<cr>/
+map <leader>b :b<space>
+map <leader>. :find **/
+map <leader>> :find<space>
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
@@ -44,6 +42,8 @@ nnoremap <S-Tab> <<_
 inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
+
+nnoremap / /\v
 
 map 0 ^
 
@@ -110,3 +110,4 @@ set colorcolumn=+1
 
 set wrap
 set background=dark
+set termguicolors
