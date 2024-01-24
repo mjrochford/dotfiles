@@ -1,7 +1,0 @@
-configuration {
-	modi: "drun,window,ssh,file-browser";
-	terminal: "kitty";
-	matching: "fuzzy";
-        tokenize: "true";
-	theme: "/home/matt/.config/rofi/themes/style_normal_rainbow.rasi";
-}
