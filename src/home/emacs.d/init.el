@@ -1,7 +1,20 @@
-;;; package --- init
-;;; Commentary:
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-;;; Code:
+(setq package-enable-at-startup nil)
 
 (add-hook 'prog-mode-hook #'(lambda () (hs-minor-mode t))) ; code folding
 (global-set-key [escape] 'keyboard-escape-quit) ;; escape to close prompts
@@ -14,7 +27,7 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-(setq dired-listing-switches "-lha --sort time --group-directories-first")
+;; (setq dired-listing-switches "-lha --sort time --group-directories-first")
 
 ;; (tool-bar-mode -1) ;; --
 (scroll-bar-mode -1) ;; hide scrollbars
@@ -32,16 +45,7 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file) ;; dont pollute init.el with customize-* things
 
-(require 'package)
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-			 ("gnu" . "https://elpa.gnu.org/packages/")))
-(package-initialize nil)
-(unless package-archive-contents ;; update repos if not updated
-  (package-refresh-contents))
-
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-(require 'use-package)
+(straight-use-package 'use-package)
 
 (use-package vterm :ensure t :defer)
 
@@ -158,4 +162,7 @@
 (defun colorize-compilation-buffer ()
   (ansi-color-apply-on-region compilation-filter-start (point)))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
+(add-to-list 'default-frame-alist
+             '(font . "Iosevka 10"))
 ;;; init.el ends here
