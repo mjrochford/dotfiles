@@ -46,10 +46,18 @@
 (load custom-file) ;; dont pollute init.el with customize-* things
 
 (straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
 
-(use-package vterm :ensure t :defer)
+(use-package guix)
+(guix-emacs-autoload-packages)
+(add-to-list 'default-frame-alist
+             '(font . "Iosevka Term 11"))
 
-(use-package eglot :ensure t :defer)
+(use-package geiser-guile :defer)
+
+(use-package vterm :defer)
+
+(use-package eglot :defer)
 
 (use-package company :ensure t :defer)
 
@@ -163,6 +171,4 @@
   (ansi-color-apply-on-region compilation-filter-start (point)))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
-(add-to-list 'default-frame-alist
-             '(font . "Iosevka 10"))
 ;;; init.el ends here

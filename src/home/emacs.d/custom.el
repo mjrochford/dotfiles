@@ -17,6 +17,12 @@
      (shell . t)))
  '(package-selected-packages
    '(stickyfunc-enhance svelte-mode yaml elm-mode typescript-mode counsel vterm eglot lsp-java rustic flycheck-rust csharp-mode geiser-racket racket-mode sane-term editorconfig slime slime-fancy slime-mode ilisp request emacs-request lsp-haskell lsp-treemacs org spinner lsp-ui lsp-ivy lsp-mode emacs-tree-sitter company-box projectile rust-mode haskell-mode evil-vimish-fold vimish-fold eshell-syntax-highlighting man-mode go-mode flycheck evil-org "use-package" evil-collection swiper magit which-key base16-theme use-package ivy evil))
+ '(safe-local-variable-values
+   '((eval modify-syntax-entry 43 "'")
+     (eval modify-syntax-entry 36 "'")
+     (eval modify-syntax-entry 126 "'")
+     (geiser-guile-binary "guix" "repl")
+     (geiser-insert-actual-lambda)))
  '(which-key-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
