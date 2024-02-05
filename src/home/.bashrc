@@ -1,5 +1,4 @@
 [ -f ~/.profile ] && source ~/.profile
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 prompt_pwd() { # --description "Print the current working directory, shortened to fit the prompt"
     realhome=$(echo $HOME | sed 's/\//\\\//g')
