@@ -30,11 +30,6 @@ local plugins = {
     "nvim-treesitter/nvim-treesitter-context"
 }
 
-if vim.fn.system({"command", "-v", "rg"}) ~= "" then
-    vim.opt.grepprg = "rg --vimgrep"
-end
-
-
 local path_sep = vim.loop.os_uname().sysname == "Windows" and "\\" or "/"
 -- Assumes filepath is a file.
 local function dirname(filepath)
