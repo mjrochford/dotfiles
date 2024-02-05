@@ -1,7 +1,7 @@
 /src/config/vim/*
 !src/config/vim/vimrc
 /src/config/nvim/*
-!src/config/nvim/init.vim
+!src/config/nvim/init.lua
 !src/config/nvim/lazy-lock.json
 /src/config/guix/*
 !src/config/guix/channels.scm
