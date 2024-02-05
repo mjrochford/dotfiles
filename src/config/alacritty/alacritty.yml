@@ -13,7 +13,7 @@ font:
     style: Regular
     # family: Fira Code
     # family: ProggyCleanTT Nerd Font
-    family: Iosevka Term Nerd Font
+    family: Iosevka Term 
   size: 14.0
 dynamic_title: true
 
