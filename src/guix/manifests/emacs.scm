@@ -1,5 +1,5 @@
 (specifications->manifest
-  (list "busybox"
+  (list "coreutils"
         "dbus"
         "fontconfig"
         "texinfo"
