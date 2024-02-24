@@ -1,6 +1,4 @@
 (define-module (mlap-home-config)
-  #:use-module (guix scripts home)
-  #:use-module (guix scripts package)
   #:use-module (gnu)
   #:use-module (gnu home)
   #:use-module (gnu system shadow)

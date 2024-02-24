@@ -16,11 +16,12 @@
   #:use-module (gnu packages gnome-xyz)
   #:use-module (gnu packages fonts)
   #:use-module (gnu packages package-management)
+  #:use-module (gnu packages ncurses)
   #:use-module (guix profiles)
   #:export (home-packages))
 
 (define home-packages
-    (list git curl lsof stow tree file rsync
+    (list git curl lsof stow tree file rsync ncurses
 		ripgrep bat alacritty
 		ungoogled-chromium
 		python python-ipython mpv yt-dlp
