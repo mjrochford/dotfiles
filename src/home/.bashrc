@@ -13,19 +13,22 @@ set_title() {
 }
 
 __prompt() {
-    bold="\[$(tput bold)\]"
-    reset="\[$(tput sgr0)\]"
-    red="\[$(tput setaf 1)\]"
-    green="\[$(tput setaf 2)\]"
-    yellow="\[$(tput setaf 3)\]"
-    blue="\[$(tput setaf 4)\]"
-    purple="\[$(tput setaf 5)\]"
-    lgreen="\[$(tput setaf 6)\]"
-    white="\[$(tput setaf 7)\]"
-    grey="\[$(tput setaf 8)\]"
-
-    set_title $(prompt_pwd)
-    export PS1="$reset$blue`prompt_pwd` $yellow\$$reset "
+    if [ -n $(command -v tput) ]; then
+        bold="\[$(tput bold)\]"
+        reset="\[$(tput sgr0)\]"
+        red="\[$(tput setaf 1)\]"
+        green="\[$(tput setaf 2)\]"
+        yellow="\[$(tput setaf 3)\]"
+        blue="\[$(tput setaf 4)\]"
+        purple="\[$(tput setaf 5)\]"
+        lgreen="\[$(tput setaf 6)\]"
+        white="\[$(tput setaf 7)\]"
+        grey="\[$(tput setaf 8)\]"
+        export PS1="$reset$purple`whoami` @ $blue`prompt_pwd` $yellow\$$reset "
+    else
+        export PS1="`whoami` @ `prompt_pwd` \$ "
+    fi
+    set_title "bash"
 }
 PROMPT_COMMAND='__prompt'
 
