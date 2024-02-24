@@ -1,10 +1,1 @@
-(use-package eglot :defer)
-(use-package rust-mode
-  :config
-  :defer
-  (add-hook 'rust-mode-hook 'eglot-ensure))
-
-(use-package geiser :defer)
-(use-package geiser-guile :defer)
-
-(provide 'languages)
+/gnu/store/szbd5sch0vizrpvh2g5msvp7ckwy22kq-home-dotfiles--emacs-d-lisp-languages-el

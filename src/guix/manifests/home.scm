@@ -28,10 +28,3 @@
 		materia-theme papirus-icon-theme font-iosevka-term
 		flatpak))
 (packages->manifest home-packages)
-
-; (specifications->manifest (list "git" "curl" "lsof" "tree" "file" "rsync"
-; 				"ripgrep" "bat" "alacritty"
-; 				"ungoogled-chromium" "python" "python-ipython" "mpv" "yt-dlp"
-; 				"zathura" "zathura-pdf-poppler"
-; 				"materia-theme" "papirus-icon-theme" "font-iosevka-term"
-; 				"flatpak"))

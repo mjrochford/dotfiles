@@ -1,21 +1,21 @@
-/src/config/vim/*
-!src/config/vim/vimrc
-/src/config/nvim/*
-!src/config/nvim/init.lua
-!src/config/nvim/lazy-lock.json
-/src/config/guix/*
-!src/config/guix/channels.scm
+/src/home/.config/vim/*
+!src/home/.config/vim/vimrc
+/src/home/.config/nvim/*
+!src/home/.config/nvim/init.lua
+!src/home/.config/nvim/lazy-lock.json
+/src/home/.config/guix/*
+!src/home/.config/guix/channels.scm
 /src/home/.emacs.d/*
 !src/home/.emacs.d/custom.el
 !src/home/.emacs.d/init.el
 !src/home/.emacs.d/lisp/
 
-/src/config/alacritty/themes
+/src/home/.config/alacritty/themes
 
-/src/config/fish/*
-!src/config/fish/config.fish
+/src/home/.config/fish/*
+!src/home/.config/fish/config.fish
+
+/src/home/.config/tmux/plugins/*
 
 __pycache__
 tags
-
-/src/config/tmux/plugins/*

@@ -24,7 +24,11 @@ __prompt() {
         lgreen="\[$(tput setaf 6)\]"
         white="\[$(tput setaf 7)\]"
         grey="\[$(tput setaf 8)\]"
-        export PS1="$reset$purple`whoami` @ $blue`prompt_pwd` $yellow\$$reset "
+        if [ $(id -u) -eq 0 ]; then
+            export PS1="$reset$red`whoami` $grey@ $blue`prompt_pwd` $yellow\$$reset "
+        else
+            export PS1="$reset$purple`whoami`$grey @ $blue`prompt_pwd` $yellow\$$reset "
+        fi
     else
         export PS1="`whoami` @ `prompt_pwd` \$ "
     fi

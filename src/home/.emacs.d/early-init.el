@@ -1,1 +1,1 @@
-(setq frame-inhibit-implied-resize t) ;; prevent resize window on startup
+/gnu/store/5rzmlzni70x15076hxjhmf525ikz3jvn-home-dotfiles--emacs-d-early-init-el

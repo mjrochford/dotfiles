@@ -1,8 +1,1 @@
-(add-to-list 'load-path "~/.emacs.d/lisp")
-(require 'setup)
-(require 'makeup)
-(require 'keybinds)
-(require 'languages)
-(require 'development)
-
-;;; init.el ends here
+/gnu/store/82l4vqfj3fzrhy55q5smsin7nps9ivbi-home-dotfiles--emacs-d-init-el
