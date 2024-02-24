@@ -1,5 +1,6 @@
 (specifications->manifest
   (list "coreutils"
+        "binutils"
         "dbus"
         "fontconfig"
         "texinfo"
