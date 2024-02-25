@@ -9,11 +9,6 @@ command -v bat 2>&1 >/dev/null && export MANPAGER="bat -p -l man"
 
 export GUIX_EXTRA_PROFILES=$HOME/.guix-extra-profiles
 export GUIX_PROFILE=$HOME/.guix-profile
-for p in $GUIX_EXTRA_PROFILES/* $GUIX_PROFILE; do
+for p in $GUIX_PROFILE; do
     . $p/etc/profile
 done
-
-HOME_ENVIRONMENT=$HOME/.guix-home
-. $HOME_ENVIRONMENT/setup-environment
-$HOME_ENVIRONMENT/on-first-login
-

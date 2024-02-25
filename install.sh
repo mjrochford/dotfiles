@@ -6,7 +6,7 @@ if [ $INSTALL_LAZY ] && [ -n $(command -v git) ]; then
     git clone https://github.com/folke/lazy.nvim $lazy_dir/lazy.nvim
 fi
 
-# TODO source build possible?
+# TODO source build possible? BSD possible?
 # https://ftpmirror.gnu.org/gnu/guix/guix-1.4.0.tar.gz
 # https://ftpmirror.gnu.org/gnu/guix/guix-1.4.0.tar.gz.sig
 if [ $INSTALL_GUIX ] && [ -n $(command -v wget) ]; then
