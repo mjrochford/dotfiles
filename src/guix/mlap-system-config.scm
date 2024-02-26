@@ -6,7 +6,7 @@
   :use-module (manifests system)
   :export (%mlap-system-config))
 
-(use-package-modules radio)
+(use-package-modules radio shells)
 (use-service-modules cups desktop sddm networking ssh xorg dbus)
 
 (define %mlap-packages
@@ -46,6 +46,7 @@
   (cons* (user-account
 	  (name "mrochford")
 	  (comment "Matt Rochford")
+	  (shell (file-append fish "/bin/fish"))
 	  (group "users")
 	  (home-directory "/home/mrochford")
 	  (supplementary-groups '("wheel" "netdev" ; admin
