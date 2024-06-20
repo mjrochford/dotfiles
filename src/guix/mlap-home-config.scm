@@ -17,10 +17,8 @@
    (services
     (list
      (service home-fish-service-type)
-     (service home-dbus-service-type)
      (service home-dotfiles-service-type
 	      (home-dotfiles-configuration
-	       (directories (list "../home"))))
-     (service home-pipewire-service-type)))))
+	       (directories (list "../home"))))))))
 
 %mlap-home-config

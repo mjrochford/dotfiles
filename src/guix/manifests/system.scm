@@ -1,5 +1,4 @@
 (define-module (manifests system)
-  #:use-module (gnu packages certs)
   #:use-module (gnu packages vim)
   #:use-module (gnu packages gnupg)
   #:use-module (gnu packages ncurses)
@@ -19,6 +18,6 @@
 
 (define system-packages
   (list git curl lsof tree file rsync ncurses
-	nss-certs neovim gnupg pinentry pinentry-qt
+	neovim gnupg pinentry
 	alacritty ungoogled-chromium icecat flatpak
 	materia-theme papirus-icon-theme font-iosevka-term))

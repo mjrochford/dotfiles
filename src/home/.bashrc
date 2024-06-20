@@ -1,5 +1,3 @@
-[ -f ~/.profile ] && source ~/.profile
-
 prompt_pwd() { # --description "Print the current working directory, shortened to fit the prompt"
     realhome=$(echo $HOME | sed 's/\//\\\//g')
     tmp=$(echo $PWD | sed -E "s/^$realhome($|\/)/\~\1/g")
@@ -38,4 +36,14 @@ PROMPT_COMMAND='__prompt'
 
 vman() {
     nvim -c 'set ft=man nolist nomod' -c "Man $@"
+}
+
+gxemacs() {
+    guix shell -p ~/.guix-extra-profiles/emacs -- emacs $@
+}
+
+edhome() {
+    DOTFILES=$HOME/.dotfiles
+    $EDITOR $DOTFILES/src/guix/$HOSTNAME-home-config.scm
+    $DOTFILES/make-home.scm
 }

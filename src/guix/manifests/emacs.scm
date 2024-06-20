@@ -7,6 +7,7 @@
         "emacs"
         "emacs-guix"
         "emacs-eglot"
+        "emacs-lua-mode"
         "emacs-evil"
         "emacs-evil-leader"
         "emacs-evil-commentary"
@@ -32,4 +33,5 @@
         "nss-certs"
         "le-certs"
         "guile"
-        "guile-gnutls"))
+        "guile-gnutls"
+        "universal-ctags"))
