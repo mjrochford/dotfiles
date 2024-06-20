@@ -1,5 +1,4 @@
 (define-module (manifests system)
-  #:use-module (gnu packages certs)
   #:use-module (gnu packages vim)
   #:use-module (gnu packages gnupg)
   #:use-module (gnu packages ncurses)
