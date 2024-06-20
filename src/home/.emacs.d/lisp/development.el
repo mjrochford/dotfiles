@@ -1,4 +1,4 @@
-(use-package guix)
+; (use-package guix)
 (use-package magit :defer)
 
 (use-package editorconfig

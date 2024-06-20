@@ -19,6 +19,5 @@
 
 (define system-packages
   (list git curl lsof tree file rsync ncurses
-	nss-certs neovim gnupg pinentry pinentry-qt
-	alacritty ungoogled-chromium icecat flatpak
+	neovim gnupg alacritty ungoogled-chromium icecat flatpak
 	materia-theme papirus-icon-theme font-iosevka-term))
